@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A bit more on mutability (and copies) &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="args and kwargs Lab" href="../exercises/args_kwargs_lab.html" />
+    <link rel="prev" title="Advanced Argument Passing" href="AdvancedArgumentPassing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../topics/01-setting_up/index.html">1. Setting up your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/args_kwargs_lab.html"><code class="docutils literal notranslate"><span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> Lab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/12-comprehensions/index.html">12. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../topics/11-argument_passing/index.html"><span class="section-number">11. </span>Advanced Argument Passing</a></li>
+      <li class="breadcrumb-item active">A bit more on mutability (and copies)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/MoreOnMutability.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="AdvancedArgumentPassing.html" class="btn btn-neutral float-left" title="Advanced Argument Passing" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../exercises/args_kwargs_lab.html" class="btn btn-neutral float-right" title="args and kwargs Lab" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="a-bit-more-on-mutability-and-copies">
+<span id="a-bit-on-mutability"></span><h1>A bit more on mutability (and copies)<a class="headerlink" href="#a-bit-more-on-mutability-and-copies" title="Link to this heading"></a></h1>
+<section id="mutable-objects">
+<h2>mutable objects<a class="headerlink" href="#mutable-objects" title="Link to this heading"></a></h2>
+<p>We’ve talked about this: mutable objects can have their contents changed in place.</p>
+<p>Immutable objects can not.</p>
+<p>This has implications when you have a container with mutable objects in it:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>one way to make a copy of a list:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">list2</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[:]</span>
+
+<span class="gp">In [30]: </span><span class="n">list2</span> <span class="ow">is</span> <span class="n">list1</span>
+<span class="gh">Out[30]: </span><span class="go">False</span>
+</pre></div>
+</div>
+<p>they are different lists.</p>
+<p>What if we set an element to a new value?</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="gp">In [32]: </span><span class="n">list1</span>
+<span class="gh">Out[32]: </span><span class="go">[[5, 6, 7], [&#39;a&#39;, &#39;b&#39;]]</span>
+
+<span class="gp">In [33]: </span><span class="n">list2</span>
+<span class="gh">Out[33]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;]]</span>
+</pre></div>
+</div>
+<p>So they are independent.</p>
+<p>But what if we mutate an element?</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="gp">In [35]: </span><span class="n">list1</span>
+<span class="gh">Out[35]: </span><span class="go">[[5, 6, 7], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+
+<span class="gp">In [36]: </span><span class="n">list2</span>
+<span class="gh">Out[36]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+</pre></div>
+</div>
+<p>uuh oh! mutating an element in one list mutated the one in the other list.</p>
+<p>Why is that?</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="n">list2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gh">Out[38]: </span><span class="go">True</span>
+</pre></div>
+</div>
+<p>The elements are the same object!</p>
+<p>This is known as a “shallow” copy – Python doesn’t want to copy more than it needs to, so in this case, it makes a new list, but does not make copies of the contents.</p>
+<p>Same for dicts (and any container type – even tuples!)</p>
+<p>If the elements are immutable, it doesn’t really make a differnce – but be very careful with mutable elements.</p>
+</section>
+<section id="the-copy-module">
+<h2>The copy module<a class="headerlink" href="#the-copy-module" title="Link to this heading"></a></h2>
+<p>most objects have a way to make copies (<code class="docutils literal notranslate"><span class="pre">dict.copy()</span></code> for instance).</p>
+<p>but if not, you can use the <code class="docutils literal notranslate"><span class="pre">copy</span></code> module to make a copy:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [39]: </span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+
+<span class="gp">In [40]: </span><span class="n">list3</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
+
+<span class="gp">In [41]: </span><span class="n">list3</span>
+<span class="gh">Out[41]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+</pre></div>
+</div>
+<p>This is also a shallow copy.</p>
+<p>But there is another option:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">list1</span>
+<span class="gh">Out[3]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+
+<span class="gp">In [4]: </span><span class="n">list2</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+
+<span class="gp">In [5]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="gp">In [6]: </span><span class="n">list1</span>
+<span class="gh">Out[6]: </span><span class="go">[[1, 2, 3, 4], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+
+<span class="gp">In [7]: </span><span class="n">list2</span>
+<span class="gh">Out[7]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">deepcopy</span></code> recurses through the object, making copies of everything as it goes.</p>
+<p>I happened on this thread on stack overflow:</p>
+<p><a class="reference external" href="http://stackoverflow.com/questions/3975376/understanding-dict-copy-shallow-or-deep">http://stackoverflow.com/questions/3975376/understanding-dict-copy-shallow-or-deep</a></p>
+<p>The OP is pretty confused – can you sort it out?</p>
+<p>Make sure you understand the difference between a reference, a shallow copy, and a deep copy.</p>
+</section>
+<section id="mutables-as-default-arguments">
+<h2>Mutables as default arguments:<a class="headerlink" href="#mutables-as-default-arguments" title="Link to this heading"></a></h2>
+<p>Another “gotcha” is using mutables as default arguments:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">[]):</span>
+<span class="gp">   ....: </span>    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">   ....:</span>
+</pre></div>
+</div>
+<p>This makes sense: maybe you’d pass in a specific list, but if not, the default is an empty list.</p>
+<p>But:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">[3]</span>
+
+<span class="gp">In [13]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[3, 4]</span>
+</pre></div>
+</div>
+<p>Huh?!</p>
+<p>Remember that that default argument is defined when the function is created: there will be only one list, and every time the function is called, that same list is used.</p>
+<p><strong>The solution:</strong></p>
+<p>The standard practice for such a mutable default argument:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">   ....: </span>        <span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">   ....: </span>    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">In [16]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">[3]</span>
+<span class="gp">In [17]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[4]</span>
+</pre></div>
+</div>
+<p>You get a new list every time the function is called</p>
+<p>For more reading.</p>
+<p>This: <a class="reference external" href="http://python.net/crew/mwh/hacks/objectthink.html#question">http://python.net/crew/mwh/hacks/objectthink.html#question</a></p>
+<p>Is a link to a discussion on comp.lang.python from over 15 years ago – but the issues are still the same. In particular, Alex Martelli’s answer is brilliant.</p>
+<p>Go read it….</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AdvancedArgumentPassing.html" class="btn btn-neutral float-left" title="Advanced Argument Passing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../exercises/args_kwargs_lab.html" class="btn btn-neutral float-right" title="args and kwargs Lab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

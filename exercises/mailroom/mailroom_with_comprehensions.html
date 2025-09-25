@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mailroom With Comprehensions &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13. Intro to Object Oriented Programing" href="../../topics/13-intro_oo/index.html" />
+    <link rel="prev" title="Comprehensions Lab" href="../comprehensions_lab.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../topics/01-setting_up/index.html">1. Setting up your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/07-unit_testing/index.html">7. Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../topics/12-comprehensions/index.html">12. Comprehensions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../modules/Comprehensions.html">Comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/CollectionsModule.html">The Collections Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comprehensions_lab.html">Comprehensions Lab</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mailroom With Comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../topics/12-comprehensions/index.html"><span class="section-number">12. </span>Comprehensions</a></li>
+      <li class="breadcrumb-item active">Mailroom With Comprehensions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/exercises/mailroom/mailroom_with_comprehensions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../comprehensions_lab.html" class="btn btn-neutral float-left" title="Comprehensions Lab" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../topics/13-intro_oo/index.html" class="btn btn-neutral float-right" title="13. Intro to Object Oriented Programing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mailroom-with-comprehensions">
+<span id="exercise-mailroom-comprehensions"></span><h1>Mailroom With Comprehensions<a class="headerlink" href="#mailroom-with-comprehensions" title="Link to this heading"></a></h1>
+<p><strong>Improve your mailroom by adding (maybe) comprehensions.</strong></p>
+<section id="comprehensions">
+<h2>Comprehensions<a class="headerlink" href="#comprehensions" title="Link to this heading"></a></h2>
+<p>Can you use comprehensions to clean up your code a bit?</p>
+<p>Note: you may be tempted to replace loops like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">donor</span> <span class="ow">in</span> <span class="n">donors</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">donor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">donor</span><span class="p">)</span> <span class="k">for</span> <span class="n">donor</span> <span class="ow">in</span> <span class="n">donors</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>That’s not the intended use of comprehensions. Because <code class="docutils literal notranslate"><span class="pre">print</span></code> function does not return a value, this code will allocate a space for an “empty” result list filled with None values:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">donor</span><span class="p">)</span> <span class="k">for</span> <span class="n">donor</span> <span class="ow">in</span> <span class="n">donors</span><span class="p">]</span>
+<span class="go">jane</span>
+<span class="go">wendy</span>
+<span class="go">[None, None]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>List comprehensions are designed for a very specific use case:</p>
+<p><em>Processing a sequence of items to create another sequence.</em></p>
+<p>They are not designed to replace all for loops.</p>
+<p>So if you have code that looks like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">old_list</span><span class="p">:</span>
+    <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">do_something_to</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Then you have a candidate for a comprehension.</p>
+<p>In your version of mailroom – there may not be any such constructs – that’s OK, don’t use a comprehension unless it cleans up your code.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../comprehensions_lab.html" class="btn btn-neutral float-left" title="Comprehensions Lab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../topics/13-intro_oo/index.html" class="btn btn-neutral float-right" title="13. Intro to Object Oriented Programing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

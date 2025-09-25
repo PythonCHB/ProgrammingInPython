@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>More on Functions &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Practice with CodingBat" href="../exercises/codingbat.html" />
+    <link rel="prev" title="Basic Python" href="BasicPython.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../topics/01-setting_up/index.html">1. Setting up your Environment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../topics/02-basic_python/index.html">2. Basic Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="HowToRunAPythonFile.html">How to run a python file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Learning.html">Useful Python Learning Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BasicPython.html">Basic Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">More on Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/codingbat.html">Practice with CodingBat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/grid_printer.html">Grid Printer Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/fizz_buzz.html">Fizz Buzz Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/12-comprehensions/index.html">12. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../topics/02-basic_python/index.html"><span class="section-number">2. </span>Basic Python</a></li>
+      <li class="breadcrumb-item active">More on Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/Functions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="BasicPython.html" class="btn btn-neutral float-left" title="Basic Python" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../exercises/codingbat.html" class="btn btn-neutral float-right" title="Practice with CodingBat" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="more-on-functions">
+<span id="id1"></span><h1>More on Functions<a class="headerlink" href="#more-on-functions" title="Link to this heading"></a></h1>
+<p>From the materials you have covered up to this point you should have mastered the basics of writing functions.</p>
+<p>In particular, you know that functions can contain a chunk of code that can be written once, and used multiple times from other parts of the code.</p>
+<p>You know that you can pass values into the function, and that it can return values to the “calling” code.</p>
+<p>Now we will dig a bit deeper down into the specifics of functions in Python:</p>
+<section id="variable-scope">
+<h2>Variable scope<a class="headerlink" href="#variable-scope" title="Link to this heading"></a></h2>
+<p>Defining a function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">z</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> are <em>local</em> names.</p>
+<p><code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> because they are function <em>parameters</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">z</span></code> because it was “bound” inside the function.</p>
+<section id="local-vs-global">
+<h3>Local vs. Global<a class="headerlink" href="#local-vs-global" title="Link to this heading"></a></h3>
+<p>Names bound in Python have a <em>scope</em></p>
+<p>That <em>scope</em> determines where a name is visible, and what value it has in a
+given block.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="gp">In [15]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">33</span>
+<span class="gp">In [16]: </span><span class="n">z</span> <span class="o">=</span> <span class="mi">34</span>
+<span class="gp">In [17]: </span><span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="gp">   ....:</span>
+<span class="gp">In [18]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">32 3 4</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">x</span></code> is global, while <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> are local to the function.</p>
+<p>But, did the value of <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> change in the <em>global</em> scope?</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">y</span>
+<span class="gh">Out[19]: </span><span class="go">33</span>
+
+<span class="gp">In [20]: </span><span class="n">z</span>
+<span class="gh">Out[20]: </span><span class="go">34</span>
+</pre></div>
+</div>
+<p>No – they did not. The “y” and “z” names <em>inside</em> the function are completely separate from the “y” and “z” outside the function.</p>
+<p>The ones outside the function are “global” names.</p>
+<p>When you use a name in Python, it first checks if it’s a local name. Then, if that name is not in the local scope, it will look in the global scope for it.</p>
+<p><strong>NOTE:</strong> “global” in Python means global to the module (generally a single file), not global to an entire program. Which is really good, as you have little way of knowing what names are being used in packages you are using, but are not writing yourself!</p>
+<p>In general, you should use global names mostly for constants.</p>
+<p>The Python convention is to designate global constants by typing the
+names we bind to them in ALL_CAPS:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">]</span>
+<span class="n">CONFIGURATION_KEY</span> <span class="o">=</span> <span class="s1">&#39;some secret value&#39;</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>This is just a convention, but it’s a good one to follow.</p>
+</section>
+<section id="global-gotcha">
+<h3>Global Gotcha<a class="headerlink" href="#global-gotcha" title="Link to this heading"></a></h3>
+<p>Take a look at this function definition:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="gp">In [22]: </span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
+<span class="gp">   ....: </span>    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="gp">   ....: </span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">   ....:</span>
+</pre></div>
+</div>
+<p>What is going to happen when we call <code class="docutils literal notranslate"><span class="pre">f</span></code>?</p>
+<p>Try it and see:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="n">f</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-34-0ec059b9bfe1&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">f</span><span class="p">()</span>
+
+<span class="nn">&lt;ipython-input-33-4363b2b69f73&gt;</span> in <span class="ni">f</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="ne">UnboundLocalError</span>: local variable &#39;x&#39; referenced before assignment
+</pre></div>
+</div>
+<p>Because you are binding the symbol <code class="docutils literal notranslate"><span class="pre">x</span></code> locally, it becomes a local and masks
+the global value already bound. So in the line that caused the error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>Python knows that x is a local name, as it is assigned on the next line.  But on this line,  x has not yet been given a value – hence the error.</p>
+</section>
+<section id="globals-are-read-only">
+<h3>Globals are “read only”<a class="headerlink" href="#globals-are-read-only" title="Link to this heading"></a></h3>
+<p>While you have access to the global names in side a function, you can’t change what those names are bound to. Take a look at the previous examples – when we set a new value to a name (using the equal sign), that makes the name local – so it will not change what the global name refers to.</p>
+</section>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<p>So far we’ve seen simple parameter lists:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These types of parameters are called <em>positional</em></p>
+<p>When you call a function, you <strong>must</strong> provide arguments for all <em>positional</em>
+parameters <em>in the order they are listed</em>.</p>
+<section id="defaults-for-parameters">
+<h3>Defaults for parameters:<a class="headerlink" href="#defaults-for-parameters" title="Link to this heading"></a></h3>
+<p>You can provide <em>default values</em> for parameters in a function definition:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="gp">   ....:</span>
+</pre></div>
+</div>
+<p>When parameters are given with default values, they become <em>optional</em>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">fun</span><span class="p">()</span>
+<span class="go">1 2 3</span>
+</pre></div>
+</div>
+<p>You can provide arguments to a function call for <em>optional</em> parameters
+positionally:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">6 2 3</span>
+<span class="gp">In [27]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="go">6 7 3</span>
+<span class="gp">In [28]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="go">6 7 8</span>
+</pre></div>
+</div>
+<p>Or, you can use the parameter name as a <em>keyword</em> to indicate which you mean:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">fun</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1 4 3</span>
+</pre></div>
+</div>
+<p>This allows you to specify only those optional parameters that you need to, and keep using the defaults for the rest.
+This is a very powerful feature of Python – you’ll find it’s common to have a pretty long optional parameter list to functions.
+It allows a lot of flexibility (the hard stuff is possible), while in common use, it’s easy to use (the easy stuff is easy).</p>
+<p>Once you’ve provided a <em>keyword</em> argument in this way, you can no longer
+provide any <em>positional</em> arguments:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-30-4529e5befb95&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="ne">SyntaxError</span>: non-keyword arg after keyword arg
+</pre></div>
+</div>
+</section>
+</section>
+<section id="recursion">
+<h2>Recursion<a class="headerlink" href="#recursion" title="Link to this heading"></a></h2>
+<p>You’ve seen functions that call other functions.</p>
+<p>If a function calls <em>itself</em>, we call that <strong>recursion</strong>.</p>
+<p>Like with other functions, a call within a call establishes a <em>call stack</em>.</p>
+<p>With recursion, if you are not careful, this stack can get <em>very</em> deep.</p>
+<p>Python has a maximum limit to how much it can recurse. This is intended to
+save your machine from running out of RAM.</p>
+</section>
+<section id="recursion-can-be-useful">
+<h2>Recursion can be Useful<a class="headerlink" href="#recursion-can-be-useful" title="Link to this heading"></a></h2>
+<p>Recursion is especially useful for a particular set of problems.</p>
+<p>For example, take the case of the <em>factorial</em> function.</p>
+<p>In mathematics, the <em>factorial</em> of an integer is the result of multiplying that integer by every integer smaller than itself down to 1.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>5! == 5 * 4 * 3 * 2 * 1
+</pre></div>
+</div>
+<p>We can use a recursive function nicely to model this mathematical function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;compute the factorial of the input value, n&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a typical structure for a recursive function:</p>
+<ol class="upperalpha simple">
+<li><p>It starts with a check to see if the recursive process is “done” – can it simply return a simple value.</p></li>
+<li><p>If not, then it does a computation using the same function with another value.</p></li>
+</ol>
+<p>It is critical that the first check is there, or the function will never terminate.</p>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<p>Here’s a nice blog post about writting better functions:</p>
+<p><a class="reference external" href="https://jeffknupp.com/blog/2018/10/11/write-better-python-functions/">https://jeffknupp.com/blog/2018/10/11/write-better-python-functions/</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="BasicPython.html" class="btn btn-neutral float-left" title="Basic Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../exercises/codingbat.html" class="btn btn-neutral float-right" title="Practice with CodingBat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

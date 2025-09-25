@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comprehensions Lab &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mailroom With Comprehensions" href="mailroom/mailroom_with_comprehensions.html" />
+    <link rel="prev" title="The Collections Module" href="../modules/CollectionsModule.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../topics/01-setting_up/index.html">1. Setting up your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../topics/12-comprehensions/index.html">12. Comprehensions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules/Comprehensions.html">Comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/CollectionsModule.html">The Collections Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Comprehensions Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom/mailroom_with_comprehensions.html">Mailroom With Comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../topics/12-comprehensions/index.html"><span class="section-number">12. </span>Comprehensions</a></li>
+      <li class="breadcrumb-item active">Comprehensions Lab</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/exercises/comprehensions_lab.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../modules/CollectionsModule.html" class="btn btn-neutral float-left" title="The Collections Module" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mailroom/mailroom_with_comprehensions.html" class="btn btn-neutral float-right" title="Mailroom With Comprehensions" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="comprehensions-lab">
+<span id="exercise-comprehensions"></span><h1>Comprehensions Lab<a class="headerlink" href="#comprehensions-lab" title="Link to this heading"></a></h1>
+<section id="playing-with-comprehensions">
+<h2>Playing with Comprehensions<a class="headerlink" href="#playing-with-comprehensions" title="Link to this heading"></a></h2>
+<p><strong>Goal:</strong></p>
+<p>Getting Familiar with list, set and dict comprehensions</p>
+<section id="list-comprehensions">
+<h3>List comprehensions<a class="headerlink" href="#list-comprehensions" title="Link to this heading"></a></h3>
+<p>Note: this is a bit of a “backwards” exercise – we show you code, you figure out what it does.</p>
+<p>As a result, not much to submit – don’t worry about it – you’ll have a chance to use these in other exercises.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feast</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lambs&#39;</span><span class="p">,</span> <span class="s1">&#39;sloths&#39;</span><span class="p">,</span> <span class="s1">&#39;orangutans&#39;</span><span class="p">,</span>
+<span class="go">             &#39;breakfast cereals&#39;, &#39;fruit bats&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">[</span><span class="n">delicacy</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">delicacy</span> <span class="ow">in</span> <span class="n">feast</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+<p>(figure it out before you try it)</p>
+</section>
+<section id="filtering-lists-with-list-comprehensions">
+<h3>Filtering lists with list comprehensions<a class="headerlink" href="#filtering-lists-with-list-comprehensions" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feast</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;sloths&#39;</span><span class="p">,</span> <span class="s1">&#39;orangutans&#39;</span><span class="p">,</span> <span class="s1">&#39;breakfast cereals&#39;</span><span class="p">,</span>
+<span class="go">            &#39;fruit bats&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comp</span> <span class="o">=</span> <span class="p">[</span><span class="n">delicacy</span> <span class="k">for</span> <span class="n">delicacy</span> <span class="ow">in</span> <span class="n">feast</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">delicacy</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">feast</span><span class="p">)</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+<p>(figure it out first!)</p>
+</section>
+<section id="unpacking-tuples-in-list-comprehensions">
+<h3>Unpacking tuples in list comprehensions<a class="headerlink" href="#unpacking-tuples-in-list-comprehensions" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_of_tuples</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;lumberjack&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;inquisition&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;spam&#39;</span><span class="p">)]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">[</span> <span class="n">skit</span> <span class="o">*</span> <span class="n">number</span> <span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">skit</span> <span class="ow">in</span> <span class="n">list_of_tuples</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comprehension</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+</section>
+<section id="double-list-comprehensions">
+<h3>Double list comprehensions<a class="headerlink" href="#double-list-comprehensions" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eggs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;poached egg&#39;</span><span class="p">,</span> <span class="s1">&#39;fried egg&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">meats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lite spam&#39;</span><span class="p">,</span> <span class="s1">&#39;ham spam&#39;</span><span class="p">,</span> <span class="s1">&#39;fried spam&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> \
+<span class="go">[ &#39;{0} and {1}&#39;.format(egg, meat) for egg in eggs for meat in meats]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comprehension</span><span class="p">)</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+</section>
+<section id="set-comprehensions">
+<h3>Set comprehensions<a class="headerlink" href="#set-comprehensions" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">{</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">&#39;aabbbcccc&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+</section>
+<section id="dictionary-comprehensions">
+<h3>Dictionary comprehensions<a class="headerlink" href="#dictionary-comprehensions" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dict_of_weapons</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;first&#39;</span><span class="p">:</span> <span class="s1">&#39;fear&#39;</span><span class="p">,</span>
+<span class="go">                       &#39;second&#39;: &#39;surprise&#39;,</span>
+<span class="go">                       &#39;third&#39;:&#39;ruthless efficiency&#39;,</span>
+<span class="go">                       &#39;forth&#39;:&#39;fanatical devotion&#39;,</span>
+<span class="go">                       &#39;fifth&#39;: None}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict_comprehension</span> <span class="o">=</span> \
+<span class="go">{ k.upper(): weapon for k, weapon in dict_of_weapons.items() if weapon}</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;first&#39;</span> <span class="ow">in</span> <span class="n">dict_comprehension</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;FIRST&#39;</span> <span class="ow">in</span> <span class="n">dict_comprehension</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">dict_of_weapons</span><span class="p">)</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">dict_comprehension</span><span class="p">)</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+</section>
+<section id="other-resources">
+<h3>Other resources<a class="headerlink" href="#other-resources" title="Link to this heading"></a></h3>
+<p>See also:</p>
+<p><a class="reference external" href="https://github.com/gregmalcolm/python_koans/blob/master/python3/koans/about_comprehension.py">https://github.com/gregmalcolm/python_koans/blob/master/python3/koans/about_comprehension.py</a></p>
+<p>From Greg Malcolm’s excellent Python Koans series:</p>
+<p><a class="reference external" href="https://github.com/gregmalcolm/python_koans">https://github.com/gregmalcolm/python_koans</a></p>
+</section>
+<section id="count-even-numbers">
+<h3>Count Even Numbers<a class="headerlink" href="#count-even-numbers" title="Link to this heading"></a></h3>
+<p>This is from CodingBat “count_evens” (<a class="reference external" href="http://codingbat.com/prob/p189616">http://codingbat.com/prob/p189616</a>)</p>
+<p><em>Using a list comprehension</em>, return the number of even integers in the given list.</p>
+<p>Note: the % “mod” operator computes the remainder, e.g. <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">%</span> <span class="pre">2</span></code> is 1.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count_evens</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="n">count_evens</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="n">count_evens</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Can you do this with a single line comprehension?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">count_evens</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+   <span class="n">one_line_comprehension_here</span>
+</pre></div>
+</div>
+</section>
+<section id="dict-and-set-comprehensions">
+<h3><code class="docutils literal notranslate"><span class="pre">dict</span></code> and <code class="docutils literal notranslate"><span class="pre">set</span></code> comprehensions<a class="headerlink" href="#dict-and-set-comprehensions" title="Link to this heading"></a></h3>
+<p>Revisiting the dict/set lab – see how much you can do with comprehensions instead.</p>
+<p>(<a class="reference internal" href="dict_lab.html#exercise-dict-lab"><span class="std std-ref">Dictionary and Set Lab</span></a>)</p>
+<p>Specifically, look at these:</p>
+<p>First a slightly bigger, more interesting (or at least bigger..) dict:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">food_prefs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chris&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Seattle&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;cake&quot;</span><span class="p">:</span> <span class="s2">&quot;chocolate&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;fruit&quot;</span><span class="p">:</span> <span class="s2">&quot;mango&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;salad&quot;</span><span class="p">:</span> <span class="s2">&quot;greek&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;pasta&quot;</span><span class="p">:</span> <span class="s2">&quot;lasagna&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-this-dict">
+<h3>Working with this dict:<a class="headerlink" href="#working-with-this-dict" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Print the dict by passing it to a string format method, so that you get something like:</p>
+<p>“Chris is from Seattle, and he likes chocolate cake, mango fruit,
+greek salad, and lasagna pasta”</p>
+</li>
+<li><p>Using a list comprehension, build a dictionary of numbers from zero to fifteen and the hexadecimal equivalent (string is fine). (the <code class="docutils literal notranslate"><span class="pre">hex()</span></code> function gives you the hexidecimal representation of a number as a string)</p></li>
+<li><p>Do the previous entirely with a dict comprehension – should be a one-liner</p></li>
+<li><p>Using the dictionary from item (1): Make a dictionary using the same keys but with the number of ‘a’s in each value. You can do this either by editing the dict in place, or making a new one. If you edit in place make a copy first!</p></li>
+<li><p>Create sets s2, s3 and s4 that contain numbers from zero through twenty, divisible 2, 3 and 4.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Do this with one set comprehension for each set.</p></li>
+<li><p>What if you had a lot more than 3? – Don’t Repeat Yourself (DRY).</p>
+<ul class="simple">
+<li><p>create a sequence that holds all the divisors you might want –
+could be 2,3,4, or could be any other arbitrary divisors.</p></li>
+<li><p>loop through that sequence to build the sets up – so no repeated code.
+you will end up with a list of sets – one set for each divisor in your
+sequence.</p></li>
+<li><p>The idea here is that when you see three (Or more!) lines of code that
+are almost identical, then you you want to find a way to generalize
+that code and have it act on a set of inputs, so the actual code is
+only written once.</p></li>
+</ul>
+</li>
+<li><p>Extra credit:  do it all as a one-liner by nesting a set comprehension
+inside a list comprehension. (OK, that may be getting carried away!)</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../modules/CollectionsModule.html" class="btn btn-neutral float-left" title="The Collections Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mailroom/mailroom_with_comprehensions.html" class="btn btn-neutral float-right" title="Mailroom With Comprehensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

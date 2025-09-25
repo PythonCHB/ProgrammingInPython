@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python 2 versus Python 3 &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing Your setup" href="../topics/01-setting_up/testing_your_setup.html" />
+    <link rel="prev" title="Working with Virtualenv" href="../topics/01-setting_up/virtualenv.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../topics/01-setting_up/index.html">1. Setting up your Environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../topics/01-setting_up/environment_overview.html">Introduction to your Programming Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/01-setting_up/python_and_core_tools.html">Installing Python and core tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/01-setting_up/setup_details.html">Setup Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/01-setting_up/advanced_setup.html">Advanced Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/01-setting_up/git.html">Git</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../topics/01-setting_up/resources.html">Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topics/01-setting_up/testing_your_setup.html">Testing Your setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/python_pushups.html">Python Pushups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/12-comprehensions/index.html">12. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../topics/01-setting_up/index.html"><span class="section-number">1. </span>Setting up your Environment</a></li>
+          <li class="breadcrumb-item"><a href="../topics/01-setting_up/resources.html">Resources</a></li>
+      <li class="breadcrumb-item active">Python 2 versus Python 3</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/Py2vsPy3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../topics/01-setting_up/virtualenv.html" class="btn btn-neutral float-left" title="Working with Virtualenv" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../topics/01-setting_up/testing_your_setup.html" class="btn btn-neutral float-right" title="Testing Your setup" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="python-2-versus-python-3">
+<span id="py2-vs-py3"></span><h1>Python 2 versus Python 3<a class="headerlink" href="#python-2-versus-python-3" title="Link to this heading"></a></h1>
+<p>now that Python version 2 has officially reached end of life, most recent information is in/about Python 3.</p>
+<p>But you will still find a lot of older example code online in Python2, rather than Python3</p>
+<p>For the most part, they are the same – so you can use those examples to learn from.</p>
+<p>There are a lot of subtle differences that you don’t need to concern yourself with just yet.</p>
+<p>But a couple that you’ll need to know right off the bat:</p>
+<section id="print">
+<h2>print()<a class="headerlink" href="#print" title="Link to this heading"></a></h2>
+<p>In Python2, <code class="docutils literal notranslate"><span class="pre">print</span></code> is a “statement”, rather than a function. That means it didn’t require parentheses around what you want printed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="n">something</span><span class="p">,</span> <span class="n">something_else</span>
+</pre></div>
+</div>
+<p>This made it a bit less flexible and powerful.</p>
+<p>But – if you try to use it that way in Python3, you’ll get an error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="nb">print</span> <span class="s2">&quot;this&quot;</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;ipython-input-15-70c8add5d16e&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="nb">print</span> <span class="s2">&quot;this&quot;</span>
+               <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">Missing</span> <span class="n">parentheses</span> <span class="ow">in</span> <span class="n">call</span> <span class="n">to</span> <span class="s1">&#39;print&#39;</span>
+</pre></div>
+</div>
+<p>So – if you get this error, simply add the parentheses:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this&quot;</span><span class="p">)</span>
+<span class="go">this</span>
+</pre></div>
+</div>
+</section>
+<section id="division">
+<h2>Division<a class="headerlink" href="#division" title="Link to this heading"></a></h2>
+<p>In python 3, the division operator is “smart” when you divide integers:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gh">Out[17]: </span><span class="go">0.5</span>
+</pre></div>
+</div>
+<p>However in Python2, integer division, will give you an integer result:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="gh">Out[1]: </span><span class="go">0</span>
+</pre></div>
+</div>
+<p>In both versions, you can get “integer division” if you want it with a double slash:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span>
+<span class="gh">Out[1]: </span><span class="go">0</span>
+</pre></div>
+</div>
+<p>And in Python2, you can get the behavior of Python3 with “true division”:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
+
+<span class="gp">In [3]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="gh">Out[3]: </span><span class="go">0.5</span>
+</pre></div>
+</div>
+<p>For the most part, you just need to be a bit careful with the rare cases where Python2 code counts on integer division.</p>
+</section>
+<section id="iterators-vs-lists">
+<h2>Iterators vs Lists<a class="headerlink" href="#iterators-vs-lists" title="Link to this heading"></a></h2>
+<p>In Python2, a number of functions returned a full list of the contents. But most of the time, you didn’t need a list – you only needed a way to loop through all the items returned. Such an object is called an “iterable” – more about that later in the class. But for now, if you get an error like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;dict_keys&#39;</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">indexing</span>
+</pre></div>
+</div>
+<p>Then you likely got an iterator, rather than a “proper” list.  You can fix this by making a list out of it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">an_iterator</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>the list constructor will make a list out of any iterable.  So you can now index it, etc.</p>
+</section>
+<section id="other-python2-python3-differences">
+<h2>Other Python2 / Python3 differences<a class="headerlink" href="#other-python2-python3-differences" title="Link to this heading"></a></h2>
+<p>The most drastic difference (improvement!) is better Unicode support, and better bytes / Unicode separation.</p>
+<p>Most of the other differences are essentially implementation details, like getting iterators instead of sequences – we’ll talk about that more when it comes up in a later lesson.</p>
+<p>There are also a few syntax differences with more advanced topics: Exceptions, <code class="docutils literal notranslate"><span class="pre">super()</span></code>, etc.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../topics/01-setting_up/virtualenv.html" class="btn btn-neutral float-left" title="Working with Virtualenv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../topics/01-setting_up/testing_your_setup.html" class="btn btn-neutral float-right" title="Testing Your setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

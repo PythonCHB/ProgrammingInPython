@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sparse Array Exercise &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15. Subclassing and Inheritance" href="../topics/15-subclassing/index.html" />
+    <link rel="prev" title="Circle Class Exercise" href="circle/circle_class.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../topics/01-setting_up/index.html">1. Setting up your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/12-comprehensions/index.html">12. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules/Properties.html">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/StaticAndClassMethods.html">Static and Class Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circle/circle_class.html">Circle Class Exercise</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sparse Array Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../topics/14-magic_methods/index.html"><span class="section-number">14. </span>Properties and Magic Methods</a></li>
+      <li class="breadcrumb-item active">Sparse Array Exercise</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/exercises/sparse_array.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="circle/circle_class.html" class="btn btn-neutral float-left" title="Circle Class Exercise" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../topics/15-subclassing/index.html" class="btn btn-neutral float-right" title="15. Subclassing and Inheritance" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sparse-array-exercise">
+<span id="exercise-sparse-array"></span><h1>Sparse Array Exercise<a class="headerlink" href="#sparse-array-exercise" title="Link to this heading"></a></h1>
+<section id="sparse-array">
+<h2>Sparse Array<a class="headerlink" href="#sparse-array" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>Goal:</p>
+</div></blockquote>
+<p>Learn how to emulate a built-in class.</p>
+<section id="id1">
+<h3>Sparse Array:<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Oftentimes, at least in computation programming, we have large arrays of data that hold mostly zeros.</p>
+<p>These are referred to as “sparse” as the information in them is widely scattered, or sparse.</p>
+<p>Since they are mostly zeros, it can be memory and computationally efficient to store only the value that are non-zero.</p>
+<p>But you want it to look like a regular array in user code.</p>
+<p>In the real world, these are usually 2 dimensional arrays. But to keep it a bit simpler, we’ll make a 1 dimensional sparse array in this class.</p>
+<p>(feel free to make it 2d for an extra challenge!).</p>
+</section>
+<section id="a-sparse-array-class">
+<h3>A Sparse array class<a class="headerlink" href="#a-sparse-array-class" title="Link to this heading"></a></h3>
+<p>A sparse array class should present to the user the same interface as a regular list.</p>
+<p>Some ideas of how to do that:</p>
+<ul class="simple">
+<li><p>Internally, it can store the values in a dict, with the index as the keys, so that only the indexes with non-zero values will be stored.</p></li>
+<li><p>It should take a sequence of values as an initializer:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sa</span> <span class="o">=</span> <span class="n">SparseArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>you should be able to tell how long it is:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will give its “virtual” length –  with the zeros</p>
+<ul class="simple">
+<li><p>It should support getting and setting particular elements via indexing:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sa</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">sa</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># the zero won&#39;t get stored!</span>
+<span class="n">val</span> <span class="o">=</span> <span class="n">sa</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="c1"># it should get a zero if not set</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>It should support deleting an element by index:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">sa</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>It should raise an <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> if you try to access an index beyond the end.</p></li>
+<li><p>it should have an append() method.</p></li>
+<li><p>Can you make it support slicing?</p></li>
+<li><p>How else can you  make it like a list?</p></li>
+</ul>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">my_array</span> <span class="o">=</span> <span class="n">SparseArray</span><span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+<span class="gp">In [11]: </span><span class="n">my_array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="gh">Out[11]: </span><span class="go">2</span>
+<span class="gp">In [12]: </span><span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="gh">Out[12]: </span><span class="go">0</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="circle/circle_class.html" class="btn btn-neutral float-left" title="Circle Class Exercise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../topics/15-subclassing/index.html" class="btn btn-neutral float-right" title="15. Subclassing and Inheritance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

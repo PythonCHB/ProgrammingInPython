@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro to Git &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Working with gitHub Classroom" href="github_classroom.html" />
+    <link rel="prev" title="Git" href="git.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. Setting up your Environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="environment_overview.html">Introduction to your Programming Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_and_core_tools.html">Installing Python and core tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_details.html">Setup Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_setup.html">Advanced Setup</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="git.html">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html">Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing_your_setup.html">Testing Your setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../exercises/python_pushups.html">Python Pushups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-unit_testing/index.html">7. Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-comprehensions/index.html">12. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">1. </span>Setting up your Environment</a></li>
+          <li class="breadcrumb-item"><a href="git.html">Git</a></li>
+      <li class="breadcrumb-item active">Intro to Git</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/topics/01-setting_up/intro_to_git.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="git.html" class="btn btn-neutral float-left" title="Git" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="github_classroom.html" class="btn btn-neutral float-right" title="Working with gitHub Classroom" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="intro-to-git">
+<span id="git"></span><h1>Intro to Git<a class="headerlink" href="#intro-to-git" title="Link to this heading"></a></h1>
+<section id="what-is-git">
+<h2>What is Git?<a class="headerlink" href="#what-is-git" title="Link to this heading"></a></h2>
+<p>A “version control system”</p>
+</section>
+<section id="why-version-control">
+<h2>Why Version Control?<a class="headerlink" href="#why-version-control" title="Link to this heading"></a></h2>
+<figure class="align-default" id="id1">
+<img alt="http://phdcomics.com/comics/archive/phd101212s.gif" src="http://phdcomics.com/comics/archive/phd101212s.gif" />
+<figcaption>
+<p><span class="caption-text">“Piled Higher and Deeper” by Jorge Cham: www.phdcomics.com</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>A history of everything everyone does to ‘your’ code</p>
+<p>A graph of “states” in which the code has existed</p>
+<p>That last one is a bit tricky, and is not necessary to understand right out of the gate. When you are ready, you can look at this supplement to gain a better understanding:</p>
+<p><a class="reference internal" href="git_overview.html#git-overview"><span class="std std-ref">git Overview</span></a></p>
+<p>There are other versioning systems, such as Mercurial and Subversion (and commercial offerings), but Git is the most popular.</p>
+<p>It is incredibly important to learn and understand version control to work as a developer today, so we have incorporated Git into our work flow for submitting students’ work in this class.</p>
+</section>
+<section id="setting-up-git">
+<h2>Setting up Git<a class="headerlink" href="#setting-up-git" title="Link to this heading"></a></h2>
+<p>You should have git installed on your machine and accessible from the command line. If you don’t have git working on the command line, revisit the appropriate instructions for your platform here: <a class="reference internal" href="python_and_core_tools.html#installing-python"><span class="std std-ref">Installing Python and core tools</span></a>.</p>
+<p>Once git is installed and working, there is a little bit of setup for git that you should only have to do once:</p>
+<section id="letting-git-know-your-identity">
+<h3>Letting git know your identity<a class="headerlink" href="#letting-git-know-your-identity" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Marie Curie&quot;</span>
+$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;marie@radioactive.com&quot;</span>
+</pre></div>
+</div>
+<p>(using your email and name, of course)</p>
+</section>
+<section id="editor">
+<h3>Editor<a class="headerlink" href="#editor" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>git needs an editor occasionally</p></li>
+<li><p>default is VI, which is not very intuitive to non-Unix Geeks</p></li>
+<li><p>Nano is simple, easy solution for Macs and Linux</p></li>
+<li><p>Nano no longer available for windows, use Sublime Text or Notepad++ or Atom</p></li>
+</ul>
+<p>For windows users: <a class="reference internal" href="git_editor_windows.html#install-nano-win"><span class="std std-ref">Making your text Editor work with git on Windows</span></a></p>
+<p>Once you have chosen/installed an editor, configure git to use it:</p>
+<p>(full notes here: <a class="reference external" href="https://help.github.com/articles/associating-text-editors-with-git/">GitHub help on Editors</a>)</p>
+<p><strong>nano:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;nano</span> <span class="pre">-w&quot;</span></code></p>
+<p><strong>Sublime Text (mac):</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;subl</span> <span class="pre">-n</span> <span class="pre">-w&quot;</span></code></p>
+<p><strong>Sublime Text(win):</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;'c:/program</span> <span class="pre">files/sublime</span> <span class="pre">text</span> <span class="pre">2/sublime_text.exe'</span> <span class="pre">-w&quot;</span></code></p>
+<p><strong>Notepad++ (Win):</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;'c:/program</span> <span class="pre">files</span> <span class="pre">(x86)/Notepad++/notepad++.exe'</span> <span class="pre">-multiInst</span> <span class="pre">-notabbar</span> <span class="pre">-nosession</span> <span class="pre">-noPlugin&quot;</span></code></p>
+<p><strong>Atom:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;atom</span> <span class="pre">--wait&quot;</span></code></p>
+</section>
+</section>
+<section id="repositories">
+<h2>Repositories<a class="headerlink" href="#repositories" title="Link to this heading"></a></h2>
+<p>A repository is just a collection of files that ‘belong together’.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">git</span></code> is a <em>distributed</em> versioning system, there is no <strong>primary</strong>
+repository that serves as the one to rule them all. This simply means that all repositories on each users machine should look the same.</p>
+<p>However, to keep things sane, there is generally one “central” repository chosen that users check with for changes. For us this is the one hosted on GitHub in the UWPCE-PythonCert-ClassRepos organization.</p>
+</section>
+<section id="github-forks">
+<h2>GitHub forks<a class="headerlink" href="#github-forks" title="Link to this heading"></a></h2>
+<p>You can work on any project you wish to that has a public repository on GitHub. However, since you won’t have permission to edit most projects directly, there is such a thing as <em>forking</em> a project.</p>
+<p>When you <em>fork</em> a repository, you make a copy of that repository in your own (GitHub) account.</p>
+<p>When you have made changes that you believe the rest of the community will want to adopt, you make a <em>pull request</em> to the original project. The maintainer(s) of that project than have the option of accepting your changes, in which case your changes will become part of that project.</p>
+<p>For this class, we are using gitHub classroom – whihc does the creating and forkin go repos for you, so you proably dont need to use this feature now.</p>
+<p>With one exception: your instructor may use a gitHub repository to manage note3s, examples, and solutions for the class – if so, it may be helpful to make a fork of that repo, particularly if you want to make suggestions etc.</p>
+<p>Another possiblity is if you notice an error, or can suggest a claification in these very pages. They are managed on gitUb as well, in this repo:</p>
+<p><a class="reference external" href="https://github.com/UWPCE-PythonCert/ProgrammingInPython">https://github.com/UWPCE-PythonCert/ProgrammingInPython</a></p>
+<p>So you may want to fork that repo in order to make suggestions.</p>
+</section>
+<section id="structure-of-multiple-git-repos">
+<h2>Structure of multiple git repos<a class="headerlink" href="#structure-of-multiple-git-repos" title="Link to this heading"></a></h2>
+<p>Each repository will have a directory called <code class="docutils literal notranslate"><span class="pre">.git</span></code> that is normally
+not seen. This directory is how git keeps track of everything. Leave it alone. :)</p>
+<p>Please do not set up a git repository inside another git repository, this can lead to heartache.</p>
+<p>Absolutely, do NOT set up a git repository in your home root directory.
+This will put everything in your home directory up on GitHub, and you do not want that.</p>
+<p>Setting up new repositories can be confusing because when you clone a git repository it creates the directory that will be the repository, but when you are creating a new repository, you need to first be <strong>IN</strong> the directory in which you want the repository to be rooted. Please ask if this does not make sense.</p>
+<p>It’s also important to note that you do not run the <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">init</span></code> command at any point in the process of cloning and configuring your local copy of a remote repo. The <code class="docutils literal notranslate"><span class="pre">init</span></code> git command is used to initialize a git repository on your local machine and is not necessary in our case because the cloned repository has already been initialized.</p>
+<p>Additional Resources:</p>
+<p>git tutorial:
+<a class="reference external" href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a></p>
+<p>basic git commands:
+<a class="reference external" href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="git.html" class="btn btn-neutral float-left" title="Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="github_classroom.html" class="btn btn-neutral float-right" title="Working with gitHub Classroom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Test Driven Development" href="TestDrivenDevelopment.html" />
+    <link rel="prev" title="7. Unit Testing" href="../topics/07-unit_testing/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../topics/01-setting_up/index.html">1. Setting up your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TestDrivenDevelopment.html">Test Driven Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/unit_testing/unit_testing.html">Introduction To Unit Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/mailroom/mailroom_with_tests.html">Mailroom With Unit Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/12-comprehensions/index.html">12. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../topics/07-unit_testing/index.html"><span class="section-number">7. </span>Unit Testing</a></li>
+      <li class="breadcrumb-item active">Testing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/Testing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../topics/07-unit_testing/index.html" class="btn btn-neutral float-left" title="7. Unit Testing" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TestDrivenDevelopment.html" class="btn btn-neutral float-right" title="Test Driven Development" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="testing">
+<span id="unit-testing"></span><h1>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h1>
+<p>This page is a quick overview of testing in Python. It provides some background on testing, and the tools available. Later on, we’ll get to the details of how to actually do it.</p>
+<p>Testing your code is an absolute necessity – you need to have <em>some</em> way to know it’s doing what it should.</p>
+<p>Having your testing done in an automated way is really a good idea.</p>
+<p>You’ve already seen a very basic testing strategy: putting some <code class="docutils literal notranslate"><span class="pre">assert</span></code> statements in the <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code> block.</p>
+<p>You’ve written some tests using that strategy.</p>
+<p>These tests were pretty basic, and a bit awkward in places (testing error
+conditions in particular).</p>
+<p class="centered">
+<strong><strong>It gets better</strong></strong></p><section id="test-frameworks">
+<h2>Test Frameworks<a class="headerlink" href="#test-frameworks" title="Link to this heading"></a></h2>
+<p>So far our tests have been limited to code in an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code>
+block.</p>
+<ul class="simple">
+<li><p>They are run <em>only</em> when the file is executed</p></li>
+<li><p>They are <em>always</em> run when the file is executed</p></li>
+<li><p>You can’t do anything else when the file is executed without running tests.</p></li>
+</ul>
+<p>This is not optimal.</p>
+<p>You really want ways to structure your tests, and run your tests, that can be controlled and provide nifty features. You do want tests to be run often while you are developing, but they should be a specific test that is done <em>during</em> development, not when the code is running operationally.</p>
+</section>
+<section id="standard-library-unittest">
+<h2>Standard Library: <code class="docutils literal notranslate"><span class="pre">unittest</span></code><a class="headerlink" href="#standard-library-unittest" title="Link to this heading"></a></h2>
+<p>Python comes with the <code class="docutils literal notranslate"><span class="pre">unittest</span></code> package that provides a number of nifty features. It was introduced in version 2.1 – so it’s been around a long time.</p>
+<p>It is more or less a port of <a class="reference external" href="https://junit.org">JUnit</a> from Java, which shows. It has a style and structure that fits Java better than Python:</p>
+<p>It is a bit verbose: you have to write classes &amp; methods (And we haven’t covered that yet!)</p>
+<p>But you will see it used in others’ code, so it’s good to be familiar with it.
+And seeing how verbose it can be will help you appreciate other options.</p>
+<p>So here’s a bit of an introduction – if the class stuff confuses you, don’t worry about it – you don’t need to actually DO this yourself at this point.</p>
+</section>
+<section id="using-unittest">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">unittest</span></code><a class="headerlink" href="#using-unittest" title="Link to this heading"></a></h2>
+<p>To use <code class="docutils literal notranslate"><span class="pre">unittest</span></code>, you need to write subclasses of the <code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code> class (after importing the package, of course):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in test.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_tautology</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then you run the tests by using the <code class="docutils literal notranslate"><span class="pre">main</span></code> function from the <code class="docutils literal notranslate"><span class="pre">unittest</span></code>
+module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in test.py</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">unittest.main()</span></code> is called in the module where the tests are. Which means that they can be, but do not have to be, in the same file as your code.</p>
+<p>NOTE: tests can also be run by “test runners” for more features.</p>
+</section>
+<section id="testing-your-code">
+<h2>Testing Your Code<a class="headerlink" href="#testing-your-code" title="Link to this heading"></a></h2>
+<p>You can write your code in one file and test it from another – and for all but the smallest projects, you want to do that.</p>
+<p>in <code class="docutils literal notranslate"><span class="pre">my_mod.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">val1</span> <span class="o">*</span> <span class="n">val2</span>
+</pre></div>
+</div>
+<p>in <code class="docutils literal notranslate"><span class="pre">test_my_mod.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_mod</span><span class="w"> </span><span class="kn">import</span> <span class="n">my_func</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyFuncTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_my_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">test_val1</span><span class="p">,</span> <span class="n">test_val2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="mi">6</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">(</span><span class="n">test_val1</span><span class="p">,</span> <span class="n">test_val2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">actual</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>So this is pretty straightforward, but it’s kind of a lot of code for just one test, yes?</p>
+</section>
+<section id="advantages-of-unittest">
+<h2>Advantages of <code class="docutils literal notranslate"><span class="pre">unittest</span></code><a class="headerlink" href="#advantages-of-unittest" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">unittest</span></code> module is pretty full featured</p>
+<p>It comes with the standard Python distribution, no installation required.</p>
+<p>It provides a wide variety of assertions for testing many types of results.</p>
+<p>It allows for a “set up” and “tear down” work flow both before and after all tests and before and after each test.</p>
+<p>It’s well known and well understood.</p>
+</section>
+<section id="disadvantages-of-unittest">
+<h2>Disadvantages of <code class="docutils literal notranslate"><span class="pre">unittest</span></code><a class="headerlink" href="#disadvantages-of-unittest" title="Link to this heading"></a></h2>
+<p>It’s Object Oriented, and quite “heavyweight”.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>modeled after Java’s <code class="docutils literal notranslate"><span class="pre">JUnit</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>It uses the Framework design pattern, so knowing how to use the features means learning what to override.</p>
+<p>Needing to override means you have to be cautious.</p>
+<p>Test discovery is both inflexible and brittle.</p>
+<dl class="simple">
+<dt>It doesn’t really take advantage of Python’s introspection capabilities:</dt><dd><ul class="simple">
+<li><p>There are explicit “assert” methods for each type of test</p></li>
+<li><p>The available assertions are not the least bit complete</p></li>
+<li><p>All the assertions really do is provide pretty printing of errors</p></li>
+</ul>
+</dd>
+</dl>
+<p>Testing for Exceptions is awkward</p>
+<p>Test discovery is limited</p>
+<p>And there is no built-in parameterized testing.</p>
+</section>
+<section id="other-options">
+<h2>Other Options<a class="headerlink" href="#other-options" title="Link to this heading"></a></h2>
+<p>Due to these limitations, folks in the Python community have developed other options for testing in Python:</p>
+<ul class="simple">
+<li><p><strong>Nose2</strong>: <a class="reference external" href="https://github.com/nose-devs/nose2">https://github.com/nose-devs/nose2</a></p></li>
+<li><p><strong>pytest</strong>: <a class="reference external" href="http://pytest.org/latest/">http://pytest.org/latest/</a></p></li>
+<li><p>… (many frameworks supply their own test runners: e.g. Django)</p></li>
+</ul>
+<p>Nose was the most common test runner when I first started learning testing, but it has been in maintenance mode for a while. Even the nose2 site recommends that you consider pytest.</p>
+<p>pytest has become the defacto standard testing system for those that want a more “pythonic” and robust test framework.</p>
+<p>pytest is very capable and widely used.</p>
+<p>For a great description of the strengths of pytest, see:</p>
+<p><a class="reference external" href="https://blog.daftcode.pl/the-cleaning-hand-of-pytest-28f434f4b684">The Cleaning Hand of Pytest</a></p>
+<p>If you look above, pytest provided every feature of <code class="docutils literal notranslate"><span class="pre">unittest</span></code> except being in the standard library. And none of the disadvantages. It also can run <code class="docutils literal notranslate"><span class="pre">unittest</span></code> tests, so if you already have <code class="docutils literal notranslate"><span class="pre">unittest</span></code> tests, or like some of its features, you can still use pytest.</p>
+<p>So we will use pytest for the rest of this class.</p>
+</section>
+<section id="installing-pytest">
+<h2>Installing <code class="docutils literal notranslate"><span class="pre">pytest</span></code><a class="headerlink" href="#installing-pytest" title="Link to this heading"></a></h2>
+<p>pytest is very easy to install these day:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pytest
+</pre></div>
+</div>
+<p>Once this is complete, you should have a <code class="docutils literal notranslate"><span class="pre">pytest</span></code> command you can run
+at the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest
+</pre></div>
+</div>
+<p>If you have any tests in your repository, that command will find and run them (If you have followed the proper naming conventions).</p>
+<blockquote>
+<div><p><strong>Do you have any tests?</strong></p>
+</div></blockquote>
+</section>
+<section id="pre-existing-tests">
+<h2>Pre-existing Tests<a class="headerlink" href="#pre-existing-tests" title="Link to this heading"></a></h2>
+<p>Let’s take a look at some examples.</p>
+<p>Create a directory to try this out, and download:</p>
+<p><a class="reference download internal" download="" href="../_downloads/a0f956dd7f2527a8bfefbc90278070eb/test_random_unitest.py"><code class="xref download docutils literal notranslate"><span class="pre">test_random_unitest.py</span></code></a></p>
+<p>In the directory you created for that file, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest
+</pre></div>
+</div>
+<p>It should find that test file and run it.</p>
+<p>You can also run pytest on a particular test file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>test_random_unitest.py
+<span class="o">======================</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>session<span class="w"> </span><span class="nv">starts</span><span class="w"> </span><span class="o">=======================</span>
+platform<span class="w"> </span>darwin<span class="w"> </span>--<span class="w"> </span>Python<span class="w"> </span><span class="m">3</span>.8.2,<span class="w"> </span>pytest-5.4.3,<span class="w"> </span>py-1.8.2,<span class="w"> </span>pluggy-0.13.1
+rootdir:<span class="w"> </span>/Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/testing
+collected<span class="w"> </span><span class="m">3</span><span class="w"> </span>items
+
+test_random_unitest.py<span class="w"> </span>...<span class="w">                                 </span><span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
+
+<span class="o">=======================</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.03s<span class="w"> </span><span class="o">========================</span>
+</pre></div>
+</div>
+<p>You should have gotten similar results when you ran <code class="docutils literal notranslate"><span class="pre">pytest</span></code> yourself.</p>
+<p>Take a few minutes to look this file over.</p>
+<p><code class="docutils literal notranslate"><span class="pre">test_random_unitest.py</span></code> contains the tests for some of the functions in the built in``random`` module. You really don’t need to test Python’s built in modules – they are already tested! This is just to demonstrate the process.</p>
+</section>
+<section id="what-is-happening-here">
+<h2>What is Happening Here?<a class="headerlink" href="#what-is-happening-here" title="Link to this heading"></a></h2>
+<p>Let’s look again at the results of running pytest on this file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">pytest</span>
+<span class="o">======================</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>session<span class="w"> </span><span class="nv">starts</span><span class="w"> </span><span class="o">=======================</span>
+platform<span class="w"> </span>darwin<span class="w"> </span>--<span class="w"> </span>Python<span class="w"> </span><span class="m">3</span>.8.2,<span class="w"> </span>pytest-5.4.3,<span class="w"> </span>py-1.8.2,<span class="w"> </span>pluggy-0.13.1
+rootdir:<span class="w"> </span>/Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/testing
+collected<span class="w"> </span><span class="m">3</span><span class="w"> </span>items
+
+test_random_unitest.py<span class="w"> </span>...<span class="w">                                 </span><span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
+
+<span class="o">=======================</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.03s<span class="w"> </span><span class="o">========================</span>
+</pre></div>
+</div>
+<p>When you run the <code class="docutils literal notranslate"><span class="pre">pytest</span></code> command, <code class="docutils literal notranslate"><span class="pre">pytest</span></code> starts in your current
+working directory and searches the file system for things that might be tests.</p>
+<p>It follows some simple rules:</p>
+<ul class="simple">
+<li><p>Any python file that starts with <code class="docutils literal notranslate"><span class="pre">test_</span></code> or <code class="docutils literal notranslate"><span class="pre">_test</span></code> is imported.</p></li>
+<li><p>Any functions in them that start with <code class="docutils literal notranslate"><span class="pre">test_</span></code> are run as tests.</p></li>
+<li><p>Any classes that start with <code class="docutils literal notranslate"><span class="pre">Test</span></code> are treated similarly, with methods that begin with <code class="docutils literal notranslate"><span class="pre">test_</span></code> treated as tests.</p></li>
+</ul>
+<p>( don’t worry about “classes” part just yet ;-) )</p>
+<ul class="simple">
+<li><p>Any <code class="docutils literal notranslate"><span class="pre">unittest</span></code> test cases are run.</p></li>
+</ul>
+<p>So in this case, pytest found the <code class="docutils literal notranslate"><span class="pre">test_random_unitest.py</span></code> file and in that file, found the <code class="docutils literal notranslate"><span class="pre">TestSequenceFunctions</span></code> TestCase class, and ran the tests defined in that class. In this case, there were three of them, and they all passed.</p>
+</section>
+<section id="pytest">
+<h2>pytest<a class="headerlink" href="#pytest" title="Link to this heading"></a></h2>
+<p>The pytest test framework is simple, flexible and configurable.</p>
+<p>Read the documentation for more information:</p>
+<p><a class="reference external" href="https://docs.pytest.org">https://docs.pytest.org</a></p>
+<p>Those docs are a bit intimidating, but with pytest, as they say:</p>
+<p class="centered">
+<strong>“The easy stuff is easy, and the hard stuff is possible”</strong></p><p>– and you can get very far with the easy stuff.</p>
+<p>In addition to finding and running tests, it makes writing tests simple, and provides a bunch of nifty utilities to support more complex testing.</p>
+<p>To give this a try, download this file:</p>
+<p><a class="reference download internal" download="" href="../_downloads/4ed287fdca0fbdd67450a61a31e447ae/test_random_pytest.py"><code class="xref download docutils literal notranslate"><span class="pre">test_random_pytest.py</span></code></a></p>
+<p>And run pytest again on this file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>test_random_pytest.py
+<span class="o">======================</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>session<span class="w"> </span><span class="nv">starts</span><span class="w"> </span><span class="o">=======================</span>
+platform<span class="w"> </span>darwin<span class="w"> </span>--<span class="w"> </span>Python<span class="w"> </span><span class="m">3</span>.8.2,<span class="w"> </span>pytest-5.4.3,<span class="w"> </span>py-1.8.2,<span class="w"> </span>pluggy-0.13.1
+rootdir:<span class="w"> </span>/Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/testing
+collected<span class="w"> </span><span class="m">5</span><span class="w"> </span>items
+
+test_random_pytest.py<span class="w"> </span>.....<span class="w">                                </span><span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
+
+<span class="o">=======================</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.02s<span class="w"> </span><span class="o">========================</span>
+</pre></div>
+</div>
+<p>Note that if you had not passed in the filename, it would have run the tests in both the test files.</p>
+</section>
+<section id="pytest-tests">
+<h2>pytest tests<a class="headerlink" href="#pytest-tests" title="Link to this heading"></a></h2>
+<p>Now take a look at <code class="docutils literal notranslate"><span class="pre">test_random_pytest.py</span></code> – It is essentially the same tests – but written in native pytest style – simple test functions, rather than classes and special assertions.</p>
+<p>The beauty of pytest is that it takes advantage of Python’s dynamic nature – you don’t need to use any particular structure to write tests, and you don’t need to use special assertions to get good reporting.</p>
+<ul class="simple">
+<li><p>Any function named appropriately is a test.</p></li>
+<li><p>If the function doesn’t raise an Exception or fail an assertion, the test passes.</p></li>
+</ul>
+<p>It’s that simple.</p>
+<p>Look at <code class="docutils literal notranslate"><span class="pre">test_random_pytest.py</span></code> to see how this works.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">random</span></code> module is imported because that’s what we are testing.
+<code class="docutils literal notranslate"><span class="pre">pytest</span></code> only needs to be imported if you are using its utilities – more on this in a moment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_seq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Here we create a simple little sequence to use for testing. We put it in the global namespace so other functions can access it.</p>
+<p>Now the first tests – simply by naming it <code class="docutils literal notranslate"><span class="pre">test_something</span></code>, pytest will run it as a test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_choice</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A choice selected should be in the sequence</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">element</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">example_seq</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="n">element</span> <span class="ow">in</span> <span class="n">example_seq</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is pretty straightforward. We make a random choice from the sequence,
+and then assert that the selected element is, indeed, in the original sequence.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_sample</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    All the items in a sample should be in the sequence</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">example_seq</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">example_seq</span>
+</pre></div>
+</div>
+<p>And this is pretty much the same thing, except that it loops to make sure that every item returned by <code class="docutils literal notranslate"><span class="pre">.sample()</span></code> is in the original sequence.</p>
+<p>Note that this will result in 5 separate assertions – that is fine, you can have as many assertions as you like in one test function. But the test will fail on the first failed assertion – so you only want to have closely related assertions in each test function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_shuffle</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make sure a shuffled sequence does not lose any elements</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+    <span class="n">seq</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>  <span class="c1"># If you comment this out, it will fail, so you can see output</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;seq:&quot;</span><span class="p">,</span> <span class="n">seq</span><span class="p">)</span>  <span class="c1"># only see output if it fails</span>
+    <span class="k">assert</span> <span class="n">seq</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This test is designed to make sure that <code class="docutils literal notranslate"><span class="pre">random.shuffle</span></code> only re-arranges the items, but doesn’t add or lose any.</p>
+<p>In this case, the global <code class="docutils literal notranslate"><span class="pre">example_seq</span></code> isn’t used, because <code class="docutils literal notranslate"><span class="pre">shuffle()</span></code> will change the sequence – tests should never rely on or alter global state. So a new sequence is created for the test.  This also allows the test to know exactly what the results should be at the end.</p>
+<p>Then the “real work”: calling <code class="docutils literal notranslate"><span class="pre">random.shuffle</span></code> on the sequence. This should re-arrange the elements without adding or losing any.</p>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">.sort()</span></code> again should put the elements back in the order they started</p>
+<p>So we can then test that after shuffling and re-sorting, we have the same sequence back:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">seq</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If that assertion passes, the test will pass.</p>
+<section id="print-and-test-failures">
+<h3><code class="docutils literal notranslate"><span class="pre">print()</span></code> and test failures<a class="headerlink" href="#print-and-test-failures" title="Link to this heading"></a></h3>
+<p>Try commenting out the sort line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># seq.sort()  # If you comment this out, it will fail, so you can see output</span>
+</pre></div>
+</div>
+<p>And run again to see what happens. This is what I got:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>test_random_pytest.py
+<span class="o">=============================</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>session<span class="w"> </span><span class="nv">starts</span><span class="w"> </span><span class="o">==============================</span>
+platform<span class="w"> </span>darwin<span class="w"> </span>--<span class="w"> </span>Python<span class="w"> </span><span class="m">3</span>.7.0,<span class="w"> </span>pytest-3.10.1,<span class="w"> </span>py-1.5.4,<span class="w"> </span>pluggy-0.7.1
+rootdir:<span class="w"> </span>/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/source/examples/testing,<span class="w"> </span>inifile:
+plugins:<span class="w"> </span>cov-2.6.0
+collected<span class="w"> </span><span class="m">5</span><span class="w"> </span>items
+
+test_random_pytest.py<span class="w"> </span>F....<span class="w">                                              </span><span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
+
+<span class="o">===================================</span><span class="w"> </span><span class="nv">FAILURES</span><span class="w"> </span><span class="o">===================================</span>
+_________________________________<span class="w"> </span>test_shuffle<span class="w"> </span>_________________________________
+
+<span class="w">    </span>def<span class="w"> </span>test_shuffle<span class="o">()</span>:
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Make sure a shuffled sequence does not lose any elements</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="nv">seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>list<span class="o">(</span>range<span class="o">(</span><span class="m">10</span><span class="o">))</span>
+<span class="w">        </span>random.shuffle<span class="o">(</span>seq<span class="o">)</span>
+<span class="w">        </span><span class="c1"># seq.sort()  # If you comment this out, it will fail, so you can see output</span>
+<span class="w">        </span>print<span class="o">(</span><span class="s2">&quot;seq:&quot;</span>,<span class="w"> </span>seq<span class="o">)</span><span class="w">  </span><span class="c1"># only see output if it fails</span>
+&gt;<span class="w">       </span>assert<span class="w"> </span><span class="nv">seq</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>list<span class="o">(</span>range<span class="o">(</span><span class="m">10</span><span class="o">))</span>
+E<span class="w">       </span>assert<span class="w"> </span><span class="o">[</span><span class="m">4</span>,<span class="w"> </span><span class="m">8</span>,<span class="w"> </span><span class="m">9</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>...<span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">[</span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span>...<span class="o">]</span>
+E<span class="w">         </span>At<span class="w"> </span>index<span class="w"> </span><span class="m">0</span><span class="w"> </span>diff:<span class="w"> </span><span class="m">4</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">0</span>
+E<span class="w">         </span>Use<span class="w"> </span>-v<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>the<span class="w"> </span>full<span class="w"> </span>diff
+
+test_random_pytest.py:22:<span class="w"> </span>AssertionError
+-----------------------------<span class="w"> </span>Captured<span class="w"> </span>stdout<span class="w"> </span>call<span class="w"> </span>-----------------------------
+seq:<span class="w"> </span><span class="o">[</span><span class="m">4</span>,<span class="w"> </span><span class="m">8</span>,<span class="w"> </span><span class="m">9</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">7</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">6</span>,<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<span class="o">======================</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>failed,<span class="w"> </span><span class="m">4</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.40<span class="w"> </span><span class="nv">seconds</span><span class="w"> </span><span class="o">======================</span>
+</pre></div>
+</div>
+<p>You get a lot of information when test fails.  It’s usually enough to tell you what went wrong.</p>
+<p>Note that pytest didn’t print out the results of the print statement when the test passed, but when it failed, it printed it (under “Captured stdout call”). This means you can put diagnostic print calls in your tests, and they will not clutter up the output when they are not needed. This is <em>very</em> helpful!</p>
+</section>
+<section id="testing-for-exceptions">
+<h3>Testing for Exceptions<a class="headerlink" href="#testing-for-exceptions" title="Link to this heading"></a></h3>
+<p>One of the things you might want to test about your code is that it raises an Exception when it should – and that the Exception it raises is the correct one.</p>
+<p>In this example, if you try to call <code class="docutils literal notranslate"><span class="pre">random.shuffle</span></code> with an immutable sequence, such as a tuple, it should raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>. Since raising an Exception will generally stop the code (and cause a test to fail), we can’t use an assertion to test for this.</p>
+<p>pytest provides a “context manager”, <code class="docutils literal notranslate"><span class="pre">pytest.raises()</span></code>, that can be used to test for Exceptions.  The test will pass if and only if the specified Exception is raised by the enclosed code. You use it like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_shuffle_immutable</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Trying to shuffle an immutable sequence raises an Exception</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">with</span></code> block is how you use a context manager – it will run the code in the following block,
+and perform various actions at the end of the code, or when an Exception is raised.
+This is the same <code class="docutils literal notranslate"><span class="pre">with</span></code> as used to open files. In that case, it is used to assure that the file is properly closed when you are done with it.
+In this case, the <code class="docutils literal notranslate"><span class="pre">pytest.raises()</span></code> context manager captures any Exceptions, and raises an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> if no Exception is raised, or if the wrong Exception is raised.</p>
+<p>In this case, the test will only pass if a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> is raised by the call to <code class="docutils literal notranslate"><span class="pre">random.shuffle()</span></code> with a tuple as an argument.</p>
+<p>Try changing that to a different Exception and see what happens:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_shuffle_immutable</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Trying to shuffle an immutable sequence raises an Exception</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>I get a lot of context information, concluding with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">====================</span> <span class="n">short</span> <span class="n">test</span> <span class="n">summary</span> <span class="n">info</span> <span class="o">=====================</span>
+<span class="n">FAILED</span> <span class="n">test_random_pytest</span><span class="o">.</span><span class="n">py</span><span class="p">::</span><span class="n">test_shuffle_immutable</span> <span class="o">-</span> <span class="n">TypeErro</span><span class="o">...</span>
+<span class="o">==================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">4</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.18</span><span class="n">s</span> <span class="o">===================</span>
+</pre></div>
+</div>
+<p>So you got an Exception – but not the one expected – so the test failed.</p>
+<p>The next test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_sample_too_large</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Trying to sample more than exist should raise an error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">example_seq</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is very similar, except that this time, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> has to be raised for the test to pass.</p>
+<p>pytest provides a number of other features for fixtures, parameterized tests, test classes, configuration, shared resources, etc. If you want to learn more about that, read the pytest documentation, and this introduction to more advanced concepts: <a class="reference internal" href="Testing_advanced.html#advanced-testing"><span class="std std-ref">Advanced Testing</span></a></p>
+<p>But simple test functions like this will get you very far.</p>
+</section>
+</section>
+<section id="test-driven-development">
+<h2>Test Driven Development<a class="headerlink" href="#test-driven-development" title="Link to this heading"></a></h2>
+<p>Test Driven Development or “TDD”, is a development process where you write tests to assure that your code works, <em>before</em> you write the actual code.</p>
+<p>This is a very powerful approach, as it forces you to think carefully about exactly what your code should do before you start to write it. It also means that you know when you code is working, and you can refactor it in the future with assurance that you haven’t broken it.</p>
+<p>Give this exercise a try to get the idea:</p>
+<p><a class="reference internal" href="../exercises/unit_testing/unit_testing.html#exercise-unit-testing"><span class="std std-ref">Introduction To Unit Testing</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../topics/07-unit_testing/index.html" class="btn btn-neutral float-left" title="7. Unit Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TestDrivenDevelopment.html" class="btn btn-neutral float-right" title="Test Driven Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

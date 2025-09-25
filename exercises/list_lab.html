@@ -1,0 +1,231 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List Lab &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Basic Text Handling" href="../topics/05-text_handling/index.html" />
+    <link rel="prev" title="Slicing Lab" href="slicing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../topics/01-setting_up/index.html">1. Setting up your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../modules/Sequences.html">Python Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/Iteration.html">Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">List Lab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/12-comprehensions/index.html">12. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../topics/04-sequences_iteration/index.html"><span class="section-number">4. </span>Sequences and Iteration</a></li>
+      <li class="breadcrumb-item active">List Lab</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/exercises/list_lab.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="slicing.html" class="btn btn-neutral float-left" title="Slicing Lab" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../topics/05-text_handling/index.html" class="btn btn-neutral float-right" title="5. Basic Text Handling" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="list-lab">
+<span id="exercise-list-lab"></span><h1>List Lab<a class="headerlink" href="#list-lab" title="Link to this heading"></a></h1>
+<section id="learning-about-lists">
+<h2>Learning about lists<a class="headerlink" href="#learning-about-lists" title="Link to this heading"></a></h2>
+<p>Inspired by: <a class="reference external" href="http://www.upriss.org.uk/python/session5.html">http://www.upriss.org.uk/python/session5.html</a></p>
+<section id="goal">
+<h3>Goal:<a class="headerlink" href="#goal" title="Link to this heading"></a></h3>
+<p>Learn the basic ins and outs of Python lists.</p>
+</section>
+<section id="hint">
+<h3>Hint<a class="headerlink" href="#hint" title="Link to this heading"></a></h3>
+<p>to query the user for info at the command line, you use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;a prompt for the user &gt; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">response</span></code> will be a string of whatever the user types (until a &lt;return&gt;).</p>
+</section>
+<section id="procedure">
+<h3>Procedure<a class="headerlink" href="#procedure" title="Link to this heading"></a></h3>
+<p>In the github classroom repo for this exercise, you will find a``list_lab.py`` file (if it not there, you can create it and add it to git yourself).</p>
+<p>The file should be made an executable Python script. That is to say that one
+should be able to run the script directly like so:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./list_lab.py
+</pre></div>
+</div>
+<p>(At least on OS-X and Linux).</p>
+<p>– you do that with this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>list_lab.py
+</pre></div>
+</div>
+<p>(The +x means make this executable).</p>
+<p>The file will also need this on the first line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+</pre></div>
+</div>
+<p>This is known as the “she-bang” line – it tells the shell how to execute that file – in this case, with <code class="docutils literal notranslate"><span class="pre">python</span></code></p>
+<p>NOTE: on Windows, there is a python launcher which, if everything is configured correctly will look at that line to know you want python if there is more than one python on your system.</p>
+<p>If this doesn’t work on Windows, just run the file some other way:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">list_lab.py</span></code></p></li>
+<li><p>with <code class="docutils literal notranslate"><span class="pre">run</span></code> in ipython</p></li>
+<li><p>from your IDE or editor is you are using one</p></li>
+</ul>
+</div></blockquote>
+<p>Make sure the file is added to your clone of the repository and commit changes frequently
+while working on the following tasks. When you are done, push your changes to
+GitHub and issue a pull request to let the instructors know it is ready for review.</p>
+<p>When the script is run, it should accomplish the following four series of actions:</p>
+</section>
+<section id="series-1">
+<h3>Series 1<a class="headerlink" href="#series-1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Create a list that contains “Apples”, “Pears”, “Oranges” and “Peaches”.</p></li>
+<li><p>Display the list (plain old <code class="docutils literal notranslate"><span class="pre">print()</span></code> is fine…).</p></li>
+<li><p>Ask the user for another fruit and add it to the end of the list.</p></li>
+<li><p>Display the list.</p></li>
+<li><p>Ask the user for a number and display the number back to the user
+and the fruit corresponding to that number (on a 1-is-first basis). Remember that Python uses zero-based indexing, so you will need to correct for that.</p></li>
+<li><p>Add another fruit to the beginning of the list using “+” and display the
+list.</p></li>
+<li><p>Add another fruit to the beginning of the list using <code class="docutils literal notranslate"><span class="pre">insert()</span></code> and display the list.</p></li>
+<li><p>Display all the fruits that begin with “P”, using a for loop.</p></li>
+</ul>
+</section>
+<section id="series-2">
+<h3>Series 2<a class="headerlink" href="#series-2" title="Link to this heading"></a></h3>
+<p>Using the list created in series 1 above:</p>
+<ul class="simple">
+<li><p>Display the list.</p></li>
+<li><p>Remove the last fruit from the list.</p></li>
+<li><p>Display the list.</p></li>
+<li><p>Ask the user for a fruit to delete, find it and delete it.</p></li>
+<li><p>(Bonus: Multiply the list times two. Keep asking until a match is found. Once found, delete all occurrences.)</p></li>
+</ul>
+</section>
+<section id="series-3">
+<h3>Series 3<a class="headerlink" href="#series-3" title="Link to this heading"></a></h3>
+<p>Again, using the list from series 1:</p>
+<ul class="simple">
+<li><p>Ask the user for input displaying a line like “Do you like apples?” for each fruit in the list (making the fruit all lowercase).</p></li>
+<li><p>For each “no”, delete that fruit from the list.</p></li>
+<li><p>For any answer that is not “yes” or “no”, prompt the user to answer
+with one of those two values (a while loop is good here)</p></li>
+<li><p>Display the list.</p></li>
+</ul>
+</section>
+<section id="series-4">
+<h3>Series 4<a class="headerlink" href="#series-4" title="Link to this heading"></a></h3>
+<p>Once more, using the list from series 1:</p>
+<ul class="simple">
+<li><p>Make a new list with the contents of the original, but with all the letters in each item reversed.</p></li>
+<li><p>Delete the last item of the original list. Display the original list and the copy.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="slicing.html" class="btn btn-neutral float-left" title="Slicing Lab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../topics/05-text_handling/index.html" class="btn btn-neutral float-right" title="5. Basic Text Handling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

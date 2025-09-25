@@ -1,0 +1,1730 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Driven Development &mdash; Programming in Python 8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=bb3927b2"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction To Unit Testing" href="../exercises/unit_testing/unit_testing.html" />
+    <link rel="prev" title="Testing" href="Testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #4b2e83" >
+
+          
+          
+          <a href="../index.html">
+            
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Topics in the Program</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../topics/01-setting_up/index.html">1. Setting up your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/02-basic_python/index.html">2. Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/03-recursion_booleans/index.html">3. Booleans and Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/04-sequences_iteration/index.html">4. Sequences and Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/05-text_handling/index.html">5. Basic Text Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/06-exceptions/index.html">6. Exception Handling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Testing.html">Testing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Test Driven Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/unit_testing/unit_testing.html">Introduction To Unit Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/mailroom/mailroom_with_tests.html">Mailroom With Unit Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/08-dicts_sets/index.html">8. Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/09-files/index.html">9. File Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/10-modules_packages/index.html">10. Modules and Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/11-argument_passing/index.html">11. Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/12-comprehensions/index.html">12. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/13-intro_oo/index.html">13. Intro to Object Oriented Programing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/14-magic_methods/index.html">14. Properties and Magic Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/15-subclassing/index.html">15. Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/16-multiple_inheritance/index.html">16. Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/17-functional_programming/index.html">17. Introduction to Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/18-advanced_testing/index.html">18. Advanced Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/99-extras/index.html">19. Extra Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #4b2e83" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Programming in Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../topics/07-unit_testing/index.html"><span class="section-number">7. </span>Unit Testing</a></li>
+      <li class="breadcrumb-item active">Test Driven Development</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/TestDrivenDevelopment.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="Testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../exercises/unit_testing/unit_testing.html" class="btn btn-neutral float-right" title="Introduction To Unit Testing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p id="test-driven-development">FIXME: change the path from my personal to something generic</p>
+<section id="id1">
+<h1>Test Driven Development<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>“Testing” is any strategy for making sure your code behaves as expected. “Unit testing” is a particular strategy, that:</p>
+<ul class="simple">
+<li><p>is easy to run in an automated fashion.</p></li>
+<li><p>utilizes isolated tests for each individual function.</p></li>
+</ul>
+<p>“Test Driven Development” (TDD) is a development strategy that integrates the development of unit tests with the code itself. In particular, you write the tests <em>before</em> you write the code, which seems pretty backward, but it has some real strengths.</p>
+<p>We’ll demonstrate this technique with an example.</p>
+<p>The following is adapted from Mark Pilgrim’s excellent “Dive into Python”:</p>
+<p><a class="reference external" href="https://diveintopython3.problemsolving.io/">https://diveintopython3.problemsolving.io/</a></p>
+<p>The primary difference is that this version uses the simpler pytest testing framework, rather than <cite>unittest</cite>, which is discussed in
+<a class="reference internal" href="Testing.html#unit-testing"><span class="std std-ref">Testing</span></a></p>
+<section id="unit-testing">
+<h2>Unit Testing<a class="headerlink" href="#unit-testing" title="Link to this heading"></a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line">“Certitude is not the test of certainty. We have been cocksure of
+many things that were not so.”</div>
+<div class="line">— <a class="reference external" href="http://en.wikiquote.org/wiki/Oliver_Wendell_Holmes,_Jr.">Oliver Wendell Holmes,
+Jr.</a></div>
+</div>
+</div></blockquote>
+<section id="not-diving-in">
+<h3>(Not) Diving In<a class="headerlink" href="#not-diving-in" title="Link to this heading"></a></h3>
+<p>Kids today. So spoiled by these fast computers and fancy “dynamic”
+languages. Write first, ship second, debug third (if ever). In my day,
+we had discipline. <strong>Discipline, I say!</strong> We had to write programs by
+<em>hand</em>, on <em>paper</em>, and feed them to the computer on <em>punchcards</em>. And
+we <em>liked it!</em></p>
+<p>In this module, you’re going to write and debug a set of utility
+functions to convert to and from Roman numerals.</p>
+<p>You’ve most likely seen Roman numerals, even if you didn’t recognize them. You may have seen them in copyrights of old movies and television shows (“Copyright MCMXLVI” instead of “Copyright 1946”), or on the dedication walls of libraries or universities (“established MDCCCLXXXVIII” instead of “established 1888”). You may also have seen them in outlines and bibliographical references. It’s a system of representing numbers that really does date back to the ancient Roman empire (hence the name).</p>
+</section>
+<section id="the-rules-for-roman-numerals">
+<h3>The Rules for Roman Numerals<a class="headerlink" href="#the-rules-for-roman-numerals" title="Link to this heading"></a></h3>
+<p>In Roman numerals, there are seven characters that are repeated and combined in various ways to represent numbers.</p>
+<div class="line-block">
+<div class="line">I = 1</div>
+<div class="line">V = 5</div>
+<div class="line">X = 10</div>
+<div class="line">L = 50</div>
+<div class="line">C = 100</div>
+<div class="line">D = 500</div>
+<div class="line">M = 1000</div>
+</div>
+<p>The following are some general rules for constructing Roman numerals:</p>
+<ul class="simple">
+<li><p>Sometimes characters are additive. I is 1, II is 2, and III is 3. VI is 6 (literally, “5 and 1”), VII is 7, and VIII is 8.</p></li>
+<li><p>The tens characters (I, X, C, and M) can be repeated up to three times. At 4, you need to subtract from the next highest fives character. You can’t represent 4 as IIII; instead, it is represented as IV (“1 less than 5”). 40 is written as XL (“10 less than 50”), 41 as XLI, 42 as XLII, 43 as XLIII, and then 44 as XLIV (“10 less than 50, then 1 less than 5”).</p></li>
+<li><p>Sometimes characters are … the opposite of additive. By putting certain characters before others, you subtract from the final value. For example, at 9, you need to subtract from the next highest tens character: 8 is VIII, but 9 is IX (“1 less than 10”), not VIIII (since the I character can not be repeated four times). 90 is XC, 900 is CM.</p></li>
+<li><p>The fives characters can not be repeated. 10 is always represented as X, never as VV. 100 is always C, never LL.</p></li>
+<li><p>Roman numerals are read left to right, so the order of characters matters very much. DC is 600; CD is a completely different number (400, “100 less than 500”). CI is 101; IC is not even a valid Roman numeral (because you can’t subtract 1 directly from 100; you would need to write it as XCIX, “10 less than 100, then 1 less than 10”).</p></li>
+</ul>
+<p>The rules for Roman numerals lead to a number of interesting observations:</p>
+<ol class="arabic simple">
+<li><p>There is only one correct way to represent a particular number as a
+Roman numeral.</p></li>
+<li><p>The converse is also true: if a string of characters is a valid Roman
+numeral, it represents only one number (that is, it can only be
+interpreted one way).</p></li>
+<li><p>There is a limited range of numbers that can be expressed as Roman
+numerals, specifically <code class="docutils literal notranslate"><span class="pre">1</span></code> through <code class="docutils literal notranslate"><span class="pre">3999</span></code>. The Romans did have
+several ways of expressing larger numbers, for instance by having a
+bar over a numeral to represent that its normal value should be
+multiplied by <code class="docutils literal notranslate"><span class="pre">1000</span></code>. For the purposes of this exercise, let’s
+stipulate that Roman numerals go from <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">3999</span></code>.</p></li>
+<li><p>There is no way to represent 0 in Roman numerals.</p></li>
+<li><p>There is no way to represent negative numbers in Roman numerals.</p></li>
+<li><p>There is no way to represent fractions or non-integer numbers in
+Roman numerals.</p></li>
+</ol>
+<p>Let’s start mapping out what a <code class="docutils literal notranslate"><span class="pre">roman.py</span></code> module should do. It will
+have two main functions, <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> and <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function should take an integer from <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">3999</span></code>
+and return the Roman numeral representation as a string …</p>
+<p>Stop right there. Now let’s do something a little unexpected: write a
+test case that checks whether the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function does what you
+want it to. You read that right: you’re going to write code that tests
+code that you haven’t written yet.</p>
+<p>This is called <em>test-driven development</em>, or TDD. The set of two
+conversion functions — <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code>, and later <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> — can
+be written and tested as a unit, separate from any larger program that
+uses them.</p>
+<p>Technically, you can write unit tests with plain Python – recall the <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that you have already used to write simple tests. But it is very helpful to use a framework to make it easier to write and run your tests. In this program, we use the <cite>pytest</cite> package: it is both very easy to get started with, and provides a lot of powerful features to aid in testing complex systems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> does not come with Python out of the box. But it is easily installable via <cite>pip</cite> (or conda, if you are using conda):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pip install pytest
+</pre></div>
+</div>
+<p>Once installed, you should have the pytest command available in your terminal.</p>
+</div>
+<p>FIXME: Maybe add a small page on installing and using pytest?</p>
+<p>Unit testing is an important part of an overall testing-centric
+development strategy. If you write unit tests, it is important to write
+them early and to keep them updated as code and requirements change.
+Many people advocate writing tests before they write the code they’re
+testing, and that’s the style I’m going to demonstrate here.</p>
+<p>But unit tests are beneficial, even critical, no matter when you write them.</p>
+<ul class="simple">
+<li><p>Before writing code, writing unit tests forces you to detail your
+requirements in a useful fashion.</p></li>
+<li><p>While writing code, unit tests keep you from over-coding. When all
+the test cases pass, the function is complete.</p></li>
+<li><p>When refactoring code, they can help prove that the new version
+behaves the same way as the old version.</p></li>
+<li><p>When maintaining code, having tests will help you cover your ass when
+someone comes screaming that your latest change broke their old code.
+(“But <em>sir</em>, all the unit tests passed when I checked it in…”)</p></li>
+<li><p>When writing code in a team, having a comprehensive test suite
+dramatically decreases the chances that your code will break someone
+else’s code, because you can run their unit tests first. (I’ve seen
+this sort of thing in code sprints. A team breaks up the assignment,
+everybody takes the specs for their task, writes unit tests for it,
+then shares their unit tests with the rest of the team. That way,
+nobody goes off too far into developing code that doesn’t play well
+with others.)</p></li>
+</ul>
+</section>
+<section id="a-single-question">
+<h3>A Single Question<a class="headerlink" href="#a-single-question" title="Link to this heading"></a></h3>
+<p class="centered">
+<strong><strong>Every Test is an Island</strong></strong></p><p>A test case answers a single question about the code it is testing. A
+test case should be able to…</p>
+<ul class="simple">
+<li><p>Run completely by itself, without any human input. Unit testing is
+about automation.</p></li>
+<li><p>Determine by itself whether the function it is testing has passed
+or failed, without a human interpreting the results.</p></li>
+<li><p>Run in isolation, separate from any other test cases (even if they
+test the same functions). Each test case is an island.</p></li>
+</ul>
+<p>Given that, let’s build a test case for the first requirement:</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function should return the Roman numeral
+representation for all integers <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">3999</span></code>.</p></li>
+</ol>
+<p>Let’s take a look at
+<a class="reference download internal" download="" href="../_downloads/d969cdad151d9d616317d2834767eb1f/roman.py"><code class="xref download docutils literal notranslate"><span class="pre">roman.py</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="sd">roman.py</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="sd">A Roman numeral to Arabic numeral (and back!) converter</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="sd">complete with tests</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="sd">tests are expected to be able to be run with the pytest system</span>
+<span class="linenos"> 9</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="c1">## Tests for roman numeral conversion</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>    <span class="n">KNOWN_VALUES</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">),</span>
+<span class="linenos">14</span>                     <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;II&#39;</span><span class="p">),</span>
+<span class="linenos">15</span>                     <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;III&#39;</span><span class="p">),</span>
+<span class="linenos">16</span>                     <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;IV&#39;</span><span class="p">),</span>
+<span class="linenos">17</span>                     <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">),</span>
+<span class="linenos">18</span>                     <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;VI&#39;</span><span class="p">),</span>
+<span class="linenos">19</span>                     <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;VII&#39;</span><span class="p">),</span>
+<span class="linenos">20</span>                     <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;VIII&#39;</span><span class="p">),</span>
+<span class="linenos">21</span>                     <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;IX&#39;</span><span class="p">),</span>
+<span class="linenos">22</span>                     <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">),</span>
+<span class="linenos">23</span>                     <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">),</span>
+<span class="linenos">24</span>                     <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span>
+<span class="linenos">25</span>                     <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">),</span>
+<span class="linenos">26</span>                     <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">),</span>
+<span class="linenos">27</span>                     <span class="p">(</span><span class="mi">31</span><span class="p">,</span> <span class="s1">&#39;XXXI&#39;</span><span class="p">),</span>
+<span class="linenos">28</span>                     <span class="p">(</span><span class="mi">148</span><span class="p">,</span> <span class="s1">&#39;CXLVIII&#39;</span><span class="p">),</span>
+<span class="linenos">29</span>                     <span class="p">(</span><span class="mi">294</span><span class="p">,</span> <span class="s1">&#39;CCXCIV&#39;</span><span class="p">),</span>
+<span class="linenos">30</span>                     <span class="p">(</span><span class="mi">312</span><span class="p">,</span> <span class="s1">&#39;CCCXII&#39;</span><span class="p">),</span>
+<span class="linenos">31</span>                     <span class="p">(</span><span class="mi">421</span><span class="p">,</span> <span class="s1">&#39;CDXXI&#39;</span><span class="p">),</span>
+<span class="linenos">32</span>                     <span class="p">(</span><span class="mi">528</span><span class="p">,</span> <span class="s1">&#39;DXXVIII&#39;</span><span class="p">),</span>
+<span class="linenos">33</span>                     <span class="p">(</span><span class="mi">621</span><span class="p">,</span> <span class="s1">&#39;DCXXI&#39;</span><span class="p">),</span>
+<span class="linenos">34</span>                     <span class="p">(</span><span class="mi">782</span><span class="p">,</span> <span class="s1">&#39;DCCLXXXII&#39;</span><span class="p">),</span>
+<span class="linenos">35</span>                     <span class="p">(</span><span class="mi">870</span><span class="p">,</span> <span class="s1">&#39;DCCCLXX&#39;</span><span class="p">),</span>
+<span class="linenos">36</span>                     <span class="p">(</span><span class="mi">941</span><span class="p">,</span> <span class="s1">&#39;CMXLI&#39;</span><span class="p">),</span>
+<span class="linenos">37</span>                     <span class="p">(</span><span class="mi">1043</span><span class="p">,</span> <span class="s1">&#39;MXLIII&#39;</span><span class="p">),</span>
+<span class="linenos">38</span>                     <span class="p">(</span><span class="mi">1110</span><span class="p">,</span> <span class="s1">&#39;MCX&#39;</span><span class="p">),</span>
+<span class="linenos">39</span>                     <span class="p">(</span><span class="mi">1226</span><span class="p">,</span> <span class="s1">&#39;MCCXXVI&#39;</span><span class="p">),</span>
+<span class="linenos">40</span>                     <span class="p">(</span><span class="mi">1301</span><span class="p">,</span> <span class="s1">&#39;MCCCI&#39;</span><span class="p">),</span>
+<span class="linenos">41</span>                     <span class="p">(</span><span class="mi">1485</span><span class="p">,</span> <span class="s1">&#39;MCDLXXXV&#39;</span><span class="p">),</span>
+<span class="linenos">42</span>                     <span class="p">(</span><span class="mi">1509</span><span class="p">,</span> <span class="s1">&#39;MDIX&#39;</span><span class="p">),</span>
+<span class="linenos">43</span>                     <span class="p">(</span><span class="mi">1607</span><span class="p">,</span> <span class="s1">&#39;MDCVII&#39;</span><span class="p">),</span>
+<span class="linenos">44</span>                     <span class="p">(</span><span class="mi">1754</span><span class="p">,</span> <span class="s1">&#39;MDCCLIV&#39;</span><span class="p">),</span>
+<span class="linenos">45</span>                     <span class="p">(</span><span class="mi">1832</span><span class="p">,</span> <span class="s1">&#39;MDCCCXXXII&#39;</span><span class="p">),</span>
+<span class="linenos">46</span>                     <span class="p">(</span><span class="mi">1993</span><span class="p">,</span> <span class="s1">&#39;MCMXCIII&#39;</span><span class="p">),</span>
+<span class="linenos">47</span>                     <span class="p">(</span><span class="mi">2074</span><span class="p">,</span> <span class="s1">&#39;MMLXXIV&#39;</span><span class="p">),</span>
+<span class="linenos">48</span>                     <span class="p">(</span><span class="mi">2152</span><span class="p">,</span> <span class="s1">&#39;MMCLII&#39;</span><span class="p">),</span>
+<span class="linenos">49</span>                     <span class="p">(</span><span class="mi">2212</span><span class="p">,</span> <span class="s1">&#39;MMCCXII&#39;</span><span class="p">),</span>
+<span class="linenos">50</span>                     <span class="p">(</span><span class="mi">2343</span><span class="p">,</span> <span class="s1">&#39;MMCCCXLIII&#39;</span><span class="p">),</span>
+<span class="linenos">51</span>                     <span class="p">(</span><span class="mi">2499</span><span class="p">,</span> <span class="s1">&#39;MMCDXCIX&#39;</span><span class="p">),</span>
+<span class="linenos">52</span>                     <span class="p">(</span><span class="mi">2574</span><span class="p">,</span> <span class="s1">&#39;MMDLXXIV&#39;</span><span class="p">),</span>
+<span class="linenos">53</span>                     <span class="p">(</span><span class="mi">2646</span><span class="p">,</span> <span class="s1">&#39;MMDCXLVI&#39;</span><span class="p">),</span>
+<span class="linenos">54</span>                     <span class="p">(</span><span class="mi">2723</span><span class="p">,</span> <span class="s1">&#39;MMDCCXXIII&#39;</span><span class="p">),</span>
+<span class="linenos">55</span>                     <span class="p">(</span><span class="mi">2892</span><span class="p">,</span> <span class="s1">&#39;MMDCCCXCII&#39;</span><span class="p">),</span>
+<span class="linenos">56</span>                     <span class="p">(</span><span class="mi">2975</span><span class="p">,</span> <span class="s1">&#39;MMCMLXXV&#39;</span><span class="p">),</span>
+<span class="linenos">57</span>                     <span class="p">(</span><span class="mi">3051</span><span class="p">,</span> <span class="s1">&#39;MMMLI&#39;</span><span class="p">),</span>
+<span class="linenos">58</span>                     <span class="p">(</span><span class="mi">3185</span><span class="p">,</span> <span class="s1">&#39;MMMCLXXXV&#39;</span><span class="p">),</span>
+<span class="linenos">59</span>                     <span class="p">(</span><span class="mi">3250</span><span class="p">,</span> <span class="s1">&#39;MMMCCL&#39;</span><span class="p">),</span>
+<span class="linenos">60</span>                     <span class="p">(</span><span class="mi">3313</span><span class="p">,</span> <span class="s1">&#39;MMMCCCXIII&#39;</span><span class="p">),</span>
+<span class="linenos">61</span>                     <span class="p">(</span><span class="mi">3408</span><span class="p">,</span> <span class="s1">&#39;MMMCDVIII&#39;</span><span class="p">),</span>
+<span class="linenos">62</span>                     <span class="p">(</span><span class="mi">3501</span><span class="p">,</span> <span class="s1">&#39;MMMDI&#39;</span><span class="p">),</span>
+<span class="linenos">63</span>                     <span class="p">(</span><span class="mi">3610</span><span class="p">,</span> <span class="s1">&#39;MMMDCX&#39;</span><span class="p">),</span>
+<span class="linenos">64</span>                     <span class="p">(</span><span class="mi">3743</span><span class="p">,</span> <span class="s1">&#39;MMMDCCXLIII&#39;</span><span class="p">),</span>
+<span class="linenos">65</span>                     <span class="p">(</span><span class="mi">3844</span><span class="p">,</span> <span class="s1">&#39;MMMDCCCXLIV&#39;</span><span class="p">),</span>
+<span class="linenos">66</span>                     <span class="p">(</span><span class="mi">3888</span><span class="p">,</span> <span class="s1">&#39;MMMDCCCLXXXVIII&#39;</span><span class="p">),</span>
+<span class="linenos">67</span>                     <span class="p">(</span><span class="mi">3940</span><span class="p">,</span> <span class="s1">&#39;MMMCMXL&#39;</span><span class="p">),</span>
+<span class="linenos">68</span>                     <span class="p">(</span><span class="mi">3999</span><span class="p">,</span> <span class="s1">&#39;MMMCMXCIX&#39;</span><span class="p">),</span>
+<span class="linenos">69</span>                     <span class="p">)</span>
+<span class="linenos">70</span>
+<span class="linenos">71</span>
+<span class="linenos">72</span><span class="k">def</span><span class="w"> </span><span class="nf">test_to_roman_known_values</span><span class="p">():</span>
+<span class="linenos">73</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">74</span><span class="sd">    to_roman should give known result with known input</span>
+<span class="linenos">75</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos">76</span>    <span class="k">for</span> <span class="n">integer</span><span class="p">,</span> <span class="n">numeral</span> <span class="ow">in</span> <span class="n">KNOWN_VALUES</span><span class="p">:</span>
+<span class="linenos">77</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">to_roman</span><span class="p">(</span><span class="n">integer</span><span class="p">)</span>
+<span class="linenos">78</span>        <span class="k">assert</span> <span class="n">numeral</span> <span class="o">==</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>It is not immediately obvious how this code does … well, <em>anything</em>.
+It defines a big data structure full of examples and a single function.</p>
+<p>The entire script has no <code class="docutils literal notranslate"><span class="pre">__main__</span></code> block, so even that one function won’t run. But it does do something, I promise.</p>
+<p><cite>KNOWN_VALUES</cite> is a big tuple of integer/numeral pairs that were verified manually. It includes the lowest ten numbers, the highest number, every number
+that translates to a single-character Roman numeral, and a random sampling of other valid numbers.
+You don’t need to test every possible input, but you should try to test all the obvious edge cases.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a major challenge of unit testing – how to catch all the edge cases, without over testing every little thing.</p>
+</div>
+<p><cite>pytest</cite> makes it really simple to write a test case: simply define a function named <code class="docutils literal notranslate"><span class="pre">test_anything</span></code>. pytest will identify any function with: “<code class="docutils literal notranslate"><span class="pre">test_</span></code>”” at the start of the name as a test function.</p>
+<ul class="simple">
+<li><p>Every individual test is its own function. A test function takes no parameters, returns no value, and must have a name beginning with the five letters <code class="docutils literal notranslate"><span class="pre">test_</span></code>.
+If a test function exits normally without a failing assertion or other exception, the test is considered passed; if the function raises a failed assertion, failed.</p></li>
+</ul>
+<p>In the <code class="docutils literal notranslate"><span class="pre">test_to_roman_known_values</span></code> function, you call the actual <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function. (Well, the function hasn’t been written yet, but once it is, this is the line that will call it).
+Notice that you have now defined the API for the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function: it must take an integer (the number to convert) and return a string (the Roman numeral representation). If the API is different than that, this test is considered failed.</p>
+<p>Assuming the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function was defined correctly, called
+correctly, completed successfully, and returned a value, the last
+step is to check whether it returned the <em>right</em> value. This is
+accomplished with a simple assertion that the returned value is
+equal to the known correct value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">numeral</span> <span class="o">==</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>If the assertion fails, the test fails.</p>
+<p>Note that in this case, we are looping through all the known values, testing each one in the loop. If any of the known values fails, the test will fail, and end the test function – the rest of the values will not be tested.</p>
+<p>If every value returned from <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> matches the known value you expect, the assert will never fail, and <code class="docutils literal notranslate"><span class="pre">test_to_roman_known_values</span></code>
+eventually exits normally, which means <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> has passed this
+test.</p>
+<section id="write-a-test-that-fails-then-code-until-it-passes">
+<h4>Write a test that fails, then code until it passes.<a class="headerlink" href="#write-a-test-that-fails-then-code-until-it-passes" title="Link to this heading"></a></h4>
+<p>Once you have a test case, you can start coding the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code>
+function. First, you should stub it out as an empty function and make
+sure the tests fail. If the tests succeed before you’ve written any
+code, your tests aren’t testing your code at all! TDD is a
+dance: tests lead, code follows. Write a test that fails, then code
+until it passes.</p>
+<p>For a small system like this, we can put the code and the tests in the same file. But as you build larger systems, it is customary to put the tests in a separate file – more on that later.</p>
+<p>You can actually try your tests out before even writing any code!</p>
+<p>To run tests with pytest, you pass in the test file on the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pytest roman.py
+=========================== test session starts ===========================
+platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.8.2, pluggy-0.13.1
+rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development
+collected 1 item
+
+roman.py F                                                          [100%]
+
+================================ FAILURES =================================
+_______________________ test_to_roman_known_values ________________________
+
+    def test_to_roman_known_values():
+        &quot;&quot;&quot;
+        to_roman should give known result with known input
+        &quot;&quot;&quot;
+        for integer, numeral in KNOWN_VALUES:
+&gt;           result = to_roman(integer)
+E           NameError: name &#39;to_roman&#39; is not defined
+
+roman.py:75: NameError
+========================= short test summary info =========================
+FAILED roman.py::test_to_roman_known_values - NameError: name &#39;to_roman&#39;...
+============================ 1 failed in 0.15s ============================
+</pre></div>
+</div>
+<p>There’s a lot going on here! pytest has found your test function, set itself up, and run the tests it finds (in this case only the one).
+Then it runs the test (which in this case fails), and reports the failure(s).
+Along with the fact that it fails, it tells you why it failed (a <code class="docutils literal notranslate"><span class="pre">NameError</span></code>) where it failed (line 75 of the file), and shows you the code before the test failure.
+This may seem like a lot of information for such a simple case, but it can be invaluable in a more complex system.</p>
+<p>We got a NameError, because there is no <code class="docutils literal notranslate"><span class="pre">to_roman</span></code> function defined in the file. So let’s add that now:</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/002778a2a65b40093409693b6043a07d/roman1.py"><code class="xref download docutils literal notranslate"><span class="pre">roman1.py</span></code></a>)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># roman1.py</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">to_roman</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;convert an integer to Roman numeral&#39;&#39;&#39;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>At this stage, you want to define the API of the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function, but you don’t want to code it yet (your tests need to fail first).
+To stub it out, use the Python reserved word <code class="docutils literal notranslate"><span class="pre">pass</span></code>, which does precisely nothing.</p>
+<p>Now run pytest again, with the function defined:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pytest roman1.py
+=========================== test session starts ===========================
+platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.8.2, pluggy-0.13.1
+rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development
+collected 1 item
+
+roman1.py F                                                         [100%]
+
+================================ FAILURES =================================
+_______________________ test_to_roman_known_values ________________________
+
+    def test_to_roman_known_values():
+        &quot;&quot;&quot;
+        to_roman should give known result with known input
+        &quot;&quot;&quot;
+        for integer, numeral in KNOWN_VALUES:
+            result = to_roman(integer)
+&gt;           assert numeral == result
+E           AssertionError: assert &#39;I&#39; == None
+
+roman1.py:84: AssertionError
+========================= short test summary info =========================
+FAILED roman1.py::test_to_roman_known_values - AssertionError: assert &#39;I...
+============================ 1 failed in 0.15s ============================
+</pre></div>
+</div>
+<p>Again, pytest has found the test, run it, and again it failed.
+But this time, it failed with an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> – one of the known values did not equal what was expected.
+In addition to the line number where the failure occurred, pytest tells you exactly what the values being compared were.
+In this case, ‘I’ does not equal <code class="docutils literal notranslate"><span class="pre">None</span></code> – obviously not. But why did you get a <code class="docutils literal notranslate"><span class="pre">None</span></code> there? because Python returns None when a function does not explicitly return another value. In this case, the only content in the function is <code class="docutils literal notranslate"><span class="pre">pass</span></code>, so <code class="docutils literal notranslate"><span class="pre">None</span></code> was returned implicitly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may seem silly, and a waste of time, to go through this process when you <em>know</em> that it will fail: you haven’t written the code yet!
+But this is, in fact, a useful process.
+You have learned that your test is running and that it really does fail when the function does nothing.
+This may seem trivial, and, of course, experienced practitioners don’t <em>always</em> run tests against a do-nothing function.
+But when a system gets large, with many hundreds of tests, it’s easy for things to get lost – it really is useful to know for sure that your tests are working before you start to rely on them.</p>
+</div>
+<p>Overall, the test run failed because at least one test case did not pass.
+When a test case doesn’t pass, pytest distinguishes between failures and errors.
+A failure is a failed assertion that fails because the asserted condition is not true.
+An error is any other sort of exception raised in the code you’re testing or the test code itself.</p>
+<p><em>Now</em>, finally, you can write the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function.</p>
+<p><a class="reference download internal" download="" href="../_downloads/be3e0f48a8715ea51d96aa45c4451685/roman2.py"><code class="xref download docutils literal notranslate"><span class="pre">roman2.py</span></code></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">  2</span><span class="sd">roman.py</span>
+<span class="linenos">  3</span>
+<span class="linenos">  4</span><span class="sd">A Roman numeral to arabic numeral (and back!) converter</span>
+<span class="linenos">  5</span>
+<span class="linenos">  6</span><span class="sd">complete with tests</span>
+<span class="linenos">  7</span>
+<span class="linenos">  8</span><span class="sd">tests are expected to be able to be run with the pytest system</span>
+<span class="linenos">  9</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 10</span>
+<span class="linenos"> 11</span><span class="n">roman_numeral_map</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;M&#39;</span><span class="p">,</span>  <span class="mi">1000</span><span class="p">),</span>
+<span class="linenos"> 12</span>                     <span class="p">(</span><span class="s1">&#39;CM&#39;</span><span class="p">,</span> <span class="mi">900</span><span class="p">),</span>
+<span class="linenos"> 13</span>                     <span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span>  <span class="mi">500</span><span class="p">),</span>
+<span class="linenos"> 14</span>                     <span class="p">(</span><span class="s1">&#39;CD&#39;</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="linenos"> 15</span>                     <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span>  <span class="mi">100</span><span class="p">),</span>
+<span class="linenos"> 16</span>                     <span class="p">(</span><span class="s1">&#39;XC&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
+<span class="linenos"> 17</span>                     <span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span>  <span class="mi">50</span><span class="p">),</span>
+<span class="linenos"> 18</span>                     <span class="p">(</span><span class="s1">&#39;XL&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+<span class="linenos"> 19</span>                     <span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span>  <span class="mi">10</span><span class="p">),</span>
+<span class="linenos"> 20</span>                     <span class="p">(</span><span class="s1">&#39;IX&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+<span class="linenos"> 21</span>                     <span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span>  <span class="mi">5</span><span class="p">),</span>
+<span class="linenos"> 22</span>                     <span class="p">(</span><span class="s1">&#39;IV&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="linenos"> 23</span>                     <span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span>  <span class="mi">1</span><span class="p">))</span>
+<span class="linenos"> 24</span>
+<span class="linenos"> 25</span>
+<span class="linenos"> 26</span><span class="k">def</span><span class="w"> </span><span class="nf">to_roman</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="linenos"> 27</span><span class="w">    </span><span class="sd">&#39;&#39;&#39;convert integer to Roman numeral&#39;&#39;&#39;</span>
+<span class="linenos"> 28</span>    <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="linenos"> 29</span>    <span class="k">for</span> <span class="n">numeral</span><span class="p">,</span> <span class="n">integer</span> <span class="ow">in</span> <span class="n">roman_numeral_map</span><span class="p">:</span>
+<span class="linenos"> 30</span>       <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="n">integer</span><span class="p">:</span>
+<span class="linenos"> 31</span>           <span class="n">result</span> <span class="o">+=</span> <span class="n">numeral</span>
+<span class="linenos"> 32</span>           <span class="n">n</span> <span class="o">-=</span> <span class="n">integer</span>
+<span class="linenos"> 33</span>    <span class="k">return</span> <span class="n">result</span>
+<span class="linenos"> 34</span>
+<span class="linenos"> 35</span>
+<span class="linenos"> 36</span><span class="c1">## Tests for roman numeral conversion</span>
+<span class="linenos"> 37</span>
+<span class="linenos"> 38</span><span class="n">KNOWN_VALUES</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">),</span>
+<span class="linenos"> 39</span>                 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;II&#39;</span><span class="p">),</span>
+<span class="linenos"> 40</span>                 <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;III&#39;</span><span class="p">),</span>
+<span class="linenos"> 41</span>                 <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;IV&#39;</span><span class="p">),</span>
+<span class="linenos"> 42</span>                 <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">),</span>
+<span class="linenos"> 43</span>                 <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;VI&#39;</span><span class="p">),</span>
+<span class="linenos"> 44</span>                 <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;VII&#39;</span><span class="p">),</span>
+<span class="linenos"> 45</span>                 <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;VIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 46</span>                 <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;IX&#39;</span><span class="p">),</span>
+<span class="linenos"> 47</span>                 <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">),</span>
+<span class="linenos"> 48</span>                 <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">),</span>
+<span class="linenos"> 49</span>                 <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">),</span>
+<span class="linenos"> 50</span>                 <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">),</span>
+<span class="linenos"> 51</span>                 <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">),</span>
+<span class="linenos"> 52</span>                 <span class="p">(</span><span class="mi">31</span><span class="p">,</span> <span class="s1">&#39;XXXI&#39;</span><span class="p">),</span>
+<span class="linenos"> 53</span>                 <span class="p">(</span><span class="mi">148</span><span class="p">,</span> <span class="s1">&#39;CXLVIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 54</span>                 <span class="p">(</span><span class="mi">294</span><span class="p">,</span> <span class="s1">&#39;CCXCIV&#39;</span><span class="p">),</span>
+<span class="linenos"> 55</span>                 <span class="p">(</span><span class="mi">312</span><span class="p">,</span> <span class="s1">&#39;CCCXII&#39;</span><span class="p">),</span>
+<span class="linenos"> 56</span>                 <span class="p">(</span><span class="mi">421</span><span class="p">,</span> <span class="s1">&#39;CDXXI&#39;</span><span class="p">),</span>
+<span class="linenos"> 57</span>                 <span class="p">(</span><span class="mi">528</span><span class="p">,</span> <span class="s1">&#39;DXXVIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 58</span>                 <span class="p">(</span><span class="mi">621</span><span class="p">,</span> <span class="s1">&#39;DCXXI&#39;</span><span class="p">),</span>
+<span class="linenos"> 59</span>                 <span class="p">(</span><span class="mi">782</span><span class="p">,</span> <span class="s1">&#39;DCCLXXXII&#39;</span><span class="p">),</span>
+<span class="linenos"> 60</span>                 <span class="p">(</span><span class="mi">870</span><span class="p">,</span> <span class="s1">&#39;DCCCLXX&#39;</span><span class="p">),</span>
+<span class="linenos"> 61</span>                 <span class="p">(</span><span class="mi">941</span><span class="p">,</span> <span class="s1">&#39;CMXLI&#39;</span><span class="p">),</span>
+<span class="linenos"> 62</span>                 <span class="p">(</span><span class="mi">1043</span><span class="p">,</span> <span class="s1">&#39;MXLIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 63</span>                 <span class="p">(</span><span class="mi">1110</span><span class="p">,</span> <span class="s1">&#39;MCX&#39;</span><span class="p">),</span>
+<span class="linenos"> 64</span>                 <span class="p">(</span><span class="mi">1226</span><span class="p">,</span> <span class="s1">&#39;MCCXXVI&#39;</span><span class="p">),</span>
+<span class="linenos"> 65</span>                 <span class="p">(</span><span class="mi">1301</span><span class="p">,</span> <span class="s1">&#39;MCCCI&#39;</span><span class="p">),</span>
+<span class="linenos"> 66</span>                 <span class="p">(</span><span class="mi">1485</span><span class="p">,</span> <span class="s1">&#39;MCDLXXXV&#39;</span><span class="p">),</span>
+<span class="linenos"> 67</span>                 <span class="p">(</span><span class="mi">1509</span><span class="p">,</span> <span class="s1">&#39;MDIX&#39;</span><span class="p">),</span>
+<span class="linenos"> 68</span>                 <span class="p">(</span><span class="mi">1607</span><span class="p">,</span> <span class="s1">&#39;MDCVII&#39;</span><span class="p">),</span>
+<span class="linenos"> 69</span>                 <span class="p">(</span><span class="mi">1754</span><span class="p">,</span> <span class="s1">&#39;MDCCLIV&#39;</span><span class="p">),</span>
+<span class="linenos"> 70</span>                 <span class="p">(</span><span class="mi">1832</span><span class="p">,</span> <span class="s1">&#39;MDCCCXXXII&#39;</span><span class="p">),</span>
+<span class="linenos"> 71</span>                 <span class="p">(</span><span class="mi">1993</span><span class="p">,</span> <span class="s1">&#39;MCMXCIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 72</span>                 <span class="p">(</span><span class="mi">2074</span><span class="p">,</span> <span class="s1">&#39;MMLXXIV&#39;</span><span class="p">),</span>
+<span class="linenos"> 73</span>                 <span class="p">(</span><span class="mi">2152</span><span class="p">,</span> <span class="s1">&#39;MMCLII&#39;</span><span class="p">),</span>
+<span class="linenos"> 74</span>                 <span class="p">(</span><span class="mi">2212</span><span class="p">,</span> <span class="s1">&#39;MMCCXII&#39;</span><span class="p">),</span>
+<span class="linenos"> 75</span>                 <span class="p">(</span><span class="mi">2343</span><span class="p">,</span> <span class="s1">&#39;MMCCCXLIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 76</span>                 <span class="p">(</span><span class="mi">2499</span><span class="p">,</span> <span class="s1">&#39;MMCDXCIX&#39;</span><span class="p">),</span>
+<span class="linenos"> 77</span>                 <span class="p">(</span><span class="mi">2574</span><span class="p">,</span> <span class="s1">&#39;MMDLXXIV&#39;</span><span class="p">),</span>
+<span class="linenos"> 78</span>                 <span class="p">(</span><span class="mi">2646</span><span class="p">,</span> <span class="s1">&#39;MMDCXLVI&#39;</span><span class="p">),</span>
+<span class="linenos"> 79</span>                 <span class="p">(</span><span class="mi">2723</span><span class="p">,</span> <span class="s1">&#39;MMDCCXXIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 80</span>                 <span class="p">(</span><span class="mi">2892</span><span class="p">,</span> <span class="s1">&#39;MMDCCCXCII&#39;</span><span class="p">),</span>
+<span class="linenos"> 81</span>                 <span class="p">(</span><span class="mi">2975</span><span class="p">,</span> <span class="s1">&#39;MMCMLXXV&#39;</span><span class="p">),</span>
+<span class="linenos"> 82</span>                 <span class="p">(</span><span class="mi">3051</span><span class="p">,</span> <span class="s1">&#39;MMMLI&#39;</span><span class="p">),</span>
+<span class="linenos"> 83</span>                 <span class="p">(</span><span class="mi">3185</span><span class="p">,</span> <span class="s1">&#39;MMMCLXXXV&#39;</span><span class="p">),</span>
+<span class="linenos"> 84</span>                 <span class="p">(</span><span class="mi">3250</span><span class="p">,</span> <span class="s1">&#39;MMMCCL&#39;</span><span class="p">),</span>
+<span class="linenos"> 85</span>                 <span class="p">(</span><span class="mi">3313</span><span class="p">,</span> <span class="s1">&#39;MMMCCCXIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 86</span>                 <span class="p">(</span><span class="mi">3408</span><span class="p">,</span> <span class="s1">&#39;MMMCDVIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 87</span>                 <span class="p">(</span><span class="mi">3501</span><span class="p">,</span> <span class="s1">&#39;MMMDI&#39;</span><span class="p">),</span>
+<span class="linenos"> 88</span>                 <span class="p">(</span><span class="mi">3610</span><span class="p">,</span> <span class="s1">&#39;MMMDCX&#39;</span><span class="p">),</span>
+<span class="linenos"> 89</span>                 <span class="p">(</span><span class="mi">3743</span><span class="p">,</span> <span class="s1">&#39;MMMDCCXLIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 90</span>                 <span class="p">(</span><span class="mi">3844</span><span class="p">,</span> <span class="s1">&#39;MMMDCCCXLIV&#39;</span><span class="p">),</span>
+<span class="linenos"> 91</span>                 <span class="p">(</span><span class="mi">3888</span><span class="p">,</span> <span class="s1">&#39;MMMDCCCLXXXVIII&#39;</span><span class="p">),</span>
+<span class="linenos"> 92</span>                 <span class="p">(</span><span class="mi">3940</span><span class="p">,</span> <span class="s1">&#39;MMMCMXL&#39;</span><span class="p">),</span>
+<span class="linenos"> 93</span>                 <span class="p">(</span><span class="mi">3999</span><span class="p">,</span> <span class="s1">&#39;MMMCMXCIX&#39;</span><span class="p">),</span>
+<span class="linenos"> 94</span>                 <span class="p">)</span>
+<span class="linenos"> 95</span>
+<span class="linenos"> 96</span>
+<span class="linenos"> 97</span><span class="k">def</span><span class="w"> </span><span class="nf">test_to_roman_known_values</span><span class="p">():</span>
+<span class="linenos"> 98</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 99</span><span class="sd">    to_roman should give known result with known input</span>
+<span class="linenos">100</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos">101</span>    <span class="k">for</span> <span class="n">integer</span><span class="p">,</span> <span class="n">numeral</span> <span class="ow">in</span> <span class="n">KNOWN_VALUES</span><span class="p">:</span>
+<span class="linenos">102</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">to_roman</span><span class="p">(</span><span class="n">integer</span><span class="p">)</span>
+<span class="linenos">103</span>        <span class="k">assert</span> <span class="n">numeral</span> <span class="o">==</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">roman_numeral_map</span></code> is a tuple of tuples which defines three
+things: the character representations of the most basic Roman
+numerals; the order of the Roman numerals (in descending value order,
+from <code class="docutils literal notranslate"><span class="pre">M</span></code> all the way down to <code class="docutils literal notranslate"><span class="pre">I</span></code>); the value of each Roman
+numeral. Each inner tuple is a pair of <code class="docutils literal notranslate"><span class="pre">(numeral,</span> <span class="pre">value)</span></code>. It’s not
+just single-character Roman numerals; it also defines two-character
+pairs like <code class="docutils literal notranslate"><span class="pre">CM</span></code> (“one hundred less than one thousand”). This makes
+the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function code simpler.</p>
+<p>Here’s where the rich data structure of <code class="docutils literal notranslate"><span class="pre">roman_numeral_map</span></code> pays
+off, because you don’t need any special logic to handle the
+subtraction rule. To convert to Roman numerals, simply iterate
+through <code class="docutils literal notranslate"><span class="pre">roman_numeral_map</span></code> looking for the largest integer value
+less than or equal to the input. Once found, add the Roman numeral
+representation to the end of the output, subtract the corresponding
+integer value from the input, lather, rinse, repeat.</p>
+<p>If you’re still not clear how the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function works, add a
+<code class="docutils literal notranslate"><span class="pre">print()</span></code> call to the end of the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="n">integer</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">numeral</span>
+    <span class="n">n</span> <span class="o">-=</span> <span class="n">integer</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;subtracting </span><span class="si">{</span><span class="n">integer</span><span class="si">}</span><span class="s1"> from input, adding </span><span class="si">{</span><span class="n">numeral</span><span class="si">}</span><span class="s1"> to output&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the debug <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements, the output looks like this:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">run</span> <span class="n">roman2</span><span class="o">.</span><span class="n">py</span>
+
+<span class="gp">In [4]: </span><span class="n">to_roman</span><span class="p">(</span><span class="mi">1424</span><span class="p">)</span>
+<span class="go">subtracting 1000 from input, adding M to output</span>
+<span class="go">subtracting 400 from input, adding CD to output</span>
+<span class="go">subtracting 10 from input, adding X to output</span>
+<span class="go">subtracting 10 from input, adding X to output</span>
+<span class="go">subtracting 4 from input, adding IV to output</span>
+<span class="gh">Out[4]: </span><span class="go">&#39;MCDXXIV&#39;</span>
+</pre></div>
+</div>
+<p>So the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function appears to work, at least in this manual
+spot check. But will it pass the test case you wrote?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>In [7]: ! pytest roman2.py
+========================= test session starts =========================
+platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1
+rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development
+collected 1 item
+
+roman2.py .                                                     [100%]
+
+========================== 1 passed in 0.01s ==========================
+</pre></div>
+</div>
+<p>Hooray! The <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function passes the “known values” test case. It’s not comprehensive, but it does put the function through
+its paces with a variety of inputs, including inputs that produce
+every single-character Roman numeral, the largest possible input
+(<code class="docutils literal notranslate"><span class="pre">3999</span></code>), and the input that produces the longest possible Roman
+numeral (<code class="docutils literal notranslate"><span class="pre">3888</span></code>). At this point, you can be reasonably confident
+that the function works for any good input value you could throw at
+it.</p>
+<p>“Good” input? Hmm. What about bad input?</p>
+</section>
+</section>
+<section id="halt-and-catch-fire">
+<h3>“Halt And Catch Fire”<a class="headerlink" href="#halt-and-catch-fire" title="Link to this heading"></a></h3>
+<p>The Pythonic way to halt and catch fire is to raise an exception.</p>
+<p>It is not enough to test that functions succeed when given good input;
+you must also test that they fail when given bad input. And not just any
+sort of failure; they must fail in the way you expect.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">to_roman</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go">&#39;MMM&#39;</span>
+
+<span class="gp">In [11]: </span><span class="n">to_roman</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span>
+<span class="gh">Out[11]: </span><span class="go">&#39;MMMM&#39;</span>
+
+<span class="gp">In [12]: </span><span class="n">to_roman</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+<span class="gh">Out[12]: </span><span class="go">&#39;MMMMM&#39;</span>
+
+<span class="gp">In [13]: </span><span class="n">to_roman</span><span class="p">(</span><span class="mi">9000</span><span class="p">)</span>
+<span class="gh">Out[13]: </span><span class="go">&#39;MMMMMMMMM&#39;</span>
+</pre></div>
+</div>
+<p>That’s definitely <em>not</em> what you wanted — that’s not even a valid Roman
+numeral!
+In fact, after 3000, each of these numbers is outside the range of
+acceptable input, but the function returns a bogus value anyway.
+Silently returning bad values is <em>baaaaaaad</em>; if a program is going
+to fail, it is far better if it fails quickly and noisily. “Halt and
+catch fire,” as the saying goes. In Python, the way to halt and catch
+fire is to raise an exception.</p>
+<p>The question to ask yourself is, “How can I express this as a testable
+requirement?” How’s this for starters:</p>
+<blockquote>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function should raise an <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> when
+given an integer greater than <code class="docutils literal notranslate"><span class="pre">3999</span></code>.</p>
+</div></blockquote>
+<p>Why a ValueError? I think it’s a good idea to use one of the standard built-in exceptions is there is one that fits your use case. In this case, it is the <em>value</em> of the argument that is the problem – it is too large. So a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is appropriate.</p>
+<p>So how do we test for an exception? What would that test look like?</p>
+<p><a class="reference download internal" download="" href="../_downloads/892493f25fa8e6cf5d0a42dec8d7ac1f/roman3.py"><code class="xref download docutils literal notranslate"><span class="pre">roman.py</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_too_large</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    to_roman should raise an ValueError when passed</span>
+<span class="sd">    values over 3999</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">to_roman</span><span class="p">(</span><span class="mi">4000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Like the previous test case, the test itself is a function with a name starting with <code class="docutils literal notranslate"><span class="pre">test_</span></code>. pytest will know that it’s a test due to the name.</p>
+<p>The test function has a docstring, letting us know what it is testing.</p>
+<p>Now look at the body of that function; what the heck is that <code class="docutils literal notranslate"><span class="pre">with</span></code> statement? <code class="docutils literal notranslate"><span class="pre">with</span></code> is how we invoke a “context manager” – the code indented after the <code class="docutils literal notranslate"><span class="pre">with</span></code> is run in the “context” created, in this case, by the <code class="docutils literal notranslate"><span class="pre">pytest.raises</span></code> function. What <code class="docutils literal notranslate"><span class="pre">pytest.raises</span></code> does is check to make sure that the Exception specified is raised by the following code. So in this example, if <code class="docutils literal notranslate"><span class="pre">to_roman(4000)</span></code> raises an <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, the test will pass, and if it does not raise an Exception, or raises a different Exception, the test will fail.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Context managers are a powerful and sometimes complex feature
+of Python. They will be covered later in detail, but for now, you only need to know that the code inside the with block runs in a special way controlled by what follows the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement, including exception handling.
+You will see <code class="docutils literal notranslate"><span class="pre">with</span></code> when working with files (<a class="reference internal" href="Files.html#files"><span class="std std-ref">File Reading and Writing</span></a>), and you can read more about it in: <a class="reference internal" href="ContextManagers.html#context-managers"><span class="std std-ref">Context Managers</span></a></p>
+</div>
+<p>CAUTION: you are now using a utility from the <code class="docutils literal notranslate"><span class="pre">pytest</span></code> package, so you need to make sure to import pytest first:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman3.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 2 items</span>
+
+<span class="go">roman3.py .F                                                    [100%]</span>
+
+<span class="go">============================== FAILURES ===============================</span>
+<span class="go">___________________________ test_too_large ____________________________</span>
+
+<span class="go">    def test_too_large():</span>
+<span class="go">        &quot;&quot;&quot;</span>
+<span class="go">        to_roman should raise an ValueError when passed</span>
+<span class="go">        values over 3999</span>
+<span class="go">        &quot;&quot;&quot;</span>
+<span class="go">        with pytest.raises(ValueError):</span>
+<span class="go">&gt;           to_roman(4000)</span>
+<span class="go">E           Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;</span>
+
+<span class="go">roman3.py:115: Failed</span>
+<span class="go">======================= short test summary info =======================</span>
+<span class="go">FAILED roman3.py::test_too_large - Failed: DID NOT RAISE &lt;class &#39;Val...</span>
+<span class="go">===================== 1 failed, 1 passed in 0.08s =====================</span>
+</pre></div>
+</div>
+<p>You should have expected this to fail since you haven’t written any
+code to pass it yet. Did it fail in the way you expected?</p>
+<p>Yes! <code class="docutils literal notranslate"><span class="pre">pytest.raises</span></code> did its job – a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> was not raised, and the test failed.</p>
+<p>Of course, the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function isn’t raising the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> because you haven’t told it to do that yet.
+That’s excellent news! It means this is a valid test case — it fails before you write the code to make it pass.</p>
+<p>Now you can write the code to make this test pass.</p>
+<p><a class="reference download internal" download="" href="../_downloads/3e29de91d4027f47dcec7e9c4da617dc/roman4.py"><code class="xref download docutils literal notranslate"><span class="pre">roman4.py</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_roman</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;convert integer to Roman numeral&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3999</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number out of range (must be less than 4000)&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">numeral</span><span class="p">,</span> <span class="n">integer</span> <span class="ow">in</span> <span class="n">roman_numeral_map</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="n">integer</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">numeral</span>
+            <span class="n">n</span> <span class="o">-=</span> <span class="n">integer</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>This is straightforward: if the given input (<code class="docutils literal notranslate"><span class="pre">n</span></code>) is greater than
+<code class="docutils literal notranslate"><span class="pre">3999</span></code>, raise a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> exception.
+The unit test does not check the human-readable string that accompanies the exception,
+although you could write another test that did check it if you wanted to be sure
+(but watch out for internationalization issues for strings that vary by the user’s language or environment).</p>
+<p>Does this make the test pass? Let’s find out.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman4.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 2 items</span>
+
+<span class="go">roman4.py ..                                                    [100%]</span>
+
+<span class="go">========================== 2 passed in 0.01s ==========================</span>
+</pre></div>
+</div>
+<p>Hooray! Both tests pass. Because you worked iteratively, bouncing
+back and forth between testing and coding, you can be sure that the
+two lines of code you just wrote were the cause of that one test
+going from “fail” to “pass.” That kind of confidence doesn’t come
+cheap, but it will pay for itself over the lifetime of your code.</p>
+</section>
+<section id="more-halting-more-fire">
+<h3>More Halting, More Fire<a class="headerlink" href="#more-halting-more-fire" title="Link to this heading"></a></h3>
+<p>Along with testing numbers that are too large, you need to test numbers
+that are too small.
+As we noted in our functional requirements, Roman numerals cannot express zero or negative numbers.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">run</span> <span class="n">roman4</span><span class="o">.</span><span class="n">py</span>
+
+<span class="gp">In [21]: </span><span class="n">to_roman</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gh">Out[21]: </span><span class="go">&#39;&#39;</span>
+
+<span class="gp">In [22]: </span><span class="n">to_roman</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gh">Out[22]: </span><span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Well <em>that’s</em> not good – it happily accepted the input and returned an empty string. Now let’s add tests for each of these conditions, to make sure they raise an exception instead of silently giving an non-answer.</p>
+<p><a class="reference download internal" download="" href="../_downloads/5859f3c42ca7d8674b8b2a98d2c7fc14/roman5.py"><code class="xref download docutils literal notranslate"><span class="pre">roman5.py</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_zero</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;to_roman should raise an ValueError with 0 input&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">to_roman</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_negative</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;to_roman should raise an ValueError with negative input&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">to_roman</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first new test is the <code class="docutils literal notranslate"><span class="pre">test_zero()</span></code> function. Like the
+<code class="docutils literal notranslate"><span class="pre">test_too_large()</span></code> function, it it uses the <code class="docutils literal notranslate"><span class="pre">pytest.raises</span></code> context manager to call our <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function with a parameter of 0, and check that it raises the appropriate exception: <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test_negative()</span></code> function is almost identical, except it passes
+<code class="docutils literal notranslate"><span class="pre">-1</span></code> to the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function. If either of these new tests
+does <em>not</em> raise an <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> (either because the function
+returns an actual value, or because it raises some other exception),
+the test is considered failed.</p>
+<p>Now check that the tests fail:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman5.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 4 items</span>
+
+<span class="go">roman5.py ..FF                                                  [100%]</span>
+
+<span class="go">============================== FAILURES ===============================</span>
+<span class="go">______________________________ test_zero ______________________________</span>
+
+<span class="go">    def test_zero():</span>
+<span class="go">        &quot;&quot;&quot;to_roman should raise an ValueError with 0 input&quot;&quot;&quot;</span>
+<span class="go">        with pytest.raises(ValueError):</span>
+<span class="go">&gt;           to_roman(0)</span>
+<span class="go">E           Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;</span>
+
+<span class="go">roman5.py:123: Failed</span>
+<span class="go">____________________________ test_negative ____________________________</span>
+
+<span class="go">    def test_negative():</span>
+<span class="go">        &quot;&quot;&quot;to_roman should raise an ValueError with negative input&quot;&quot;&quot;</span>
+<span class="go">        with pytest.raises(ValueError):</span>
+<span class="go">&gt;           to_roman(-1)</span>
+<span class="go">E           Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;</span>
+
+<span class="go">roman5.py:129: Failed</span>
+<span class="go">======================= short test summary info =======================</span>
+<span class="go">FAILED roman5.py::test_zero - Failed: DID NOT RAISE &lt;class &#39;ValueErr...</span>
+<span class="go">FAILED roman5.py::test_negative - Failed: DID NOT RAISE &lt;class &#39;Valu...</span>
+<span class="go">===================== 2 failed, 2 passed in 0.09s =====================</span>
+</pre></div>
+</div>
+<p>Excellent. Both tests failed, as expected. Now let’s switch over to the
+code and see what we can do to make them pass.</p>
+<p><a class="reference download internal" download="" href="../_downloads/d569f91fb5d6e6a0fd37c835012c0804/roman6.py"><code class="xref download docutils literal notranslate"><span class="pre">roman6.py</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_roman</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;convert integer to Roman numeral&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">4000</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number out of range (must be 1..3999)&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">numeral</span><span class="p">,</span> <span class="n">integer</span> <span class="ow">in</span> <span class="n">roman_numeral_map</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="n">integer</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">numeral</span>
+            <span class="n">n</span> <span class="o">-=</span> <span class="n">integer</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">(0</span> <span class="pre">&lt;</span> <span class="pre">n</span> <span class="pre">&lt;</span> <span class="pre">4000)</span></code> This is a nice Pythonic shortcut: multiple comparisons at once.
+This is equivalent to <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">((0</span> <span class="pre">&lt;</span> <span class="pre">n)</span> <span class="pre">and</span> <span class="pre">(n</span> <span class="pre">&lt;</span> <span class="pre">4000))</span></code>, but it’s much
+easier to read. This one line of code should catch inputs that are
+too large, negative, or zero.</p>
+<p>If you change your conditions, make sure to update your
+human-readable error strings to match.  pytest won’t care,
+but it’ll make it difficult to do manual debugging if
+your code is throwing incorrectly-described exceptions.</p>
+<p>I could show you a whole series of unrelated examples to show that the
+multiple-comparisons-at-once shortcut works, but instead I’ll just run
+the unit tests and prove it.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman6.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 4 items</span>
+
+<span class="go">roman6.py ....                                                  [100%]</span>
+
+<span class="go">========================== 4 passed in 0.01s ==========================</span>
+</pre></div>
+</div>
+<p>Excellent! The tests all pass – your code is working! Remember that you still have the “too large” test – and all the tests of converting numbers. So you know you haven’t inadvertently broken anything else.</p>
+</section>
+<section id="and-one-more-thing">
+<h3>And One More Thing …<a class="headerlink" href="#and-one-more-thing" title="Link to this heading"></a></h3>
+<p>There was one more functional requirement for converting numbers to Roman numerals: dealing with non-integers.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">run</span> <span class="n">roman6</span><span class="o">.</span><span class="n">py</span>
+
+<span class="gp">In [31]: </span><span class="n">to_roman</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gh">Out[31]: </span><span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Oh, that’s bad.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="n">to_roman</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gh">Out[32]: </span><span class="go">&#39;I&#39;</span>
+</pre></div>
+</div>
+<p>What about that? technically, 1.0 is a float type, not an integer. But it does have an integer value, and Python considers them equal:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [35]: </span><span class="mi">1</span> <span class="o">==</span> <span class="mf">1.0</span>
+<span class="gh">Out[35]: </span><span class="go">True</span>
+</pre></div>
+</div>
+<p>So I’d say that we want 1.0 to be convertible, but not 0.5 (or 1.00000001 for that matter)</p>
+<p>Testing for non-integers is not difficult. Simply write a test case that checks that a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised if you pass in a non-integer value.</p>
+<p><a class="reference download internal" download="" href="../_downloads/ba31ee4e6e338fd38619c3cec6019f2d/roman7.py"><code class="xref download docutils literal notranslate"><span class="pre">roman7.py</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_non_integer</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;to_roman should raise an ValueError with non-integer input&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">to_roman</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And while we are at it, test a float type that happens to be an integer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_float_with_integer_value</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;to_roman should work for floats with integer values&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">to_roman</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;III&quot;</span>
+</pre></div>
+</div>
+<p>Why a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> rather than a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>? because it’s the value that matters, not the type. It’s OK to pass in a float type, as long as the value is an integer.</p>
+<p>Now check that the test fails properly.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [36]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman7.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 6 items</span>
+
+<span class="go">roman7.py ....F.                                                [100%]</span>
+
+<span class="go">============================== FAILURES ===============================</span>
+<span class="go">__________________________ test_non_integer ___________________________</span>
+
+<span class="go">    def test_non_integer():</span>
+<span class="go">        &quot;&quot;&quot;to_roman should raise an ValueError with non-integer input&quot;&quot;&quot;</span>
+<span class="go">        with pytest.raises(ValueError):</span>
+<span class="go">&gt;           to_roman(0.5)</span>
+<span class="go">E           Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;</span>
+
+<span class="go">roman7.py:135: Failed</span>
+<span class="go">======================= short test summary info =======================</span>
+<span class="go">FAILED roman7.py::test_non_integer - Failed: DID NOT RAISE &lt;class &#39;V...</span>
+<span class="go">===================== 1 failed, 5 passed in 0.10s =====================</span>
+</pre></div>
+</div>
+<p>Yup – it failed.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>when you add a new test, and see that it fails, also check that there are <em>more</em> tests than there were before. In this case, 1 failed, and 5 passed. In the previous run, 4 passed – so you know there are, in fact, two additional tests, one of which passed. Why might there not be? because we all like to copy-and-paste, and then edit. If you forget to rename the test function, it will overwrite the previous one – and we want all our tests to be preserved.</p>
+</div>
+<p>So now write the code that makes the test pass.</p>
+<p><a class="reference download internal" download="" href="../_downloads/81cae2301fa776de9a4af1ad0afc2e86/roman8.py"><code class="xref download docutils literal notranslate"><span class="pre">roman8.py</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_roman</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;convert integer to Roman numeral&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">4000</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number out of range (must be 1..3999)&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only integers can be converted to Roman numerals&quot;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">numeral</span><span class="p">,</span> <span class="n">integer</span> <span class="ow">in</span> <span class="n">roman_numeral_map</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="n">integer</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">numeral</span>
+            <span class="n">n</span> <span class="o">-=</span> <span class="n">integer</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">int(n)</span> <span class="pre">!=</span> <span class="pre">n</span></code> is checking that when you convert the value to an integer, it doesn’t change. We need to do that, because simply checking if you can convert to an integer isn’t enough – when a float is converted to an integer, the fractional part is truncated:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="nb">int</span><span class="p">(</span><span class="mf">1.00001</span><span class="p">)</span>
+<span class="gh">Out[37]: </span><span class="go">1</span>
+</pre></div>
+</div>
+<p>If the result of converting to an integer is equal to the original, then it had an integral value. Note that this will work with all the built numerical types:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [42]: </span><span class="nb">int</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="gh">Out[42]: </span><span class="go">True</span>
+
+<span class="gp">In [43]: </span><span class="nb">int</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="mf">3.5</span><span class="p">))</span> <span class="o">==</span> <span class="mf">3.5</span>
+<span class="gh">Out[43]: </span><span class="go">False</span>
+</pre></div>
+</div>
+<p>Finally, check that the code does indeed make the test pass.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [44]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman8.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 6 items</span>
+
+<span class="go">roman8.py ......                                                [100%]</span>
+
+<span class="go">========================== 6 passed in 0.02s ==========================</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function passes all of its tests, and I can’t think
+of any more tests, so it’s time to move on to <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code>.</p>
+</section>
+<section id="a-pleasing-symmetry">
+<h3>A Pleasing Symmetry<a class="headerlink" href="#a-pleasing-symmetry" title="Link to this heading"></a></h3>
+<p>Converting a string from a Roman numeral to an integer sounds more
+difficult than converting an integer to a Roman numeral. Certainly there
+is the issue of validation. It’s easy to check if an integer is greater
+than 0, but a bit harder to check whether a string is a valid Roman
+numeral. But we can at least make sure that correct Roman numerals convert correctly.</p>
+<p>So we have the problem of converting the string itself. As we’ll see in
+a minute, thanks to the rich data structure we defined to map individual
+Roman numerals to integer values, the nitty-gritty of the
+<code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> function is as straightforward as the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code>
+function.</p>
+<p>But first, the tests. We’ll need a “known values” test to spot-check for
+accuracy. Our test suite already contains a mapping of known
+values: let’s reuse that.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_from_roman_known_values</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;from_roman should give known result with known input&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">integer</span><span class="p">,</span> <span class="n">numeral</span> <span class="ow">in</span> <span class="n">KNOWN_VALUES</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">from_roman</span><span class="p">(</span><span class="n">numeral</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">integer</span> <span class="o">==</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>There’s a pleasing symmetry here. The <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> functions are inverses of each other. The first
+converts integers to specially-formatted strings, the second converts
+specially-formated strings to integers. In theory, we should be able to
+“round-trip” a number by passing to the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function to get a
+string, then passing that string to the <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> function to get
+an integer, and end up with the same number.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">from_roman</span><span class="p">(</span><span class="n">to_roman</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">values</span> <span class="n">of</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>In this case, “all values” means any number between <code class="docutils literal notranslate"><span class="pre">1..3999</span></code>, since
+that is the valid range of inputs to the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function. We can
+express this symmetry in a test case that runs through all the values
+<code class="docutils literal notranslate"><span class="pre">1..3999</span></code>, calls <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code>, calls <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code>, and checks
+that the output is the same as the original input.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_roundtrip</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;from_roman(to_roman(n))==n for all n&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">integer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4000</span><span class="p">):</span>
+        <span class="n">numeral</span> <span class="o">=</span> <span class="n">to_roman</span><span class="p">(</span><span class="n">integer</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">from_roman</span><span class="p">(</span><span class="n">numeral</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">integer</span> <span class="o">==</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>These new tests won’t even fail properly yet. We haven’t defined a
+<code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> function at all, so they’ll just raise errors.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [48]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman9.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 8 items</span>
+
+<span class="go">roman9.py ......FF                                              [100%]</span>
+
+<span class="go">============================== FAILURES ===============================</span>
+<span class="go">____________________ test_from_roman_known_values _____________________</span>
+
+<span class="go">    def test_from_roman_known_values():</span>
+<span class="go">        &quot;&quot;&quot;from_roman should give known result with known input&quot;&quot;&quot;</span>
+<span class="go">        for integer, numeral in KNOWN_VALUES:</span>
+<span class="go">&gt;           result = from_roman(numeral)</span>
+<span class="go">E           NameError: name &#39;from_roman&#39; is not defined</span>
+
+<span class="go">roman9.py:152: NameError</span>
+<span class="go">___________________________ test_roundtrip ____________________________</span>
+
+<span class="go">    def test_roundtrip():</span>
+<span class="go">        &#39;&#39;&#39;from_roman(to_roman(n))==n for all n&#39;&#39;&#39;</span>
+<span class="go">        for integer in range(1, 4000):</span>
+<span class="go">            numeral = to_roman(integer)</span>
+<span class="go">&gt;           result = from_roman(numeral)</span>
+<span class="go">E           NameError: name &#39;from_roman&#39; is not defined</span>
+
+<span class="go">roman9.py:160: NameError</span>
+<span class="go">======================= short test summary info =======================</span>
+<span class="go">FAILED roman9.py::test_from_roman_known_values - NameError: name &#39;fr...</span>
+<span class="go">FAILED roman9.py::test_roundtrip - NameError: name &#39;from_roman&#39; is n...</span>
+<span class="go">===================== 2 failed, 6 passed in 0.10s =====================</span>
+</pre></div>
+</div>
+<p>A quick stub function will solve that problem.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># roman10.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;convert Roman numeral to integer&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Hey, did you notice that? I defined a function with nothing but a docstring. That’s legal Python. In fact, some programmers swear by it. “Don’t stub; document!”</p>
+<p>Now the test cases will properly fail.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [50]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman10.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 8 items</span>
+
+<span class="go">roman10.py ......FF                                             [100%]</span>
+
+<span class="go">============================== FAILURES ===============================</span>
+<span class="go">____________________ test_from_roman_known_values _____________________</span>
+
+<span class="go">    def test_from_roman_known_values():</span>
+<span class="go">        &quot;&quot;&quot;from_roman should give known result with known input&quot;&quot;&quot;</span>
+<span class="go">        for integer, numeral in KNOWN_VALUES:</span>
+<span class="go">            result = from_roman(numeral)</span>
+<span class="go">&gt;           assert integer == result</span>
+<span class="go">E           assert 1 == None</span>
+
+<span class="go">roman10.py:157: AssertionError</span>
+<span class="go">___________________________ test_roundtrip ____________________________</span>
+
+<span class="go">    def test_roundtrip():</span>
+<span class="go">        &quot;&quot;&quot;from_roman(to_roman(n))==n for all n&quot;&quot;&quot;</span>
+<span class="go">        for integer in range(1, 4000):</span>
+<span class="go">            numeral = to_roman(integer)</span>
+<span class="go">            result = from_roman(numeral)</span>
+<span class="go">&gt;           assert integer == result</span>
+<span class="go">E           assert 1 == None</span>
+
+<span class="go">roman10.py:165: AssertionError</span>
+<span class="go">======================= short test summary info =======================</span>
+<span class="go">FAILED roman10.py::test_from_roman_known_values - assert 1 == None</span>
+<span class="go">FAILED roman10.py::test_roundtrip - assert 1 == None</span>
+<span class="go">===================== 2 failed, 6 passed in 0.11s =====================</span>
+</pre></div>
+</div>
+<p>Now it’s time to write the <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;convert Roman numeral to integer&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">numeral</span><span class="p">,</span> <span class="n">integer</span> <span class="ow">in</span> <span class="n">roman_numeral_map</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeral</span><span class="p">)]</span> <span class="o">==</span> <span class="n">numeral</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">integer</span>
+            <span class="n">index</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeral</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>The pattern here is the same as the <code class="docutils literal notranslate"><span class="pre">`to_roman()</span></code> function.
+You iterate through your Roman numeral data structure (a tuple of tuples),
+but instead of matching the highest integer values as often as possible,
+you match the “highest” Roman numeral character
+strings as often as possible.</p>
+<p>If you’re not clear how <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> works, add a <code class="docutils literal notranslate"><span class="pre">print</span></code>
+call to the end of the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;convert Roman numeral to integer&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">numeral</span><span class="p">,</span> <span class="n">integer</span> <span class="ow">in</span> <span class="n">roman_numeral_map</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeral</span><span class="p">)]</span> <span class="o">==</span> <span class="n">numeral</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">integer</span>
+            <span class="n">index</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeral</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;found, </span><span class="si">{</span><span class="n">numeral</span><span class="si">}</span><span class="s1"> of length, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">numeral</span><span class="p">)</span><span class="si">}</span><span class="s1"> adding </span><span class="si">{</span><span class="n">integer</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [52]: </span><span class="n">run</span> <span class="n">roman10</span><span class="o">.</span><span class="n">py</span>
+
+<span class="gp">In [53]: </span><span class="n">from_roman</span><span class="p">(</span><span class="s1">&#39;MCMLXXII&#39;</span><span class="p">)</span>
+<span class="go">found, M of length, 1 adding 1000</span>
+<span class="go">found, CM of length, 2 adding 900</span>
+<span class="go">found, L of length, 1 adding 50</span>
+<span class="go">found, X of length, 1 adding 10</span>
+<span class="go">found, X of length, 1 adding 10</span>
+<span class="go">found, I of length, 1 adding 1</span>
+<span class="go">found, I of length, 1 adding 1</span>
+<span class="gh">Out[53]: </span><span class="go">1972</span>
+</pre></div>
+</div>
+<p>Time to re-run the tests.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [54]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman10.py
+<span class="go">========================= test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 8 items</span>
+
+<span class="go">roman10.py ........                                             [100%]</span>
+
+<span class="go">========================== 8 passed in 0.38s ==========================</span>
+</pre></div>
+</div>
+<p>Two pieces of exciting news here. The first is that the <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code>
+function works for good input, at least for all the <em>known
+values</em>. The second is that the “round trip” test also
+passed. Combined with the known values tests, you can be reasonably sure
+that both the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> and <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> functions work
+properly for all possible good values. (This is not guaranteed; it is
+theoretically possible that <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> has a bug that produces the
+wrong Roman numeral for some particular set of inputs, <em>and</em> that
+<code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> has a reciprocal bug that produces the same wrong
+integer values for exactly that set of Roman numerals that
+<code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> generated incorrectly. Depending on your application and
+your requirements, this possibility may bother you; if so, write more
+comprehensive test cases until it doesn’t bother you.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Comprehensive test coverage is a bit of a fantasy. You can make sure that every line of code you write is run at least once during the testing (this is known as “coverage”). But you can’t make sure that every function is called with <em>every</em> possible type and value! So what we can do is anticipate what we think might break our code, and test for that. Some things <em>will</em> slip through the cracks. When a bug is discovered, the first thing you should do is write a test that exercises that bug – a test that will fail due to the bug. Then fix it. Since all your other test still pass (they do, don’t they?) – you know the fix hasn’t broken anything else. And since you have a test for it – you know you won’t accidentally reintroduce that bug.</p>
+</div>
+</section>
+<section id="more-bad-input">
+<h3>More Bad Input<a class="headerlink" href="#more-bad-input" title="Link to this heading"></a></h3>
+<p>Now that the <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> function works properly with good input,
+it’s time to fit in the last piece of the puzzle: making it work
+properly with bad input. That means finding a way to look at a string
+and determine if it’s a valid Roman numeral. This is inherently more
+difficult than validating numeric input – but doable. Let’s start by reviewing the rules.</p>
+<p>As we saw earlier, there are several simple rules for constructing a Roman numeral, using the letters <code class="docutils literal notranslate"><span class="pre">M</span></code>,
+<code class="docutils literal notranslate"><span class="pre">D</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, and <code class="docutils literal notranslate"><span class="pre">I</span></code>.</p>
+<p>Let’s review the rules:</p>
+<ul class="simple">
+<li><p>Sometimes characters are additive. <code class="docutils literal notranslate"><span class="pre">I</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">II</span></code> is <code class="docutils literal notranslate"><span class="pre">2</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">III</span></code> is <code class="docutils literal notranslate"><span class="pre">3</span></code>. <code class="docutils literal notranslate"><span class="pre">VI</span></code> is <code class="docutils literal notranslate"><span class="pre">6</span></code> (literally, “<code class="docutils literal notranslate"><span class="pre">5</span></code> and
+<code class="docutils literal notranslate"><span class="pre">1</span></code>”), <code class="docutils literal notranslate"><span class="pre">VII</span></code> is <code class="docutils literal notranslate"><span class="pre">7</span></code>, and <code class="docutils literal notranslate"><span class="pre">VIII</span></code> is <code class="docutils literal notranslate"><span class="pre">8</span></code>.</p></li>
+<li><p>The tens characters (<code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, and <code class="docutils literal notranslate"><span class="pre">M</span></code>) can be repeated
+up to three times. At <code class="docutils literal notranslate"><span class="pre">4</span></code>, you need to subtract from the next
+highest fives character. You can’t represent <code class="docutils literal notranslate"><span class="pre">4</span></code> as <code class="docutils literal notranslate"><span class="pre">IIII</span></code>;
+instead, it is represented as <code class="docutils literal notranslate"><span class="pre">IV</span></code> (“<code class="docutils literal notranslate"><span class="pre">1</span></code> less than <code class="docutils literal notranslate"><span class="pre">5</span></code>”).
+<code class="docutils literal notranslate"><span class="pre">40</span></code> is written as <code class="docutils literal notranslate"><span class="pre">XL</span></code> (“<code class="docutils literal notranslate"><span class="pre">10</span></code> less than <code class="docutils literal notranslate"><span class="pre">50</span></code>”), <code class="docutils literal notranslate"><span class="pre">41</span></code>
+as <code class="docutils literal notranslate"><span class="pre">XLI</span></code>, <code class="docutils literal notranslate"><span class="pre">42</span></code> as <code class="docutils literal notranslate"><span class="pre">XLII</span></code>, <code class="docutils literal notranslate"><span class="pre">43</span></code> as <code class="docutils literal notranslate"><span class="pre">XLIII</span></code>, and then <code class="docutils literal notranslate"><span class="pre">44</span></code>
+as <code class="docutils literal notranslate"><span class="pre">XLIV</span></code> (“<code class="docutils literal notranslate"><span class="pre">10</span></code> less than <code class="docutils literal notranslate"><span class="pre">50</span></code>, then <code class="docutils literal notranslate"><span class="pre">1</span></code> less than
+<code class="docutils literal notranslate"><span class="pre">5</span></code>”).</p></li>
+<li><p>Sometimes characters are… the opposite of additive. By putting
+certain characters before others, you subtract from the final value.
+For example, at <code class="docutils literal notranslate"><span class="pre">9</span></code>, you need to subtract from the next highest
+tens character: <code class="docutils literal notranslate"><span class="pre">8</span></code> is <code class="docutils literal notranslate"><span class="pre">VIII</span></code>, but <code class="docutils literal notranslate"><span class="pre">9</span></code> is <code class="docutils literal notranslate"><span class="pre">IX</span></code> (“<code class="docutils literal notranslate"><span class="pre">1</span></code> less
+than <code class="docutils literal notranslate"><span class="pre">10</span></code>”), not <code class="docutils literal notranslate"><span class="pre">VIIII</span></code> (since the <code class="docutils literal notranslate"><span class="pre">I</span></code> character can not be
+repeated four times). <code class="docutils literal notranslate"><span class="pre">90</span></code> is <code class="docutils literal notranslate"><span class="pre">XC</span></code>, <code class="docutils literal notranslate"><span class="pre">900</span></code> is <code class="docutils literal notranslate"><span class="pre">CM</span></code>.</p></li>
+<li><p>The fives characters can not be repeated. <code class="docutils literal notranslate"><span class="pre">10</span></code> is always
+represented as <code class="docutils literal notranslate"><span class="pre">X</span></code>, never as <code class="docutils literal notranslate"><span class="pre">VV</span></code>. <code class="docutils literal notranslate"><span class="pre">100</span></code> is always <code class="docutils literal notranslate"><span class="pre">C</span></code>, never
+<code class="docutils literal notranslate"><span class="pre">LL</span></code>.</p></li>
+<li><p>Roman numerals are read left to right, so the order of characters
+matters very much. <code class="docutils literal notranslate"><span class="pre">DC</span></code> is <code class="docutils literal notranslate"><span class="pre">600</span></code>; <code class="docutils literal notranslate"><span class="pre">CD</span></code> is a completely
+different number (<code class="docutils literal notranslate"><span class="pre">400</span></code>, “<code class="docutils literal notranslate"><span class="pre">100</span></code> less than <code class="docutils literal notranslate"><span class="pre">500</span></code>”). <code class="docutils literal notranslate"><span class="pre">CI</span></code>
+is <code class="docutils literal notranslate"><span class="pre">101</span></code>; <code class="docutils literal notranslate"><span class="pre">IC</span></code> is not even a valid Roman numeral (because you
+can’t subtract <code class="docutils literal notranslate"><span class="pre">1</span></code> directly from <code class="docutils literal notranslate"><span class="pre">100</span></code>; you would need to write
+it as <code class="docutils literal notranslate"><span class="pre">XCIX</span></code>, “<code class="docutils literal notranslate"><span class="pre">10</span></code> less than <code class="docutils literal notranslate"><span class="pre">100</span></code>, then <code class="docutils literal notranslate"><span class="pre">1</span></code> less than
+<code class="docutils literal notranslate"><span class="pre">10</span></code>”).</p></li>
+</ul>
+<p>Roman numerals can only use certain characters, so we should test to make sure there aren’t any other characters in the input:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_invalid_character</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Roman numerals can only use these characters:</span>
+
+<span class="sd">    M, D, C, L, X, V, I</span>
+
+<span class="sd">    This tests that other characters will cause a failure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;XXIIIQ&#39;</span><span class="p">,</span> <span class="s1">&#39;QXXIII&#39;</span><span class="p">,</span> <span class="s1">&#39;XXYIII&#39;</span><span class="p">]:</span>
+        <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;trying: </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Another useful test would be to ensure that the <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code>
+function should fail when you pass it a string with too many repeated
+numerals. How many is “too many” depends on the numeral.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_too_many_repeated_numerals</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;from_roman should fail with too many repeated numerals&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;MMMM&#39;</span><span class="p">,</span> <span class="s1">&#39;DD&#39;</span><span class="p">,</span> <span class="s1">&#39;CCCC&#39;</span><span class="p">,</span> <span class="s1">&#39;LL&#39;</span><span class="p">,</span> <span class="s1">&#39;XXXX&#39;</span><span class="p">,</span> <span class="s1">&#39;VV&#39;</span><span class="p">,</span> <span class="s1">&#39;IIII&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;trying: </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Another useful test would be to check that certain patterns aren’t
+repeated. For example, <code class="docutils literal notranslate"><span class="pre">IX</span></code> is <code class="docutils literal notranslate"><span class="pre">9</span></code>, but <code class="docutils literal notranslate"><span class="pre">IXIX</span></code> is never valid.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_repeated_pairs</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;from_roman should fail with repeated pairs of numerals&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;CMCM&#39;</span><span class="p">,</span> <span class="s1">&#39;CDCD&#39;</span><span class="p">,</span> <span class="s1">&#39;XCXC&#39;</span><span class="p">,</span> <span class="s1">&#39;XLXL&#39;</span><span class="p">,</span> <span class="s1">&#39;IXIX&#39;</span><span class="p">,</span> <span class="s1">&#39;IVIV&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;trying: </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A forth test could check that numerals appear in the correct order, from
+highest to lowest value. For example, <code class="docutils literal notranslate"><span class="pre">CL</span></code> is <code class="docutils literal notranslate"><span class="pre">150</span></code>, but <code class="docutils literal notranslate"><span class="pre">LC</span></code> is
+never valid, because the numeral for <code class="docutils literal notranslate"><span class="pre">50</span></code> can never come before the
+numeral for <code class="docutils literal notranslate"><span class="pre">100</span></code>. This test includes a arbitrarily chosen set of invalid
+antecedents: <code class="docutils literal notranslate"><span class="pre">I</span></code> before <code class="docutils literal notranslate"><span class="pre">M</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code> before <code class="docutils literal notranslate"><span class="pre">X</span></code>, and so on.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_malformed_antecedents</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;from_roman should fail with malformed antecedents&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;IIMXCC&#39;</span><span class="p">,</span> <span class="s1">&#39;VX&#39;</span><span class="p">,</span> <span class="s1">&#39;DCM&#39;</span><span class="p">,</span> <span class="s1">&#39;CMM&#39;</span><span class="p">,</span> <span class="s1">&#39;IXIV&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;MCMC&#39;</span><span class="p">,</span> <span class="s1">&#39;XCX&#39;</span><span class="p">,</span> <span class="s1">&#39;IVI&#39;</span><span class="p">,</span> <span class="s1">&#39;LM&#39;</span><span class="p">,</span> <span class="s1">&#39;LD&#39;</span><span class="p">,</span> <span class="s1">&#39;LC&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All four of these tests should fail, since the <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code>
+function doesn’t currently have any validity checking. (If they don’t
+fail now, then what the heck are they testing?)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>In [61]: ! pytest roman11.py
+============================ test session starts ============================
+platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.9.0, pluggy-0.13.1
+rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development
+collected 12 items
+
+roman11.py ........FFFF                                               [100%]
+
+================================= FAILURES ==================================
+__________________________ test_invalid_character ___________________________
+
+    def test_invalid_character():
+        &quot;&quot;&quot;
+        Roman numerals can only use these characters:
+
+        M, D, C, L, X, V, I
+
+        This tests that other characters will cause a failure
+        &quot;&quot;&quot;
+        for s in [&#39;Z&#39;, &#39;XXIIIQ&#39;, &#39;QXXIII&#39;, &#39;XXYIII&#39;]:
+            with pytest.raises(ValueError):
+&gt;               from_roman(s)
+E               Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;
+
+roman11.py:191: Failed
+______________________ test_too_many_repeated_numerals ______________________
+
+    def test_too_many_repeated_numerals():
+        &#39;&#39;&#39;from_roman should fail with too many repeated numerals&#39;&#39;&#39;
+        for s in (&#39;MMMM&#39;, &#39;DD&#39;, &#39;CCCC&#39;, &#39;LL&#39;, &#39;XXXX&#39;, &#39;VV&#39;, &#39;IIII&#39;):
+            with pytest.raises(ValueError):
+&gt;               from_roman(s)
+E               Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;
+
+roman11.py:198: Failed
+____________________________ test_repeated_pairs ____________________________
+
+    def test_repeated_pairs():
+        &#39;&#39;&#39;from_roman should fail with repeated pairs of numerals&#39;&#39;&#39;
+        for s in (&#39;CMCM&#39;, &#39;CDCD&#39;, &#39;XCXC&#39;, &#39;XLXL&#39;, &#39;IXIX&#39;, &#39;IVIV&#39;):
+            with pytest.raises(ValueError):
+&gt;               from_roman(s)
+E               Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;
+
+roman11.py:205: Failed
+________________________ test_malformed_antecedents _________________________
+
+    def test_malformed_antecedents():
+        &#39;&#39;&#39;from_roman should fail with malformed antecedents&#39;&#39;&#39;
+        for s in (&#39;IIMXCC&#39;, &#39;VX&#39;, &#39;DCM&#39;, &#39;CMM&#39;, &#39;IXIV&#39;,
+                  &#39;MCMC&#39;, &#39;XCX&#39;, &#39;IVI&#39;, &#39;LM&#39;, &#39;LD&#39;, &#39;LC&#39;):
+            with pytest.raises(ValueError):
+&gt;               from_roman(s)
+E               Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;
+
+roman11.py:213: Failed
+========================== short test summary info ==========================
+FAILED roman11.py::test_invalid_character - Failed: DID NOT RAISE &lt;class &#39;...
+FAILED roman11.py::test_too_many_repeated_numerals - Failed: DID NOT RAISE...
+FAILED roman11.py::test_repeated_pairs - Failed: DID NOT RAISE &lt;class &#39;Val...
+FAILED roman11.py::test_malformed_antecedents - Failed: DID NOT RAISE &lt;cla...
+======================== 4 failed, 8 passed in 0.13s ========================
+</pre></div>
+</div>
+<p>Good deal – yes, we <em>wanted</em> four tests to fail.</p>
+<p>Now, “all” we need to do is write the code to check if the Roman numeral satisfies all the requirements.</p>
+<p>So let’s do that one requirement at a time:</p>
+<p><strong>Requirement:</strong> you can only use the letters <code class="docutils literal notranslate"><span class="pre">M</span></code>,
+<code class="docutils literal notranslate"><span class="pre">D</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, and <code class="docutils literal notranslate"><span class="pre">I</span></code>.</p>
+<p>So let’s try that:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_valid_roman_numeral</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    check if the input is a valid roman numeral</span>
+
+<span class="sd">    returns True if it is, False other wise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># does it use only valid characters?</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">&quot;MDCLXVI&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>This is the start of a function to test if a string is a valid Roman numeral. So far, it loops through all the characters in the string, and makes sure they are in the VALID_CHARS string. If not, then it returns False.</p>
+<p>It is called in the <code class="docutils literal notranslate"><span class="pre">from_roman</span></code> function:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;convert Roman numeral to integer&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid_roman_numeral</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2"> is not a valid Roman numeral&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Now that we have that, let’s run the tests again:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [63]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman12.py
+<span class="go">============================ test session starts ============================</span>
+
+<span class="go">...</span>
+
+<span class="go">========================== short test summary info ==========================</span>
+<span class="go">FAILED roman12.py::test_too_many_repeated_numerals - Failed: DID NOT RAISE...</span>
+<span class="go">FAILED roman12.py::test_repeated_pairs - Failed: DID NOT RAISE &lt;class &#39;Val...</span>
+<span class="go">FAILED roman12.py::test_malformed_antecedents - Failed: DID NOT RAISE &lt;cla...</span>
+<span class="go">======================== 3 failed, 9 passed in 0.14s ========================</span>
+</pre></div>
+</div>
+<p>Only three failures – progress!</p>
+<p>There are a number of other requirements – how can we check all of them?
+One approach is to not check for specific invalid combinations, but rather, to look specifically for the valid stuff.</p>
+<p>This can be done by going through it as a human would: left-to-right, looking for what is expected and legal, removing that, and then, if there is anything left at the end, it’s not a valid Roman Numeral:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is actually a great use for “regular expressions”. That is a topic all to itself, so we won’t do that here. But if you are curious, you can read up on how to use regular expressions in Python to parse Roman Numerals in <a class="reference external" href="https://diveintopython3.problemsolving.io/regular-expressions.html#romannumerals">Dive into Python 3</a>. You will find that it’s using the same logic as here in pure Python.</p>
+</div>
+<p><a class="reference download internal" download="" href="../_downloads/c92f8e9347b133df651ea72298f5da2b/roman15.py"><code class="xref download docutils literal notranslate"><span class="pre">roman15.py</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 44</span><span class="k">def</span><span class="w"> </span><span class="nf">is_valid_roman_numeral</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="linenos"> 45</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 46</span><span class="sd">    parse a Roman numeral as a human would: left to right,</span>
+<span class="linenos"> 47</span><span class="sd">    looking for valid characters and removing them to determine</span>
+<span class="linenos"> 48</span><span class="sd">    if this is, indeed, a valid Roman numeral</span>
+<span class="linenos"> 49</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 50</span>    <span class="c1"># first check if uses only valid characters</span>
+<span class="linenos"> 51</span>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+<span class="linenos"> 52</span>        <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">&quot;MDCLXVI&quot;</span><span class="p">:</span>
+<span class="linenos"> 53</span>            <span class="k">return</span> <span class="kc">False</span>
+<span class="linenos"> 54</span>
+<span class="linenos"> 55</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;starting to parse&quot;</span><span class="p">)</span>
+<span class="linenos"> 56</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the thousands&quot;</span><span class="p">)</span>
+<span class="linenos"> 57</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos"> 58</span>    <span class="c1"># first look for the thousands -- up to three Ms</span>
+<span class="linenos"> 59</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="linenos"> 60</span>        <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span>
+<span class="linenos"> 61</span>            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos"> 62</span>    <span class="c1"># then look for the hundreds:</span>
+<span class="linenos"> 63</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the hundreds&quot;</span><span class="p">)</span>
+<span class="linenos"> 64</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos"> 65</span>    <span class="c1"># there can be ony one of CM, CD, or D:</span>
+<span class="linenos"> 66</span>    <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CM&quot;</span><span class="p">:</span> <span class="c1"># 900</span>
+<span class="linenos"> 67</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos"> 68</span>    <span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CD&quot;</span><span class="p">:</span> <span class="c1"># 400</span>
+<span class="linenos"> 69</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos"> 70</span>    <span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;D&quot;</span><span class="p">:</span>  <span class="c1"># 500</span>
+<span class="linenos"> 71</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos"> 72</span>    <span class="c1"># there can be from 1 to 3 Cs</span>
+<span class="linenos"> 73</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="linenos"> 74</span>        <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span>
+<span class="linenos"> 75</span>            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos"> 76</span>    <span class="c1"># now the tens</span>
+<span class="linenos"> 77</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the tens&quot;</span><span class="p">)</span>
+<span class="linenos"> 78</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos"> 79</span>    <span class="c1"># There can be one of either XC, XL or L</span>
+<span class="linenos"> 80</span>    <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;XC&quot;</span><span class="p">:</span>  <span class="c1"># 90</span>
+<span class="linenos"> 81</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos"> 82</span>    <span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;XL&quot;</span><span class="p">:</span>  <span class="c1"># 40</span>
+<span class="linenos"> 83</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos"> 84</span>    <span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;L&quot;</span><span class="p">:</span>  <span class="c1"># 50</span>
+<span class="linenos"> 85</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos"> 86</span>    <span class="c1"># there can be up to three Xs</span>
+<span class="linenos"> 87</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="linenos"> 88</span>        <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span>
+<span class="linenos"> 89</span>            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos"> 90</span>    <span class="c1"># and the ones</span>
+<span class="linenos"> 91</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the ones&quot;</span><span class="p">)</span>
+<span class="linenos"> 92</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos"> 93</span>    <span class="c1"># There can be one of IX, IV or V</span>
+<span class="linenos"> 94</span>    <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;IX&quot;</span><span class="p">:</span>  <span class="c1"># 9</span>
+<span class="linenos"> 95</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos"> 96</span>    <span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;IV&quot;</span><span class="p">:</span>  <span class="c1"># 4</span>
+<span class="linenos"> 97</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos"> 98</span>    <span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;V&quot;</span><span class="p">:</span>  <span class="c1"># 5</span>
+<span class="linenos"> 99</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos">100</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;looking for the Is&quot;</span><span class="p">)</span>
+<span class="linenos">101</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">102</span>    <span class="c1"># There can be up to three Is</span>
+<span class="linenos">103</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="linenos">104</span>        <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span>  <span class="c1"># 1</span>
+<span class="linenos">105</span>            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos">106</span>    <span class="c1"># if there is anything left, it&#39;s not a valid Roman numeral</span>
+<span class="linenos">107</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;done&quot;</span><span class="p">)</span>
+<span class="linenos">108</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">109</span>    <span class="k">if</span> <span class="n">s</span><span class="p">:</span>
+<span class="linenos">110</span>        <span class="k">return</span> <span class="kc">False</span>
+<span class="linenos">111</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">112</span>        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Take a little time to look through that code: it’s pretty straightforward, simply going from left to right, and removing whatever is valid at that point. At the end, if there is anything left, it will return False.</p>
+<p>So let’s see how well that worked:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman13.py
+<span class="go">======================== test session starts =========================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.8.2, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 12 items</span>
+
+<span class="go">roman13.py ...........F                                        [100%]</span>
+
+<span class="go">============================== FAILURES ==============================</span>
+<span class="go">_____________________ test_malformed_antecedents _____________________</span>
+
+<span class="go">    def test_malformed_antecedents():</span>
+<span class="go">        &#39;&#39;&#39;from_roman should fail with malformed antecedents&#39;&#39;&#39;</span>
+<span class="go">        for s in (&#39;IIMXCC&#39;, &#39;VX&#39;, &#39;DCM&#39;, &#39;CMM&#39;, &#39;IXIV&#39;,</span>
+<span class="go">                  &#39;MCMC&#39;, &#39;XCX&#39;, &#39;IVI&#39;, &#39;LM&#39;, &#39;LD&#39;, &#39;LC&#39;):</span>
+<span class="go">            with pytest.raises(ValueError):</span>
+<span class="go">                print(f&quot;trying: {s}&quot;)</span>
+<span class="go">&gt;               from_roman(s)</span>
+<span class="go">E               Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;</span>
+
+<span class="go">roman13.py:289: Failed</span>
+<span class="go">------------------------ Captured stdout call ------------------------</span>
+
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Darn, we got a failure! We must have done something wrong. But that’s OK, frankly, most of us don’t do everything right when we right some code the first time. That’s actually one of the key points to TDD – we thought we’d written the code right, but a test failed – so we know something’s wrong.</p>
+<p>But what’s wrong? Let’s look at the error report. It says that <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> didn’t raise a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> – but on what value? That test checks for a bunch of bad values.</p>
+<p>Notice what pytest did? See that line: “Captured stdout call”?
+pytest has a nifty feature: when it runs tests, it redirects “stdout” – which is all the stuff that would usually be printed to console – the results of <code class="docutils literal notranslate"><span class="pre">print()</span></code> calls both in the code and the test itself.
+If the test passes, then it gets thrown away, so as not to clutter up the report.
+But if a test fails, like it did here, then it presents you with all the output that was produced when that test ran.</p>
+<p>In this case, we want to look at the output starting from the bottom. See the line at the top of the output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trying</span><span class="p">:</span> <span class="n">MCMC</span>
+</pre></div>
+</div>
+<p>That’s the result of the print call inside the test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;trying: </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">from_roman</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That was the last one tried, so we know that the test failed when trying “MCMC”, somewhere in the middle of all the tests. So what’s wrong with the code? Well, it’s heavily instrumented with print() calls, so we can look at the rest of the output from the failed test, and try to see what’s going on.</p>
+<p>MCMC not a legal Roman numeral, because there is an C (100) after the first CM (900) you can’t have both a 900 and a 100.</p>
+<p>So why didn’t that get picked up? Looking at the output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trying</span><span class="p">:</span> <span class="n">MCMC</span>
+<span class="n">starting</span> <span class="n">to</span> <span class="n">parse</span>
+<span class="n">the</span> <span class="n">thousands</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;MCMC&#39;</span>
+<span class="n">the</span> <span class="n">hundreds</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;CMC&#39;</span>
+</pre></div>
+</div>
+<p>After parsing the thousands, the first M has been removed – all good. Now it’s trying to parse the hundreds, starting with ‘CMC’. But once it gets past the hundreds to the tens, there’s nothing left – the final C was removed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">the</span> <span class="n">tens</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Why was that? Time to look at the code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">63</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the hundreds&quot;</span><span class="p">)</span>
+<span class="linenos">64</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">65</span><span class="c1"># there can be only one of CM, CD, or D:</span>
+<span class="linenos">66</span><span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CM&quot;</span><span class="p">:</span> <span class="c1"># 900</span>
+<span class="linenos">67</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos">68</span><span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CD&quot;</span><span class="p">:</span> <span class="c1"># 400</span>
+<span class="linenos">69</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos">70</span><span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;D&quot;</span><span class="p">:</span>  <span class="c1"># 500</span>
+<span class="linenos">71</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos">72</span><span class="c1"># there can be from 1 to 3 Cs</span>
+<span class="linenos">73</span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="linenos">74</span>    <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span>
+<span class="linenos">75</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos">76</span><span class="c1"># now the tens</span>
+</pre></div>
+</div>
+<p>In this case, it is parsing MCMC – and the first M has been removed, leaving CMC.</p>
+<p>At line 66, the <code class="docutils literal notranslate"><span class="pre">&quot;CM&quot;</span></code> (meaning 900) matches, so it is removed, leaving a single C. Then we get to lines 73-75, where it is looking for up to three Cs – it find one, so that gets removed, leaving an empty string. Ahh! that’s the problem! If there was a CM, then there can’t also be more Cs. We can fix that by putting that for loop in an <code class="docutils literal notranslate"><span class="pre">else</span></code> block:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">62</span><span class="c1"># then look for the hundreds:</span>
+<span class="linenos">63</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the hundreds&quot;</span><span class="p">)</span>
+<span class="linenos">64</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">65</span><span class="c1"># there can be only one of CM, CD, or D:</span>
+<span class="linenos">66</span><span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CM&quot;</span><span class="p">:</span> <span class="c1"># 900</span>
+<span class="linenos">67</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos">68</span><span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CD&quot;</span><span class="p">:</span> <span class="c1"># 400</span>
+<span class="linenos">69</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos">70</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">71</span>    <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;D&quot;</span><span class="p">:</span>  <span class="c1"># 500</span>
+<span class="linenos">72</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos">73</span>    <span class="c1"># there can be from 1 to 3 Cs</span>
+<span class="linenos">74</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="linenos">75</span>        <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span>
+<span class="linenos">76</span>            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+<p>We put the check for D inside the else as well, as the D is 500 and it can’t be after the “CM” (900) or “CD” (400). After a D, you need up to three Cs to make 600, 700, 800. Now to run the tests and see how it works:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman14.py
+<span class="go">============================= test session starts =============================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.8.2, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 12 items</span>
+
+<span class="go">roman14.py ...........F                                                 [100%]</span>
+
+<span class="go">================================== FAILURES ===================================</span>
+<span class="go">_________________________ test_malformed_antecedents __________________________</span>
+
+<span class="go">    def test_malformed_antecedents():</span>
+<span class="go">        &#39;&#39;&#39;from_roman should fail with malformed antecedents&#39;&#39;&#39;</span>
+<span class="go">        for s in (&#39;IIMXCC&#39;, &#39;VX&#39;, &#39;DCM&#39;, &#39;CMM&#39;, &#39;IXIV&#39;,</span>
+<span class="go">                  &#39;MCMC&#39;, &#39;XCX&#39;, &#39;IVI&#39;, &#39;LM&#39;, &#39;LD&#39;, &#39;LC&#39;):</span>
+<span class="go">            with pytest.raises(ValueError):</span>
+<span class="go">                print(f&quot;trying: {s}&quot;)</span>
+<span class="go">&gt;               from_roman(s)</span>
+<span class="go">E               Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;</span>
+
+<span class="go">roman14.py:290: Failed</span>
+</pre></div>
+</div>
+<p>Still a failure in the same test. But let’s look at the end of the output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trying</span><span class="p">:</span> <span class="n">XCX</span>
+<span class="n">starting</span> <span class="n">to</span> <span class="n">parse</span>
+<span class="n">the</span> <span class="n">thousands</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;XCX&#39;</span>
+<span class="n">the</span> <span class="n">hundreds</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;XCX&#39;</span>
+<span class="n">the</span> <span class="n">tens</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;XCX&#39;</span>
+<span class="n">the</span> <span class="n">ones</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">looking</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Is</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">done</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>So this time it failed on XCX – which makes sense, XC is 90, so you can’t have another X (10) after that. Why didn’t the code catch that?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">77</span><span class="c1"># now the tens</span>
+<span class="linenos">78</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the tens&quot;</span><span class="p">)</span>
+<span class="linenos">79</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">80</span><span class="c1"># There can be one of either XC, XL or L</span>
+<span class="linenos">81</span><span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;XC&quot;</span><span class="p">:</span>  <span class="c1"># 90</span>
+<span class="linenos">82</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos">83</span><span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;XL&quot;</span><span class="p">:</span>  <span class="c1"># 40</span>
+<span class="linenos">84</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos">85</span><span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;L&quot;</span><span class="p">:</span>  <span class="c1"># 50</span>
+<span class="linenos">86</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos">87</span><span class="c1"># there can be up to three Xs</span>
+<span class="linenos">88</span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="linenos">89</span>    <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span>
+<span class="linenos">90</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+<p>This is actually the SAME bug as before, but for the tens – it is checking for the Xs after XC and XL, which isn’t allowed. Moving that into an else block:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman15.py
+<span class="go">============================= test session starts =============================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.8.2, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 12 items</span>
+
+<span class="go">roman15.py ...........F                                                 [100%]</span>
+
+<span class="go">================================== FAILURES ===================================</span>
+<span class="go">_________________________ test_malformed_antecedents __________________________</span>
+
+<span class="go">    def test_malformed_antecedents():</span>
+<span class="go">        &#39;&#39;&#39;from_roman should fail with malformed antecedents&#39;&#39;&#39;</span>
+<span class="go">        for s in (&#39;IIMXCC&#39;, &#39;VX&#39;, &#39;DCM&#39;, &#39;CMM&#39;, &#39;IXIV&#39;,</span>
+<span class="go">                  &#39;MCMC&#39;, &#39;XCX&#39;, &#39;IVI&#39;, &#39;LM&#39;, &#39;LD&#39;, &#39;LC&#39;):</span>
+<span class="go">            with pytest.raises(ValueError):</span>
+<span class="go">                print(f&quot;trying: {s}&quot;)</span>
+<span class="go">&gt;               from_roman(s)</span>
+<span class="go">E               Failed: DID NOT RAISE &lt;class &#39;ValueError&#39;&gt;</span>
+
+<span class="go">roman15.py:291: Failed</span>
+<span class="go">---------------------------- Captured stdout call -----------------------------</span>
+
+<span class="go">...</span>
+
+<span class="go">trying: IVI</span>
+<span class="go">starting to parse</span>
+<span class="go">the thousands</span>
+<span class="go">s = &#39;IVI&#39;</span>
+<span class="go">the hundreds</span>
+<span class="go">s = &#39;IVI&#39;</span>
+<span class="go">the tens</span>
+<span class="go">s = &#39;IVI&#39;</span>
+<span class="go">the ones</span>
+<span class="go">s = &#39;IVI&#39;</span>
+<span class="go">looking for the Is</span>
+<span class="go">s = &#39;I&#39;</span>
+<span class="go">done</span>
+<span class="go">s = &#39;&#39;</span>
+<span class="go">=========================== short test summary info ===========================</span>
+<span class="go">FAILED roman15.py::test_malformed_antecedents - Failed: DID NOT RAISE &lt;class...</span>
+<span class="go">======================== 1 failed, 11 passed in 0.82s =========================</span>
+</pre></div>
+</div>
+<p>darn! still failing – but on IVI this time. I’m seeing a pattern here, same thig, but for the ones, so one final fix:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 92</span><span class="c1"># and the ones</span>
+<span class="linenos"> 93</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the ones&quot;</span><span class="p">)</span>
+<span class="linenos"> 94</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos"> 95</span><span class="c1"># There can be one of IX, IV or V</span>
+<span class="linenos"> 96</span><span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;IX&quot;</span><span class="p">:</span>  <span class="c1"># 9</span>
+<span class="linenos"> 97</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos"> 98</span><span class="k">elif</span> <span class="n">s</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;IV&quot;</span><span class="p">:</span>  <span class="c1"># 4</span>
+<span class="linenos"> 99</span>    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="linenos">100</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">101</span>    <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;V&quot;</span><span class="p">:</span>  <span class="c1"># 5</span>
+<span class="linenos">102</span>        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="linenos">103</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;looking for the Is&quot;</span><span class="p">)</span>
+<span class="linenos">104</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">105</span>    <span class="c1"># There can be up to three Is</span>
+<span class="linenos">106</span>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="linenos">107</span>        <span class="k">if</span> <span class="n">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span>  <span class="c1"># 1</span>
+<span class="linenos">108</span>            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+<p>OK: cross your fingers – will <em>this</em> version pass?</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="o">!</span><span class="w"> </span>pytest<span class="w"> </span>roman16.py
+<span class="go">============================= test session starts =============================</span>
+<span class="go">platform darwin -- Python 3.8.2, pytest-5.4.3, py-1.8.2, pluggy-0.13.1</span>
+<span class="go">rootdir: /Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development</span>
+<span class="go">collected 12 items</span>
+
+<span class="go">roman16.py ............                                                 [100%]</span>
+
+<span class="go">============================= 12 passed in 0.68s ==============================</span>
+</pre></div>
+</div>
+<p>Success! And note that it’s not showing any of the output – you only see that when the tests fail.</p>
+<p>But don’t forget to remove those print statements from your production code!</p>
+</section>
+<section id="refactoring">
+<h3>Refactoring<a class="headerlink" href="#refactoring" title="Link to this heading"></a></h3>
+<p>So now you’ve got working code, that is pretty well tested. But is it as good as it can be? Maybe there are some places it can be improved? This is the real power of unit tests – now that you have well tested code, you can make changes, and if the tests pass, you can be confident that the code still works.</p>
+<p>Refactoring options:</p>
+<p>Do we really need to check if there are any invalid charactors explicitly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># first check if uses only valid characters</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">&quot;MDCLXVI&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>Maybe not – let’s remove it and see:</p>
+<p><a class="reference download internal" download="" href="../_downloads/de9e71595b14e26132917589f5fc90c8/roman17.py"><code class="xref download docutils literal notranslate"><span class="pre">roman17.py</span></code></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>roman17.py
+<span class="o">======================</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>session<span class="w"> </span><span class="nv">starts</span><span class="w"> </span><span class="o">=======================</span>
+platform<span class="w"> </span>darwin<span class="w"> </span>--<span class="w"> </span>Python<span class="w"> </span><span class="m">3</span>.8.2,<span class="w"> </span>pytest-5.4.3,<span class="w"> </span>py-1.8.2,<span class="w"> </span>pluggy-0.13.1
+rootdir:<span class="w"> </span>/Users/chris.barker/Personal/UWPCE/Python210CourseMaterials/source/examples/test_driven_development
+collected<span class="w"> </span><span class="m">12</span><span class="w"> </span>items
+
+roman17.py<span class="w"> </span>............<span class="w">                                    </span><span class="o">[</span><span class="m">100</span>%<span class="o">]</span>
+
+<span class="o">=======================</span><span class="w"> </span><span class="m">12</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.66s<span class="w"> </span><span class="o">=======================</span>
+</pre></div>
+</div>
+<p>Nice! less code is better code, as long as it still works!</p>
+<p>Any other changes you can think of? Go ahead and try them, if the tests still pass, you are good to go!</p>
+<p>© 2001–11 <cite>Mark Pilgrim</cite>, 2020 <cite>Christopher Barker</cite></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../exercises/unit_testing/unit_testing.html" class="btn btn-neutral float-right" title="Introduction To Unit Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 4.0 license.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
