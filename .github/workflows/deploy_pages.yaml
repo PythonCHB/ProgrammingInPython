@@ -38,10 +38,10 @@ jobs:
     #    pytest
     - name: Build static site
       run: |
-        cd ./Sources; make html 
+        cd make html 
        
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
       with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Sources/build/html
+          publish_dir: ./build/html
