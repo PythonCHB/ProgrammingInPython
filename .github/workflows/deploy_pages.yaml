@@ -4,6 +4,10 @@ on:
   push:
     branches: [main] # branch to trigger deployment
 
+concurrency:
+  group: gh-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pages:
     runs-on: ubuntu-latest
@@ -20,5 +24,5 @@ jobs:
         documentation_path: .
         requirements_path: ./requirements.txt
         cache: true
-        python_version: 3.13
+        python_version: 3.12
 #        checkout: false
