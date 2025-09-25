@@ -20,7 +20,7 @@
 project = 'Programming in Python'
 
 # the one with the text too
-html_logo = "_static/UWPCE_logo_full.png"
+# html_logo = "_static/UWPCE_logo_full.png"
 
 source_suffix = '.rst'
 # The master toctree document.
@@ -44,12 +44,12 @@ author_list = ["Natasha Aleksandrova",
 
 author = ", ".join(sorted(author_list, key=lambda n: n.split()[-1]))
 
-copyright = ("2020, University of Washington, {}. "
+copyright = ("2025, {}. "
              "Creative Commons Attribution-ShareAlike 4.0 license".format(author)
              ).format(author)
 
 # The full version, including alpha/beta/rc tags
-release = '7.0'
+release = '8.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -84,7 +84,6 @@ html_theme_options = {
     # 'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
     # 'github_url': 'https://github.com/UWPCE-PythonCert/ProgrammingInPython',
     'logo_only': True,
-    'display_version': False,
     'prev_next_buttons_location': 'both',
     'style_external_links': True,
     # 'vcs_pageview_mode': '',
