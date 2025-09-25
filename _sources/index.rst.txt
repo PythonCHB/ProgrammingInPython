@@ -9,7 +9,7 @@ Programming in Python
 
 This site holds a set of materials for an introductory course in Python.
 
-THe course was originally developed by a wide variety of instructors for the 
+The course was originally developed by a wide variety of instructors for the 
 `University of Washington Professional and Continuing Education Python Certificate <https://www.pce.uw.edu/certificates/python-programming>`_
 `Introductory class <https://www.pce.uw.edu/courses/programming-in-python>`_
 
