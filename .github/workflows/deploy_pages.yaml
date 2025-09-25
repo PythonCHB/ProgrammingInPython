@@ -16,4 +16,9 @@ jobs:
     steps:
     - id: deployment
       uses: sphinx-notes/pages@v3
-
+      with:
+        documentation_path: .
+        requirements_path: ./requirements.txt
+        cache: true
+        python_version: 3.13
+#        checkout: false
