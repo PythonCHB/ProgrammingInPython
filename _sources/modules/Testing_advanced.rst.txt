@@ -1,4 +1,3 @@
-:orphan:
 
 .. _advanced_testing:
 
@@ -13,8 +12,7 @@ What is testing?
 ================
 
 
-Code which runs your application in as close to a real environment as
-feasible and validates its behavior
+Code which runs your application in as close to a real environment as feasible and validates its behavior
 
 
 Terminology of testing
@@ -46,15 +44,16 @@ Unit testing
 What should be tested?
 ----------------------
 
-The percentage of code which gets run in a test is known as the
-"coverage".
+The percentage of code which gets run in a test is known as the "coverage".
 
-100% coverage is an ideal to strive for. But the decision on when and
-what to test should take into account the volatility of the project.
+**100% coverage is neither necessary nor sufficient**
+
+100% coverage is an ideal to strive for.
+But the decision on when and what to test should take into account the volatility of the project, and the difficulty of testing some edge cases / error conditions.
 
 **NOTE** Even if every line of code is run during tests (100% coverage),
-they may not be comprehensive! It is very hard to anticipate every weird
-input some code may get.
+they *will not* be comprehensive!
+It is very hard to anticipate every weird input some code may get.
 
 
 Unit Testing tools
@@ -64,7 +63,7 @@ Unit Testing tools
 
    http://docs.python.org/3/library/unittest.html
 
--  pytest, a test runner, and also an alternative to unittest, which you should be pretty familiar with now
+-  pytest, a test runner (it can run unittest ``TestCase``, and is also an alternative to unittest.
 
    http://pytest.org/latest/
 
@@ -72,19 +71,11 @@ Unit Testing tools
 
    https://docs.python.org/dev/library/unittest.mock.html
 
+- coverage, a package for measuring test coverage.
+
 Note that while mock is in the ``unittest`` package, you do not need to be using ``unittest`` tests to use it.
 
 
-About Unit Testing
-------------------
-
-1. Tests should be independent.
-2. Tests do not run in order, which shouldn't matter, see point 1.
-3. Test fixtures are available to do any setup / teardown needed for tests.
-4. Test behavior not implementation dependent.
-5. Mocking is available to fake stuff you may not want to run in your tests.
-
-This all applies regardless of your test framework
 
 unittest
 --------
@@ -213,17 +204,17 @@ Tests can also be organized into suites in the
 block
 
 
-TestRunners: pytest and Nose2
------------------------------
+TestRunner: pytest
+------------------
 
-Nose2 is the new nose. Nose is no longer maintained, and directs users to nose2.
+pytest is a very widely used and comprehensive test runner: it can  auto-discover test cases, run them, and report of the results.
 
-Both pytest and Nose2 are test runners: they auto-discover test cases.
+NOTE: Way back in the day, there was a test runner called "nose" -- there is some chance you may still see it used in older projects. It's similar to, but with fewer features than pytest.
 
-They will find tests for you so you can focus on writing tests, not
+It will find tests for you so you can focus on writing tests, not
 maintaining test suites.
 
-To find tests, pytest and nose look for modules (such as python files)
+To find tests, pytest looks for modules (such as python files)
 whose names start with ‘test’. In those modules, they will load tests
 from all unittest.TestCase subclasses, as well as functions whose names
 start with ‘test’.
@@ -236,16 +227,7 @@ So running your tests is as easy as
 
 or
 
-.. code-block:: bash
-
-    $ nose2
-
-http://nose2.readthedocs.org/en/latest/getting_started.html#running-tests
-
 https://docs.pytest.org/en/latest/index.html
-
-A number of projects use nose -- so you may encounter it, but we'll focus
-on pytest for now.
 
 
 Fixtures: Setting up your tests for success
@@ -256,8 +238,7 @@ Fixtures: Setting up your tests for success
 Test fixtures are a fixed baseline for tests to run from consistently,
 also known as test context.
 
-Fixtures can (and should) be set up fresh before each test, once before each test
-case, or before an entire test suite.
+Fixtures can (and should) be set up fresh before each test, once before each test case, or before an entire test suite.
 
 
 Fixtures in unittest
@@ -533,7 +514,7 @@ But when you use assertTrue::
       self.assertTrue(math.isclose(4 * .15e-30, .45e-30))
   AssertionError: False is not true
 
-Not that helpful -- is it? I thikn we all already know that False is not true ;-)
+Not that helpful -- is it? I think we all already know that False is not true ;-)
 
 ``pytest`` give you nice informative messages when tests fail -- without special asserts.
 
@@ -543,7 +524,7 @@ Parameterized Tests
 
 Often you want to run exactly the same tests, but with different outputs and inputs.
 
-You can do this a really naive way, by putting multiple asserts into one test:
+You can do this in a really naive way, by putting multiple asserts into one test:
 
 .. code-block:: python
 
@@ -583,7 +564,7 @@ But talk about tedious!!!
 
 Unfortunately, ``unittest`` does not have a built-in way to solve this problem.
 There is a nifty library called parameterized, which does solve it (and they spell parameterize correctly).
-It works with nose, unittest, and pytest.
+It works with unittest, and pytest.
 
 https://pypi.python.org/pypi/parameterized
 
@@ -641,16 +622,17 @@ Keep in mind that 100% coverage does **NOT** mean that your code is *fully* test
 
 But it's a good start.
 
+And low coverage means that your code is very sparsely tested -- not great!
+
 
 The coverage tool
 -----------------
 
-``coverage.py`` is a tool (written by Ned Batchelder) for checking code testing
-coverage in python:
+``coverage.py`` is a tool (written by Ned Batchelder) for checking code testing coverage in python:
 
 https://coverage.readthedocs.io
 
-It can be installed with ``pip``:
+It can be installed with ``pip`` (or conda):
 
 .. code-block:: bash
 
@@ -712,6 +694,8 @@ Using coverage with pytest
 
 There is a plug-in for pytest that will run coverage for you when you run your tests:
 
+https://pytest-cov.readthedocs.io/ ::
+
 .. code-block:: bash
 
     $ pip install pytest-cov
@@ -719,7 +703,11 @@ There is a plug-in for pytest that will run coverage for you when you run your t
     # now it can be used
     $ pytest --cov code_module test_module.py
 
-https://pypi.python.org/pypi/pytest-cov
+or
+
+.. code-block:: bash
+
+  $ conda install pytest-cov
 
 There are a number of ways to invoke it and get different reports:
 
@@ -729,6 +717,8 @@ To get a nifty html report:
 
     $ pytest --cov code_module --cov-report html test_module.py
 
+
+Or you can run ``coverage html`` after running the tests.
 
 Doctests
 ========
@@ -775,7 +765,8 @@ Well worth checking out -- and you can have Sphinx run your doctests for you.
 My Take:
 --------
 
-doctests are really cool -- but they are more a way to test your documentation, than a way to test your code. Which is great -- you can have examples in your docs, and know that they are still correct.
+doctests are really cool -- but they are more a way to test your documentation, than a way to test your code.
+Which is great -- you can have examples in your docs, and know that they are still correct.
 
 
 Test Driven Development (TDD)

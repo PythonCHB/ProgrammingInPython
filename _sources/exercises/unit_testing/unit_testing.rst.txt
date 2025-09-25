@@ -92,6 +92,18 @@ Now edit the function in ``walnut_party.py``, and each time you make a change, r
 
 When the tests pass -- you are done! That's the beauty of test-driven development.
 
+Another Example:
+----------------
+
+Here's another example from the codingbat site:
+
+:download:`test_sum_13.py <test_sum_13.py>`
+
+
+
+
+
+
 Doing your own:
 ---------------
 

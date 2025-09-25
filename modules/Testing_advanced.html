@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mocking Mailroom" href="../exercises/mailroom/mailroom-mock.html" />
-    <link rel="prev" title="18. Advanced Testing" href="../topics/18-advanced_testing/index.html" /> 
+    <link rel="next" title="Introduction To Unit Testing" href="../exercises/unit_testing/unit_testing.html" />
+    <link rel="prev" title="Test Driven Development" href="TestDrivenDevelopment.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -83,14 +83,14 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../topics/18-advanced_testing/index.html"><span class="section-number">18. </span>Advanced Testing</a></li>
+          <li class="breadcrumb-item"><a href="../topics/07-unit_testing/index.html"><span class="section-number">7. </span>Unit Testing</a></li>
       <li class="breadcrumb-item active">Advanced Testing</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/modules/Testing_advanced.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="../topics/18-advanced_testing/index.html" class="btn btn-neutral float-left" title="18. Advanced Testing" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../exercises/mailroom/mailroom-mock.html" class="btn btn-neutral float-right" title="Mocking Mailroom" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="TestDrivenDevelopment.html" class="btn btn-neutral float-left" title="Test Driven Development" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../exercises/unit_testing/unit_testing.html" class="btn btn-neutral float-right" title="Introduction To Unit Testing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
@@ -102,8 +102,7 @@
 <p>Testing in Python</p>
 <section id="what-is-testing">
 <h2>What is testing?<a class="headerlink" href="#what-is-testing" title="Link to this heading"></a></h2>
-<p>Code which runs your application in as close to a real environment as
-feasible and validates its behavior</p>
+<p>Code which runs your application in as close to a real environment as feasible and validates its behavior</p>
 <section id="terminology-of-testing">
 <h3>Terminology of testing<a class="headerlink" href="#terminology-of-testing" title="Link to this heading"></a></h3>
 <ul class="simple">
@@ -131,13 +130,13 @@ mocking</p></li>
 </section>
 <section id="what-should-be-tested">
 <h3>What should be tested?<a class="headerlink" href="#what-should-be-tested" title="Link to this heading"></a></h3>
-<p>The percentage of code which gets run in a test is known as the
-“coverage”.</p>
-<p>100% coverage is an ideal to strive for. But the decision on when and
-what to test should take into account the volatility of the project.</p>
+<p>The percentage of code which gets run in a test is known as the “coverage”.</p>
+<p><strong>100% coverage is neither necessary nor sufficient</strong></p>
+<p>100% coverage is an ideal to strive for.
+But the decision on when and what to test should take into account the volatility of the project, and the difficulty of testing some edge cases / error conditions.</p>
 <p><strong>NOTE</strong> Even if every line of code is run during tests (100% coverage),
-they may not be comprehensive! It is very hard to anticipate every weird
-input some code may get.</p>
+they <em>will not</em> be comprehensive!
+It is very hard to anticipate every weird input some code may get.</p>
 </section>
 <section id="unit-testing-tools">
 <h3>Unit Testing tools<a class="headerlink" href="#unit-testing-tools" title="Link to this heading"></a></h3>
@@ -145,25 +144,15 @@ input some code may get.</p>
 <li><p>unittest, the test framework that ships with Python. Port of Java jUnit</p>
 <p><a class="reference external" href="http://docs.python.org/3/library/unittest.html">http://docs.python.org/3/library/unittest.html</a></p>
 </li>
-<li><p>pytest, a test runner, and also an alternative to unittest, which you should be pretty familiar with now</p>
+<li><p>pytest, a test runner (it can run unittest <code class="docutils literal notranslate"><span class="pre">TestCase</span></code>, and is also an alternative to unittest.</p>
 <p><a class="reference external" href="http://pytest.org/latest/">http://pytest.org/latest/</a></p>
 </li>
 <li><p>mock, an object mocking library. Ships with Python 3.3+</p>
 <p><a class="reference external" href="https://docs.python.org/dev/library/unittest.mock.html">https://docs.python.org/dev/library/unittest.mock.html</a></p>
 </li>
+<li><p>coverage, a package for measuring test coverage.</p></li>
 </ul>
 <p>Note that while mock is in the <code class="docutils literal notranslate"><span class="pre">unittest</span></code> package, you do not need to be using <code class="docutils literal notranslate"><span class="pre">unittest</span></code> tests to use it.</p>
-</section>
-<section id="about-unit-testing">
-<h3>About Unit Testing<a class="headerlink" href="#about-unit-testing" title="Link to this heading"></a></h3>
-<ol class="arabic simple">
-<li><p>Tests should be independent.</p></li>
-<li><p>Tests do not run in order, which shouldn’t matter, see point 1.</p></li>
-<li><p>Test fixtures are available to do any setup / teardown needed for tests.</p></li>
-<li><p>Test behavior not implementation dependent.</p></li>
-<li><p>Mocking is available to fake stuff you may not want to run in your tests.</p></li>
-</ol>
-<p>This all applies regardless of your test framework</p>
 </section>
 <section id="unittest">
 <h3>unittest<a class="headerlink" href="#unittest" title="Link to this heading"></a></h3>
@@ -270,13 +259,13 @@ test suite (or use a test runner, which we get to soon).</p>
 <p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code></p>
 <p>block</p>
 </section>
-<section id="testrunners-pytest-and-nose2">
-<h3>TestRunners: pytest and Nose2<a class="headerlink" href="#testrunners-pytest-and-nose2" title="Link to this heading"></a></h3>
-<p>Nose2 is the new nose. Nose is no longer maintained, and directs users to nose2.</p>
-<p>Both pytest and Nose2 are test runners: they auto-discover test cases.</p>
-<p>They will find tests for you so you can focus on writing tests, not
+<section id="testrunner-pytest">
+<h3>TestRunner: pytest<a class="headerlink" href="#testrunner-pytest" title="Link to this heading"></a></h3>
+<p>pytest is a very widely used and comprehensive test runner: it can  auto-discover test cases, run them, and report of the results.</p>
+<p>NOTE: Way back in the day, there was a test runner called “nose” – there is some chance you may still see it used in older projects. It’s similar to, but with fewer features than pytest.</p>
+<p>It will find tests for you so you can focus on writing tests, not
 maintaining test suites.</p>
-<p>To find tests, pytest and nose look for modules (such as python files)
+<p>To find tests, pytest looks for modules (such as python files)
 whose names start with ‘test’. In those modules, they will load tests
 from all unittest.TestCase subclasses, as well as functions whose names
 start with ‘test’.</p>
@@ -285,21 +274,14 @@ start with ‘test’.</p>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nose2
-</pre></div>
-</div>
-<p><a class="reference external" href="http://nose2.readthedocs.org/en/latest/getting_started.html#running-tests">http://nose2.readthedocs.org/en/latest/getting_started.html#running-tests</a></p>
 <p><a class="reference external" href="https://docs.pytest.org/en/latest/index.html">https://docs.pytest.org/en/latest/index.html</a></p>
-<p>A number of projects use nose – so you may encounter it, but we’ll focus
-on pytest for now.</p>
 </section>
 <section id="fixtures-setting-up-your-tests-for-success">
 <h3>Fixtures: Setting up your tests for success<a class="headerlink" href="#fixtures-setting-up-your-tests-for-success" title="Link to this heading"></a></h3>
 <p>(or failure!)</p>
 <p>Test fixtures are a fixed baseline for tests to run from consistently,
 also known as test context.</p>
-<p>Fixtures can (and should) be set up fresh before each test, once before each test
-case, or before an entire test suite.</p>
+<p>Fixtures can (and should) be set up fresh before each test, once before each test case, or before an entire test suite.</p>
 </section>
 <section id="fixtures-in-unittest">
 <h3>Fixtures in unittest<a class="headerlink" href="#fixtures-in-unittest" title="Link to this heading"></a></h3>
@@ -522,14 +504,14 @@ in the error:</p>
 <span class="ne">AssertionError</span><span class="p">:</span> <span class="kc">False</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">true</span>
 </pre></div>
 </div>
-<p>Not that helpful – is it? I thikn we all already know that False is not true ;-)</p>
+<p>Not that helpful – is it? I think we all already know that False is not true ;-)</p>
 <p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> give you nice informative messages when tests fail – without special asserts.</p>
 </section>
 </section>
 <section id="parameterized-tests">
 <h2>Parameterized Tests<a class="headerlink" href="#parameterized-tests" title="Link to this heading"></a></h2>
 <p>Often you want to run exactly the same tests, but with different outputs and inputs.</p>
-<p>You can do this a really naive way, by putting multiple asserts into one test:</p>
+<p>You can do this in a really naive way, by putting multiple asserts into one test:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_multiply</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
     <span class="k">assert</span> <span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">4</span>
@@ -562,7 +544,7 @@ complex than a single function call.</p>
 <p>But talk about tedious!!!</p>
 <p>Unfortunately, <code class="docutils literal notranslate"><span class="pre">unittest</span></code> does not have a built-in way to solve this problem.
 There is a nifty library called parameterized, which does solve it (and they spell parameterize correctly).
-It works with nose, unittest, and pytest.</p>
+It works with unittest, and pytest.</p>
 <p><a class="reference external" href="https://pypi.python.org/pypi/parameterized">https://pypi.python.org/pypi/parameterized</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@parameterized</span><span class="p">([</span>
     <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
@@ -601,13 +583,13 @@ sure it hasn’t been tested – so how do you know it works?</p>
 <p>So 100% coverage is a good goal (though harder to achieve than you might think!)</p>
 <p>Keep in mind that 100% coverage does <strong>NOT</strong> mean that your code is <em>fully</em> tested – you have no idea how many corner cases may not have been checked.</p>
 <p>But it’s a good start.</p>
+<p>And low coverage means that your code is very sparsely tested – not great!</p>
 </section>
 <section id="the-coverage-tool">
 <h3>The coverage tool<a class="headerlink" href="#the-coverage-tool" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">coverage.py</span></code> is a tool (written by Ned Batchelder) for checking code testing
-coverage in python:</p>
+<p><code class="docutils literal notranslate"><span class="pre">coverage.py</span></code> is a tool (written by Ned Batchelder) for checking code testing coverage in python:</p>
 <p><a class="reference external" href="https://coverage.readthedocs.io">https://coverage.readthedocs.io</a></p>
-<p>It can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<p>It can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code> (or conda):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>coverage
 </pre></div>
 </div>
@@ -650,18 +632,25 @@ option to run:</p>
 <section id="using-coverage-with-pytest">
 <h3>Using coverage with pytest<a class="headerlink" href="#using-coverage-with-pytest" title="Link to this heading"></a></h3>
 <p>There is a plug-in for pytest that will run coverage for you when you run your tests:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pytest-cov
-
-<span class="c1"># now it can be used</span>
-$<span class="w"> </span>pytest<span class="w"> </span>--cov<span class="w"> </span>code_module<span class="w"> </span>test_module.py
+<p><a class="reference external" href="https://pytest-cov.readthedocs.io/">https://pytest-cov.readthedocs.io/</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">bash</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://pypi.python.org/pypi/pytest-cov">https://pypi.python.org/pypi/pytest-cov</a></p>
+<blockquote>
+<div><p>$ pip install pytest-cov</p>
+<p># now it can be used
+$ pytest –cov code_module test_module.py</p>
+</div></blockquote>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>pytest-cov
+</pre></div>
+</div>
 <p>There are a number of ways to invoke it and get different reports:</p>
 <p>To get a nifty html report:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>--cov<span class="w"> </span>code_module<span class="w"> </span>--cov-report<span class="w"> </span>html<span class="w"> </span>test_module.py
 </pre></div>
 </div>
+<p>Or you can run <code class="docutils literal notranslate"><span class="pre">coverage</span> <span class="pre">html</span></code> after running the tests.</p>
 </section>
 </section>
 <section id="doctests">
@@ -695,7 +684,8 @@ human in a machine testable way</p>
 <p>Well worth checking out – and you can have Sphinx run your doctests for you.</p>
 <section id="my-take">
 <h3>My Take:<a class="headerlink" href="#my-take" title="Link to this heading"></a></h3>
-<p>doctests are really cool – but they are more a way to test your documentation, than a way to test your code. Which is great – you can have examples in your docs, and know that they are still correct.</p>
+<p>doctests are really cool – but they are more a way to test your documentation, than a way to test your code.
+Which is great – you can have examples in your docs, and know that they are still correct.</p>
 </section>
 </section>
 <section id="test-driven-development-tdd">
@@ -847,8 +837,8 @@ then add a new test that confirms this behavior. Use mock for your test, so you 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../topics/18-advanced_testing/index.html" class="btn btn-neutral float-left" title="18. Advanced Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../exercises/mailroom/mailroom-mock.html" class="btn btn-neutral float-right" title="Mocking Mailroom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="TestDrivenDevelopment.html" class="btn btn-neutral float-left" title="Test Driven Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../exercises/unit_testing/unit_testing.html" class="btn btn-neutral float-right" title="Introduction To Unit Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

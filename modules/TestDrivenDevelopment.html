@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction To Unit Testing" href="../exercises/unit_testing/unit_testing.html" />
+    <link rel="next" title="Advanced Testing" href="Testing_advanced.html" />
     <link rel="prev" title="Testing" href="Testing.html" /> 
 </head>
 
@@ -53,6 +53,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../topics/07-unit_testing/index.html">7. Unit Testing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Testing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Test Driven Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing_advanced.html">Advanced Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/unit_testing/unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/mailroom/mailroom_with_tests.html">Mailroom With Unit Tests</a></li>
 </ul>
@@ -92,16 +93,15 @@
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
         <a href="Testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../exercises/unit_testing/unit_testing.html" class="btn btn-neutral float-right" title="Introduction To Unit Testing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Testing_advanced.html" class="btn btn-neutral float-right" title="Advanced Testing" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <p id="test-driven-development">FIXME: change the path from my personal to something generic</p>
-<section id="id1">
-<h1>Test Driven Development<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+  <section id="test-driven-development">
+<span id="id1"></span><h1>Test Driven Development<a class="headerlink" href="#test-driven-development" title="Link to this heading"></a></h1>
 <p>“Testing” is any strategy for making sure your code behaves as expected. “Unit testing” is a particular strategy, that:</p>
 <ul class="simple">
 <li><p>is easy to run in an automated fashion.</p></li>
@@ -181,7 +181,7 @@ test case that checks whether the <code class="docutils literal notranslate"><sp
 want it to. You read that right: you’re going to write code that tests
 code that you haven’t written yet.</p>
 <p>This is called <em>test-driven development</em>, or TDD. The set of two
-conversion functions — <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code>, and later <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> — can
+conversion functions — <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code>, and later <code class="docutils literal notranslate"><span class="pre">from_roman()</span></code> — can
 be written and tested as a unit, separate from any larger program that
 uses them.</p>
 <p>Technically, you can write unit tests with plain Python – recall the <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement that you have already used to write simple tests. But it is very helpful to use a framework to make it easier to write and run your tests. In this program, we use the <cite>pytest</cite> package: it is both very easy to get started with, and provides a lot of powerful features to aid in testing complex systems.</p>
@@ -191,9 +191,8 @@ uses them.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pip install pytest
 </pre></div>
 </div>
-<p>Once installed, you should have the pytest command available in your terminal.</p>
 </div>
-<p>FIXME: Maybe add a small page on installing and using pytest?</p>
+<p>Once installed, you should have the pytest command available in your terminal.</p>
 <p>Unit testing is an important part of an overall testing-centric
 development strategy. If you write unit tests, it is important to write
 them early and to keep them updated as code and requirements change.
@@ -330,7 +329,7 @@ You don’t need to test every possible input, but you should try to test all th
 <p class="admonition-title">Note</p>
 <p>This is a major challenge of unit testing – how to catch all the edge cases, without over testing every little thing.</p>
 </div>
-<p><cite>pytest</cite> makes it really simple to write a test case: simply define a function named <code class="docutils literal notranslate"><span class="pre">test_anything</span></code>. pytest will identify any function with: “<code class="docutils literal notranslate"><span class="pre">test_</span></code>”” at the start of the name as a test function.</p>
+<p><cite>pytest</cite> makes it really simple to write a test case: simply define a function named <code class="docutils literal notranslate"><span class="pre">test_anything</span></code>. pytest will identify any function with: “<code class="docutils literal notranslate"><span class="pre">test_</span></code>” at the start of the name as a test function.</p>
 <ul class="simple">
 <li><p>Every individual test is its own function. A test function takes no parameters, returns no value, and must have a name beginning with the five letters <code class="docutils literal notranslate"><span class="pre">test_</span></code>.
 If a test function exits normally without a failing assertion or other exception, the test is considered passed; if the function raises a failed assertion, failed.</p></li>
@@ -628,7 +627,7 @@ sort of failure; they must fail in the way you expect.</p>
 <span class="gh">Out[13]: </span><span class="go">&#39;MMMMMMMMM&#39;</span>
 </pre></div>
 </div>
-<p>That’s definitely <em>not</em> what you wanted — that’s not even a valid Roman
+<p>That’s definitely <em>not</em> what you wanted — that’s not even a valid Roman
 numeral!
 In fact, after 3000, each of these numbers is outside the range of
 acceptable input, but the function returns a bogus value anyway.
@@ -696,7 +695,7 @@ You will see <code class="docutils literal notranslate"><span class="pre">with</
 code to pass it yet. Did it fail in the way you expected?</p>
 <p>Yes! <code class="docutils literal notranslate"><span class="pre">pytest.raises</span></code> did its job – a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> was not raised, and the test failed.</p>
 <p>Of course, the <code class="docutils literal notranslate"><span class="pre">to_roman()</span></code> function isn’t raising the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> because you haven’t told it to do that yet.
-That’s excellent news! It means this is a valid test case — it fails before you write the code to make it pass.</p>
+That’s excellent news! It means this is a valid test case — it fails before you write the code to make it pass.</p>
 <p>Now you can write the code to make this test pass.</p>
 <p><a class="reference download internal" download="" href="../_downloads/3e29de91d4027f47dcec7e9c4da617dc/roman4.py"><code class="xref download docutils literal notranslate"><span class="pre">roman4.py</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_roman</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -1701,7 +1700,7 @@ roman17.py<span class="w"> </span>............<span class="w">                  
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../exercises/unit_testing/unit_testing.html" class="btn btn-neutral float-right" title="Introduction To Unit Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Testing_advanced.html" class="btn btn-neutral float-right" title="Advanced Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -7,6 +7,7 @@ Unit Testing
 
     ../../modules/Testing
     ../../modules/TestDrivenDevelopment
+    ../../modules/Testing_advanced
 
 .. toctree::
     :caption: Activities
