@@ -97,6 +97,10 @@ Another Example:
 
 Here's another example from the codingbat site:
 
+:download:`sum_13.py <sum_13.py>`
+
+and 
+
 :download:`test_sum_13.py <test_sum_13.py>`
 
 
