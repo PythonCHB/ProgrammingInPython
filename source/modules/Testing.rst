@@ -9,16 +9,47 @@ This page is a quick overview of testing in Python. It provides some background 
 
 Testing your code is an absolute necessity -- you need to have *some* way to know it's doing what it should.
 
+Everyone tests their code -- that's how you know it works.
+
+But when folks talk about "testing" -- what they really mean are automated tests.
+
 Having your testing done in an automated way is really a good idea.
 
-You've already seen a very basic testing strategy: putting some ``assert`` statements in the ``__name__ == "__main__"`` block.
 
-You've written some tests using that strategy.
+What is testing?
+================
 
-These tests were pretty basic, and a bit awkward in places (testing error
-conditions in particular).
+Code which runs your application in as close to a real environment as feasible and validates its behavior
 
-.. centered:: **It gets better**
+
+Terminology of testing
+----------------------
+
+-  Unit tests
+-  Integration tests
+-  High level system tests
+-  Acceptance tests
+-  Black box / White box testing
+
+
+"V" model and tests levels
+--------------------------
+.. image:: /_static/test_v_model.png
+
+Note that "codeing" is at the bottom, and directly tied to unit-testing -- that's the place to start.
+
+About Unit Testing
+------------------
+
+0. Tests can be fully automated.
+1. Tests should be independent.
+2. Tests do not run in order, which shouldn't matter, see point 1.
+3. Test fixtures are available to do any setup / teardown needed for tests.
+4. Test behavior should not be implementation dependent.
+5. Mocking is available to fake stuff you may not want to run in your tests.
+
+This all applies regardless of your test framework
+
 
 Test Frameworks
 ---------------
@@ -49,108 +80,9 @@ It is a bit verbose: you have to write classes & methods (And we haven't covered
 But you will see it used in others' code, so it's good to be familiar with it.
 And seeing how verbose it can be will help you appreciate other options.
 
-So here's a bit of an introduction -- if the class stuff confuses you, don't worry about it -- you don't need to actually DO this yourself at this point.
+See :ref:`advanced_testing` for more on that.
 
-
-Using ``unittest``
-------------------
-
-To use ``unittest``, you need to write subclasses of the ``unittest.TestCase`` class (after importing the package, of course):
-
-.. code-block:: python
-
-    # in test.py
-    import unittest
-
-    class MyTests(unittest.TestCase):
-
-        def test_tautology(self):
-            self.assertEqual(1, 1)
-
-Then you run the tests by using the ``main`` function from the ``unittest``
-module:
-
-.. code-block:: python
-
-    # in test.py
-    if __name__ == '__main__':
-        unittest.main()
-
-``unittest.main()`` is called in the module where the tests are. Which means that they can be, but do not have to be, in the same file as your code.
-
-NOTE: tests can also be run by "test runners" for more features.
-
-
-Testing Your Code
------------------
-
-You can write your code in one file and test it from another -- and for all but the smallest projects, you want to do that.
-
-in ``my_mod.py``:
-
-.. code-block:: python
-
-    def my_func(val1, val2):
-        return val1 * val2
-
-in ``test_my_mod.py``:
-
-.. code-block:: python
-
-    import unittest
-    from my_mod import my_func
-
-
-    class MyFuncTestCase(unittest.TestCase):
-        def test_my_func(self):
-            test_val1, test_val2 = 2, 3
-            expected = 6
-            actual = my_func(test_val1, test_val2)
-            self.assertEqual(expected, actual)
-
-    if __name__ == '__main__':
-        unittest.main()
-
-So this is pretty straightforward, but it's kind of a lot of code for just one test, yes?
-
-
-Advantages of ``unittest``
---------------------------
-
-The ``unittest`` module is pretty full featured
-
-It comes with the standard Python distribution, no installation required.
-
-It provides a wide variety of assertions for testing many types of results.
-
-It allows for a "set up" and "tear down" work flow both before and after all tests and before and after each test.
-
-It's well known and well understood.
-
-
-Disadvantages of ``unittest``
------------------------------
-
-It's Object Oriented, and quite "heavyweight".
-
-  - modeled after Java's ``JUnit``.
-
-It uses the Framework design pattern, so knowing how to use the features means learning what to override.
-
-Needing to override means you have to be cautious.
-
-Test discovery is both inflexible and brittle.
-
-It doesn't really take advantage of Python's introspection capabilities:
-    - There are explicit "assert" methods for each type of test
-    - The available assertions are not the least bit complete
-    - All the assertions really do is provide pretty printing of errors
-
-Testing for Exceptions is awkward
-
-Test discovery is limited
-
-And there is no built-in parameterized testing.
+For now -- we'regoingto us pytest -- far simpler to get started, and advanced enough for the largest, most complex projects.
 
 
 Other Options

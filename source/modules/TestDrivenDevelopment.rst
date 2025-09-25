@@ -1,8 +1,6 @@
 
 .. _test_driven_development:
 
-FIXME: change the path from my personal to something generic
-
 #######################
 Test Driven Development
 #######################
@@ -16,7 +14,7 @@ Test Driven Development
 "Test Driven Development" (TDD) is a development strategy that integrates the development of unit tests with the code itself. In particular, you write the tests *before* you write the code, which seems pretty backward, but it has some real strengths.
 
 We'll demonstrate this technique with an example.
- 
+
 The following is adapted from Mark Pilgrim's excellent "Dive into Python":
 
 https://diveintopython3.problemsolving.io/
@@ -105,7 +103,7 @@ want it to. You read that right: you’re going to write code that tests
 code that you haven’t written yet.
 
 This is called *test-driven development*, or TDD. The set of two
-conversion functions — ``to_roman()``, and later ``from_roman()`` — can
+conversion functions — ``to_roman()``, and later ``from_roman()`` — can
 be written and tested as a unit, separate from any larger program that
 uses them.
 
@@ -115,9 +113,7 @@ Technically, you can write unit tests with plain Python -- recall the ``assert``
 
               $ python -m pip install pytest
 
-          Once installed, you should have the pytest command available in your terminal.
-
-FIXME: Maybe add a small page on installing and using pytest?
+Once installed, you should have the pytest command available in your terminal.
 
 Unit testing is an important part of an overall testing-centric
 development strategy. If you write unit tests, it is important to write
@@ -262,7 +258,7 @@ You don’t need to test every possible input, but you should try to test all th
 
 .. note:: This is a major challenge of unit testing -- how to catch all the edge cases, without over testing every little thing.
 
-`pytest` makes it really simple to write a test case: simply define a function named ``test_anything``. pytest will identify any function with: "``test_``"" at the start of the name as a test function.
+`pytest` makes it really simple to write a test case: simply define a function named ``test_anything``. pytest will identify any function with: "``test_``" at the start of the name as a test function.
 
 * Every individual test is its own function. A test function takes no parameters, returns no value, and must have a name beginning with the five letters ``test_``.
   If a test function exits normally without a failing assertion or other exception, the test is considered passed; if the function raises a failed assertion, failed.
@@ -604,7 +600,7 @@ sort of failure; they must fail in the way you expect.
   In [13]: to_roman(9000)
   Out[13]: 'MMMMMMMMM'
 
-That’s definitely *not* what you wanted — that’s not even a valid Roman
+That’s definitely *not* what you wanted — that’s not even a valid Roman
 numeral!
 In fact, after 3000, each of these numbers is outside the range of
 acceptable input, but the function returns a bogus value anyway.
@@ -684,7 +680,7 @@ code to pass it yet. Did it fail in the way you expected?
 Yes! ``pytest.raises`` did its job -- a ``ValueError`` was not raised, and the test failed.
 
 Of course, the ``to_roman()`` function isn’t raising the ``ValueError`` because you haven’t told it to do that yet.
-That’s excellent news! It means this is a valid test case — it fails before you write the code to make it pass.
+That’s excellent news! It means this is a valid test case — it fails before you write the code to make it pass.
 
 Now you can write the code to make this test pass.
 
